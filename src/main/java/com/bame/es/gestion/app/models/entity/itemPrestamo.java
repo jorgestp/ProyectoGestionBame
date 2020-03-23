@@ -5,24 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 @Entity
-@Table(name = "instrumentos")
-public class Instrumento {
-	
+@Table(name = "items_prestamos")
+public class itemPrestamo {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	//private Material material;
 	
-	private String nombre;
-	
-	private String tipo;
-	
-	
-
-	public Instrumento() {
+	public itemPrestamo() {
+		
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -31,22 +26,13 @@ public class Instrumento {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	/*public Material getMaterial() {
+		return material;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+	public void setMaterial(Material material) {
+		this.material = material;
+	}*/
 
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
 	
-	
-
 }

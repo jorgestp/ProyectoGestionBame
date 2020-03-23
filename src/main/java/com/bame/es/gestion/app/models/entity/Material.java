@@ -7,20 +7,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "instrumentos")
-public class Instrumento {
+@Table(name = "materiales")
+public class Material {
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private String nombre;
 	
-	private String tipo;
-	
-	
-
-	public Instrumento() {
+	public Material() {
+		
+		
 	}
 
 	public Long getId() {
@@ -38,15 +36,7 @@ public class Instrumento {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
 	
 	
-
+	
 }
