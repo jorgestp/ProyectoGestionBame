@@ -1,9 +1,7 @@
 package com.bame.es.gestion.app.models.entity;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -3,17 +3,21 @@ package com.bame.es.gestion.app.models.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name = "componentes")
@@ -40,7 +44,17 @@ public class Componente implements Serializable {
 	
 	private String dni;
 	
-	//private Instrumento instrumento;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_instr")
+	/*
+	 * Agregamos la siguiente anotacion para ignorar
+	 * las propiedades del objeto producto.
+	 * Va acompañado de los atributos que queremos ignorar
+	 * 
+	 * Puede ir tanto aqui como en la clase Producto directamente.
+	 */
+	//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Instrumento instrumento;
 	
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
