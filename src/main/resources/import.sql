@@ -24,7 +24,13 @@ INSERT INTO componentes (nombre, apellido, direccion, email, sexo, dni, id_instr
 INSERT INTO componentes (nombre, apellido, direccion, email, sexo, dni, id_instr, create_at) VALUES ('Nose2', 'Doe','mi calle', 'micorreo', 'masculino','47536486V', 1, '2017-08-28');
 INSERT INTO componentes (nombre, apellido, direccion, email, sexo, dni, id_instr, create_at) VALUES ('JJ', 'Doe','mi calle', 'micorreo', 'masculino','47536486V', 1, '2017-08-28');
 
-INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('Siempre la Esperanza', 'J.J. Espinosa de los Monteros','2015-01-01', '2015-01-01');
-
-
-
+INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('A ti Manué', 'Juan José Puntas','2015-01-01', '2015-01-01');
+INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('Al Cielo con Ella', 'Pedro Morales','2015-01-01', '2015-01-01');
+INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('Al cielo la Paz', 'J.J. Espinosa de los Monteros','2015-01-01', '2015-01-01');
+INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('Alma de la Trinidad', 'Eloy García','2015-01-01', '2015-01-01');
+INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('Amarguras', 'Manuel Font de Anta','2015-01-01', '2015-01-01');
+INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('Aniversario Macareno', 'José Velazquez','2015-01-01', '2015-01-01');
+INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('Aquella Virgen', 'Manuel Gomez de Arriba','2015-01-01', '2015-01-01');
+INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('Candelaria', 'Manuel Marvizon','2015-01-01', '2015-01-01');
+INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('Como Tú, ninguna', 'David Hurtado','2015-01-01', '2015-01-01');
+INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('Cordero de Dios', 'Ricardo Dorado','2015-01-01', '2015-01-01');
