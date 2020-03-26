@@ -24,5 +24,7 @@ INSERT INTO componentes (nombre, apellido, direccion, email, sexo, dni, id_instr
 INSERT INTO componentes (nombre, apellido, direccion, email, sexo, dni, id_instr, create_at) VALUES ('Nose2', 'Doe','mi calle', 'micorreo', 'masculino','47536486V', 1, '2017-08-28');
 INSERT INTO componentes (nombre, apellido, direccion, email, sexo, dni, id_instr, create_at) VALUES ('JJ', 'Doe','mi calle', 'micorreo', 'masculino','47536486V', 1, '2017-08-28');
 
+INSERT INTO marchas (nombre, compositor, fecha_creacion, fecha_alta) VALUES ('Siempre la Esperanza', 'J.J. Espinosa de los Monteros','2015-01-01', '2015-01-01');
+
 
 
