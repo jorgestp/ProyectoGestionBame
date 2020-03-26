@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-BIENVENIDO A LA PAGINA WEB
+	BIENVENIDO A LA PAGINA WEB
+
+
+	<table class="table table-striped table-bordered">
+		<thead class="thead-dark">
+			<tr>
+				<th >ID</th>
+				<th >NOMBRE</th>
+				<th >APELLIDO</th>
+				<th >DIRECCION</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="comp: ${componentes}">
+
+					<td th:text="${comp.id}"></td>
+					<td th:text="${comp.nombre}"></td>
+					<td th:text="${comp.apellido}"></td>
+					<td th:text="${comp.direccion}"></td>
+
+			</tr>
+		</tbody>
+
+	</table>
 </body>
 </html>
