@@ -1,33 +1,54 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<title>Gestion BAME</title>
+
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
 </head>
 <body>
-	BIENVENIDO A LA PAGINA WEB
+
+	<header th:replace="layout/plantilla :: header"></header>
+
+	<div class="container">
+		<div class="container">
+
+			<table class="table table-striped table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th>ID</th>
+						<th>NOMBRE</th>
+						<th>APELLIDO</th>
+						<th>INSTRUMENTO</th>
+						<th>DIRECCION</th>
+						<th>ALTA</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="comp: ${componentes}">
+
+						<td th:text="${comp.id}"></td>
+						<td th:text="${comp.nombre}"></td>
+						<td th:text="${comp.apellido}"></td>
+						<td th:text="${comp.instrumento.nombre}"></td>
+						<td th:text="${comp.direccion}"></td>
+						<td th:text="${comp.createAt}"></td>
+
+					</tr>
+				</tbody>
+
+			</table>
 
 
-	<table class="table table-striped table-bordered">
-		<thead class="thead-dark">
-			<tr>
-				<th >ID</th>
-				<th >NOMBRE</th>
-				<th >APELLIDO</th>
-				<th >DIRECCION</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="comp: ${componentes}">
+		</div>
 
-					<td th:text="${comp.id}"></td>
-					<td th:text="${comp.nombre}"></td>
-					<td th:text="${comp.apellido}"></td>
-					<td th:text="${comp.direccion}"></td>
+	</div>
 
-			</tr>
-		</tbody>
 
-	</table>
+
+
+	<header th:replace="layout/plantilla :: footer"></header>
 </body>
 </html>

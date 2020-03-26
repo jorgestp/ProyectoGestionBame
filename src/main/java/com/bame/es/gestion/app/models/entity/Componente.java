@@ -85,7 +85,7 @@ public class Componente implements Serializable {
 
 
 
-	/*public Instrumento getInstrumento() {
+	public Instrumento getInstrumento() {
 		return instrumento;
 	}
 
@@ -94,7 +94,7 @@ public class Componente implements Serializable {
 
 	public void setInstrumento(Instrumento instrumento) {
 		this.instrumento = instrumento;
-	}*/
+	}
 
 
 
