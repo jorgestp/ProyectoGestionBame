@@ -19,14 +19,14 @@ import com.bame.es.gestion.app.pageRender.PageRender;
 
 
 @Controller
-@RequestMapping("/repositorio")
+@RequestMapping(value = "/repertorio")
 public class MarchaController {
 	
 	
 	@Autowired
 	private IMarchaService marchaService;
 	
-	@GetMapping(value = "/")
+	@GetMapping(value = "/lista")
 	public String ListarRepositorio(@RequestParam(name = "page", defaultValue = "0") int page,
 			Map<String, Object> model) {
 		

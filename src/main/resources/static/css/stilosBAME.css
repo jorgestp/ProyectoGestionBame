@@ -9,8 +9,33 @@
 html{
   position: relative;
   min-height: 100%;
+  
 }
 
 body{
   margin-bottom: 60px;
+  
+}
+.ejemplo{
+
+background: linear-gradient(#ffffff , #f0bd24) !important;
+
+}
+
+.navbar{
+
+  box-shadow: 5px 5px 5px #000;
+
+
+}
+
+.navbar .nav-item .nav-link {
+
+  color: #000000;
+
+}
+#estiloTabla{
+	
+	border-width: 10px 1px 0px 0px;
+	border-color: black;
 }
