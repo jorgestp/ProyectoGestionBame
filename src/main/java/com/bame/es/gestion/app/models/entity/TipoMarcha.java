@@ -46,6 +46,14 @@ public class TipoMarcha {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+	public List<Marcha> getMarchas() {
+		return marchas;
+	}
+
+	public void setMarchas(List<Marcha> marchas) {
+		this.marchas = marchas;
+	}
 	
 	
 }
