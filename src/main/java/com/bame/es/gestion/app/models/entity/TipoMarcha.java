@@ -1,9 +1,13 @@
 package com.bame.es.gestion.app.models.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +20,8 @@ public class TipoMarcha {
 	String nombre;
 	String descripcion;
 	
+	@OneToMany(mappedBy = "tipo", fetch = FetchType.LAZY)
+	private List<Marcha> marchas;
 	
 	public TipoMarcha() {
 		

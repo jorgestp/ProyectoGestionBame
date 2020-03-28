@@ -4,9 +4,11 @@ package com.bame.es.gestion.app.models.entity;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,12 +41,13 @@ public class Marcha {
 	@NotNull
 	private Date fecha_alta;
 	
-	//TipoMarcha tipo;
+	@ManyToOne(fetch = FetchType.LAZY)
+	TipoMarcha tipo;
 	
-	//private List<Prestamo> prestamos;
+	
 	
 	public Marcha() {
-		//prestamos = new ArrayList<Prestamo>();
+		
 	}
 
 	public Long getId() {
@@ -87,26 +90,15 @@ public class Marcha {
 		this.fecha_alta = fecha_alta;
 	}
 
-	/*public TipoMarcha getTipo() {
+	public TipoMarcha getTipo() {
 		return tipo;
 	}
 
 	public void setTipo(TipoMarcha tipo) {
 		this.tipo = tipo;
-	}*/
-
-	/*public List<Prestamo> getPrestamos() {
-		return prestamos;
 	}
 
-	public void setPrestamos(List<Prestamo> prestamos) {
-		this.prestamos = prestamos;
-	}
-	
-	public void add(Prestamo factura) {
-		
-		prestamos.add(factura);
-	}*/
+
 	
 	public String toString() {
 		

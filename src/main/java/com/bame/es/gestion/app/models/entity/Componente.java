@@ -44,7 +44,7 @@ public class Componente implements Serializable {
 	
 	private String dni;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_instr")
 	/*
 	 * Agregamos la siguiente anotacion para ignorar
