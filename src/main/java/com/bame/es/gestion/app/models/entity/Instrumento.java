@@ -1,6 +1,7 @@
 package com.bame.es.gestion.app.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -34,6 +35,8 @@ public class Instrumento implements Serializable {
 	
 
 	public Instrumento() {
+		
+		componentes = new ArrayList<Componente>();
 	}
 
 	public Long getId() {
@@ -58,6 +61,14 @@ public class Instrumento implements Serializable {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public List<Componente> getComponentes() {
+		return componentes;
+	}
+
+	public void setComponentes(List<Componente> componentes) {
+		this.componentes = componentes;
 	}
 	
 	

@@ -1,12 +1,20 @@
 package com.bame.es.gestion.app.models.entity;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -16,8 +24,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "prestamos")
-public class Prestamo {
+public class Prestamo implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -33,10 +46,16 @@ public class Prestamo {
 	private String descripcion;
 	private String observacion;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Componente componente;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "prestamo_id")
+	private List<ItemPrestamo> itemsPrestamo;
 	
 	public Prestamo() {
 		
-		
+		itemsPrestamo = new ArrayList<ItemPrestamo>();
 	}
 
 
@@ -50,14 +69,14 @@ public class Prestamo {
 	}
 
 
-	/*public Componente getComponente() {
+	public Componente getComponente() {
 		return componente;
 	}
 
 
 	public void setComponente(Componente componente) {
 		this.componente = componente;
-	}*/
+	}
 
 
 	public Date getCreateAt() {
@@ -87,6 +106,16 @@ public class Prestamo {
 
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
+	}
+
+
+	public List<ItemPrestamo> getItemsPrestamo() {
+		return itemsPrestamo;
+	}
+
+
+	public void setItemsPrestamo(List<ItemPrestamo> itemsPrestamo) {
+		this.itemsPrestamo = itemsPrestamo;
 	}
 	
 	

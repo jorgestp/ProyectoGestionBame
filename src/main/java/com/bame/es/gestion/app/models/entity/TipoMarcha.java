@@ -1,5 +1,6 @@
 package com.bame.es.gestion.app.models.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,9 +12,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tipo_marcha")
-public class TipoMarcha {
+@Table(name = "tipo_marchas")
+public class TipoMarcha implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -27,6 +32,7 @@ public class TipoMarcha {
 		
 		
 	}
+	
 	
 	public Long getId() {
 		return id;
