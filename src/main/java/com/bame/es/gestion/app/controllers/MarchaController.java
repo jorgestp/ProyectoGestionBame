@@ -33,7 +33,7 @@ public class MarchaController {
 		Pageable pageRequest = PageRequest.of(page, 5);
 		Page<Marcha> marchas = marchaService.findAll(pageRequest);
 		
-		PageRender<Marcha> pageRender = new PageRender<Marcha>("/repositorio/", marchas);
+		PageRender<Marcha> pageRender = new PageRender<Marcha>("/repositorio/lista", marchas);
 		
 		
 		model.put("marchas", marchas);
