@@ -12,7 +12,7 @@
 <body>
 
 	<header th:replace="layout/plantilla :: header"></header>
-
+	<a class="btn btn-primary my-4 btn-xs" th:href="@{/componentes/form}">Nuevo Componente</a>
 	<div class="container">
 		<div class="container">
 
@@ -42,9 +42,9 @@
 
 			</table>
 			<div class="container">
-				<div class="text-center">
+				
 					<nav th:replace="paginator-nav :: paginator"></nav>
-				</div>
+				
 
 			</div>
 
@@ -55,6 +55,6 @@
 
 
 
-	<header th:replace="layout/plantilla :: footer"></header>
+	<!-- <header th:replace="layout/plantilla :: footer"></header> -->
 </body>
 </html>
