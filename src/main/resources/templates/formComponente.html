@@ -86,13 +86,13 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label"> Instrumento</label>
 						<div class="col-sm-3">
-							<select class="form-control" th:field="*{instrumento}"
+							<select class="form-control" th:field="*{instrumento.id}"
 								th:errorclass="'form-control alert-danger'">
 								<option value="">--Seleccione--</option>
 								<option value="1">Clarinete</option>
 								
 							</select> <small class="form-text text-danger"
-								th:if="${#fields.hasErrors('sexo')}" th:errors="*{instrumento}"></small>
+								th:if="${#fields.hasErrors('sexo')}" th:errors="*{instrumento.id}"></small>
 						</div>
 					</div>
 

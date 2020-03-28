@@ -3,21 +3,28 @@ package com.bame.es.gestion.app.controllers;
 
 import java.util.Map;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bame.es.gestion.app.models.entity.Componente;
 
 import com.bame.es.gestion.app.models.service.IComponenteService;
+import com.bame.es.gestion.app.models.service.IInstrumentoService;
 import com.bame.es.gestion.app.pageRender.PageRender;
+
 
 
 
@@ -28,6 +35,8 @@ public class ComponenteController {
 	
 	@Autowired
 	private IComponenteService componenteService;
+	@Autowired
+	private IInstrumentoService instrumentoService;
 	
 
 	
@@ -55,6 +64,21 @@ public class ComponenteController {
 		model.put("titulo", "Nuevo Componente para BAME");
 
 		return "formComponente";
+	}
+	
+	@RequestMapping(value = "/form", method = RequestMethod.POST)
+	public String guardar(Componente componente, 
+			BindingResult result, 
+			Model model,
+			RedirectAttributes flash) {
+		
+		
+		
+		componente.setInstrumento(instrumentoService.findById((Long)componente.getInstrumento().getId()));
+		
+		System.out.println(componente.toString());
+		
+		return "redirect:lista";
 	}
 
 }

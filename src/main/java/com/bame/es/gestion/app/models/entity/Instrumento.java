@@ -70,6 +70,11 @@ public class Instrumento implements Serializable {
 	public void setComponentes(List<Componente> componentes) {
 		this.componentes = componentes;
 	}
+
+	@Override
+	public String toString() {
+		return "Instrumento [id=" + id + ", nombre=" + nombre + ", tipo=" + tipo + "]";
+	}
 	
 	
 

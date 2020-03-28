@@ -176,6 +176,17 @@ public class Componente implements Serializable {
 	public void setPrestamos(List<Prestamo> prestamos) {
 		this.prestamos = prestamos;
 	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Componente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
+				+ ", email=" + email + ", sexo=" + sexo + ", dni=" + dni + ", instrumento=" + instrumento.toString()
+				+ ", createAt=" + createAt + ", prestamos=" + prestamos + "]";
+	}
+	
 	
 	
 
