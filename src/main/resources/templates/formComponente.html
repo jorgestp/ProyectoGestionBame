@@ -19,12 +19,11 @@
 
 				<!-- ENCTYPE es una codificacion que permite mandar archivos como datos en un request, 
 				es decir, en una peticion http -->
-				<form th:action="@{/form}" th:object="${componente}" method="post"
-					enctype="multipart/form-data">
+				<form th:action="@{/componentes/form}" th:object="${componente}"
+					method="post" enctype="multipart/form-data">
 
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label"
-							th:text="#{text.cliente.nombre}">Nombre</label>
+						<label class="col-sm-2 col-form-label">Nombre</label>
 
 						<div class="col-sm-6">
 							<input type="text" th:field="*{nombre}" class="form-control"
@@ -35,8 +34,7 @@
 					</div>
 
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label"
-							th:text="#{text.cliente.apellido}">Apellido</label>
+						<label class="col-sm-2 col-form-label">Apellido</label>
 						<div class="col-sm-6">
 							<input type="text" th:field="*{apellido}" class="form-control"
 								th:errorclass="'form-control alert-danger'" /> <small
@@ -45,9 +43,8 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label"
-							th:text="#{text.cliente.email}">Email</label>
-						<div class="col-sm-6">
+						<label class="col-sm-2 col-form-label">Email</label>
+						<div class="col-sm-3">
 							<input type="text" th:field="*{email}" class="form-control"
 								th:errorclass="'form-control alert-danger'" /> <small
 								class="form-text text-danger"
@@ -55,15 +52,51 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label"
-							th:text="#{text.cliente.createAt}"> Fecha</label>
+						<label class="col-sm-2 col-form-label"> Direccion</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" th:field="*{createAt}"
+							<input type="text" class="form-control" th:field="*{direccion}"
 								th:errorclass="'form-control alert-danger'" /> <small
 								class="form-text text-danger"
-								th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+								th:if="${#fields.hasErrors('direccion')}"
+								th:errors="*{direccion}"></small>
 						</div>
 					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label"> Sexo</label>
+						<div class="col-sm-3">
+							<select class="form-control" th:field="*{sexo}"
+								th:errorclass="'form-control alert-danger'">
+								<option value="">--Seleccione--</option>
+								<option value="masculino">Hombre</option>
+								<option value="femenino">Mujer</option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">DNI</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" th:field="*{dni}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label"> Instrumento</label>
+						<div class="col-sm-3">
+							<select class="form-control" th:field="*{instrumento}"
+								th:errorclass="'form-control alert-danger'">
+								<option value="">--Seleccione--</option>
+								<option value="1">Clarinete</option>
+								
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('sexo')}" th:errors="*{instrumento}"></small>
+						</div>
+					</div>
+
+
 
 					<div class="form-group row">
 						<label for="file" class="col-sm-2 col-form-label"
@@ -81,7 +114,7 @@
 						</div>
 					</div>
 
-					<!--<input type="hidden" th:field="*{id}" />  -->
+					
 
 				</form>
 			</div>
