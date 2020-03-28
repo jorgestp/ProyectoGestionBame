@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bame.es.gestion.app.models.entity.Componente;
@@ -70,13 +70,20 @@ public class ComponenteController {
 	public String guardar(Componente componente, 
 			BindingResult result, 
 			Model model,
-			RedirectAttributes flash) {
+			RedirectAttributes flash,
+			SessionStatus status) {
 		
 		
 		
 		componente.setInstrumento(instrumentoService.findById((Long)componente.getInstrumento().getId()));
 		
 		System.out.println(componente.toString());
+		
+		Componente componenteSave = componenteService.save(componente);
+		
+		status.setComplete();
+		flash.addFlashAttribute("success", "Se ha creado el componente " + componenteSave.getNombre() 
+		+ " " + componenteSave.getApellido() +" correctamente");
 		
 		return "redirect:lista";
 	}

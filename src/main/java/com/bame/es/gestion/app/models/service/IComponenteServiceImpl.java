@@ -30,4 +30,12 @@ public class IComponenteServiceImpl implements IComponenteService {
 		return componentedao.findAll(pageable);
 	}
 
+
+
+	@Override
+	public Componente save(Componente componente) {
+		// TODO Auto-generated method stub
+		return componentedao.save(componente);
+	}
+
 }

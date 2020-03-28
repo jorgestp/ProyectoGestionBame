@@ -13,5 +13,7 @@ public interface IComponenteService  {
 	public List<Componente> findAll();
 	
 	public Page<Componente> findAll(Pageable pageable);
+	
+	public Componente save(Componente componente);
 
 }

@@ -8,11 +8,25 @@
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
 <link rel="stylesheet" th:href="@{/css/stilosBAME.css}"></link>
+
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
 
 	<header th:replace="layout/plantilla :: header"></header>
-	<a class="btn btn-primary my-4 btn-xs" th:href="@{/componentes/form}">Nuevo Componente</a>
+	<div class="container text-center">
+		<h2>Componentes BAME</h2>
+	</div>
+
+	<a class="btn btn-primary my-4 btn-xs" th:href="@{/componentes/form}">Nuevo
+		Componente</a>
 	<div class="container">
 		<div class="container">
 
@@ -42,9 +56,9 @@
 
 			</table>
 			<div class="container">
-				
-					<nav th:replace="paginator-nav :: paginator"></nav>
-				
+
+				<nav th:replace="paginator-nav :: paginator"></nav>
+
 
 			</div>
 

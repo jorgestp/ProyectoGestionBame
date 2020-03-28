@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -72,6 +73,12 @@ public class Componente implements Serializable {
 		
 		prestamos = new ArrayList<Prestamo>();
 
+	}
+	
+	@PrePersist
+	public void Prepersist() {
+		
+		createAt = new Date();
 	}
 	
 	

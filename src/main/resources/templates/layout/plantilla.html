@@ -13,8 +13,8 @@
 
 
 	<header th:fragment="header">
-		<nav class=" ejemplo navbar navbar-expand-lg  mb-5 rounded-bottom">
-			<img th:src="@{/img/logo_bame.jpg}" alt="" width="80px" height="80px">
+		<nav class="ejemplo navbar navbar-expand-lg  mb-5 rounded-bottom">
+			<img th:src="@{/img/logoBame.png}" alt="" width="80px" height="80px">
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -24,15 +24,29 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item"><a class="nav-link"  th:href="@{/repertorio/lista}">Repertorio
-
-					</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/componentes/lista}">Componentes</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/repertorio/lista}">Repertorio </a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/componentes/lista}">Componentes</a></li>
 
 				</ul>
 
 			</div>
 		</nav>
+
+
+		<div class="alert alert-success alert-dismissible" th:if="${success != null}">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Registro Completado</strong>
+			<p th:text="${success}"></p>
+		</div>
+
+		<div class="alert alert-danger" th:if="${error != null}"
+			th:text="${error}"></div>
+		<div class="alert alert-warning" th:if="${warning != null}"
+			th:text="${warning}"></div>
+		<div class="alert alert-info" th:if="${info != null}"
+			th:text="${info}"></div>
 
 
 	</header>
