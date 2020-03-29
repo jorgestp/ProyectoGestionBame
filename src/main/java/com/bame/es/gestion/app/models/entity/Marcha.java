@@ -2,8 +2,7 @@ package com.bame.es.gestion.app.models.entity;
 
 
 import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,11 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -34,21 +29,22 @@ public class Marcha implements Serializable {
 	private String compositor;
 	
 	
-	@Column(name = "fecha_creacion")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat( pattern = "dd-MM-yyyy")
-	@NotNull
-	private Date fecha_creacion;
+	//@Column(name = "fecha_creacion")
+	//@Temporal(TemporalType.DATE)
+	//@DateTimeFormat( pattern = "dd-MM-yyyy")
+	//@NotNull
+	private String fecha_creacion;
 	
-	@Column(name = "fecha_alta")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat( pattern = "dd-MM-yyyy")
-	@NotNull
-	private Date fecha_alta;
+	//@Column(name = "fecha_alta")
+	//@Temporal(TemporalType.DATE)
+	//@DateTimeFormat( pattern = "dd-MM-yyyy")
+	//@NotNull
+	//private String fecha_alta;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	TipoMarcha tipo;
 	
+	private String guia;
 	
 	
 	public Marcha() {
@@ -79,21 +75,15 @@ public class Marcha implements Serializable {
 		this.compositor = compositor;
 	}
 
-	public Date getFecha_creacion() {
+	public String getFecha_creacion() {
 		return fecha_creacion;
 	}
 
-	public void setFecha_creacion(Date fecha_creacion) {
+	public void setFecha_creacion(String fecha_creacion) {
 		this.fecha_creacion = fecha_creacion;
 	}
 
-	public Date getFecha_alta() {
-		return fecha_alta;
-	}
 
-	public void setFecha_alta(Date fecha_alta) {
-		this.fecha_alta = fecha_alta;
-	}
 
 	public TipoMarcha getTipo() {
 		return tipo;
@@ -108,6 +98,14 @@ public class Marcha implements Serializable {
 	public String toString() {
 		
 		return nombre + " " + compositor;
+	}
+
+	public String getGuia() {
+		return guia;
+	}
+
+	public void setGuia(String guia) {
+		this.guia = guia;
 	}
 	
 	

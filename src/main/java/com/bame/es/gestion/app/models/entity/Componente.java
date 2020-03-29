@@ -41,9 +41,6 @@ public class Componente implements Serializable {
 	
 	private String direccion;
 	
-	private String email;
-
-	private String sexo;
 	
 	private String dni;
 	
@@ -68,6 +65,8 @@ public class Componente implements Serializable {
 	@OneToMany(mappedBy = "componente",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Prestamo> prestamos;
 	
+	private String foto;
+	
 
 	public Componente() {
 		
@@ -83,17 +82,6 @@ public class Componente implements Serializable {
 	
 	
 	
-
-	public String getSexo() {
-		return sexo;
-	}
-
-
-
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
 
 
 
@@ -144,13 +132,6 @@ public class Componente implements Serializable {
 		this.direccion = direccion;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 
 
@@ -187,10 +168,18 @@ public class Componente implements Serializable {
 
 
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
 	@Override
 	public String toString() {
 		return "Componente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
-				+ ", email=" + email + ", sexo=" + sexo + ", dni=" + dni + ", instrumento=" + instrumento.toString()
+				+ ", dni=" + dni + ", instrumento=" + instrumento.toString()
 				+ ", createAt=" + createAt + ", prestamos=" + prestamos + "]";
 	}
 	

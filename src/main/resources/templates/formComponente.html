@@ -42,15 +42,7 @@
 								th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
 						</div>
 					</div>
-					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Email</label>
-						<div class="col-sm-3">
-							<input type="text" th:field="*{email}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
-						</div>
-					</div>
+
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label"> Direccion</label>
 						<div class="col-sm-6">
@@ -61,7 +53,7 @@
 								th:errors="*{direccion}"></small>
 						</div>
 					</div>
-					<div class="form-group row">
+					<!--  <div class="form-group row">
 						<label class="col-sm-2 col-form-label"> Sexo</label>
 						<div class="col-sm-3">
 							<select class="form-control" th:field="*{sexo}"
@@ -72,7 +64,7 @@
 							</select> <small class="form-text text-danger"
 								th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}"></small>
 						</div>
-					</div>
+					</div>-->
 
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">DNI</label>
@@ -90,17 +82,17 @@
 								th:errorclass="'form-control alert-danger'">
 								<option value="">--Seleccione--</option>
 								<option value="1">Clarinete</option>
-								
+
 							</select> <small class="form-text text-danger"
-								th:if="${#fields.hasErrors('sexo')}" th:errors="*{instrumento.id}"></small>
+								th:if="${#fields.hasErrors('instrumento.id')}"
+								th:errors="*{instrumento.id}"></small>
 						</div>
 					</div>
 
 
 
 					<div class="form-group row">
-						<label for="file" class="col-sm-2 col-form-label"
-							th:text="#{text.cliente.foto}">Foto</label>
+						<label for="file" class="col-sm-2 col-form-label">Foto</label>
 						<div class="col-sm-6">
 							<input type="file" name="file" class="form-control" />
 						</div>
@@ -114,7 +106,7 @@
 						</div>
 					</div>
 
-					
+
 
 				</form>
 			</div>
