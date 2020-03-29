@@ -15,5 +15,7 @@ public interface IComponenteService  {
 	public Page<Componente> findAll(Pageable pageable);
 	
 	public Componente save(Componente componente);
+	
+	public Componente findById(Long id);
 
 }

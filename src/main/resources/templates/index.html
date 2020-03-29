@@ -39,6 +39,7 @@
 						<th>INSTRUMENTO</th>
 						<th>DIRECCION</th>
 						<th>ALTA</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -50,6 +51,7 @@
 						<td th:text="${comp.instrumento.nombre}"></td>
 						<td th:text="${comp.direccion}"></td>
 						<td th:text="${comp.createAt}"></td>
+						<td><a class="btn btn-success text-white" th:href="@{/componentes/form/} + ${comp.id}" th:text="Editar"></a></td>
 
 					</tr>
 				</tbody>

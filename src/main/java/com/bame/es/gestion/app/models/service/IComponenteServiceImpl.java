@@ -38,4 +38,12 @@ public class IComponenteServiceImpl implements IComponenteService {
 		return componentedao.save(componente);
 	}
 
+
+
+	@Override
+	public Componente findById(Long id) {
+		// TODO Auto-generated method stub
+		return componentedao.findById(id).orElse(null);
+	}
+
 }
