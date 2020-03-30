@@ -80,13 +80,24 @@ public class ComponenteController {
 		
 		componente.setInstrumento(instrumentoService.findById((Long)componente.getInstrumento().getId()));
 		
-		System.out.println(componente.toString());
+		//System.out.println(componente.toString());
 		
 		Componente componenteSave = componenteService.save(componente);
 		
 		status.setComplete();
-		flash.addFlashAttribute("success", "Se ha creado el componente " + componenteSave.getNombre() 
-		+ " " + componenteSave.getApellido() +" correctamente");
+		
+		String mensaje="";
+		if(componente.getId() != null) {
+			
+			mensaje = "Se ha actualizado el componente " + componenteSave.getNombre() 
+			+ " " + componenteSave.getApellido() +" correctamente";
+			
+		}else {
+			
+			mensaje = "Se ha creado el componente " + componenteSave.getNombre() 
+			+ " " + componenteSave.getApellido() +" correctamente";
+		}
+		flash.addFlashAttribute("success",mensaje);
 		
 		return "redirect:lista";
 	}
