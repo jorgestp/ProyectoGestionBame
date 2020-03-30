@@ -146,7 +146,7 @@ public class ComponenteController {
 					
 				}else {
 					
-					
+					flash.addFlashAttribute("error", "El cliente no se puede eliminar");
 				}
 		
 				return "redirect:/componentes/lista";
