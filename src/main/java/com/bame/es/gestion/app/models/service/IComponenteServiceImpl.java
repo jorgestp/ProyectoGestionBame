@@ -46,4 +46,13 @@ public class IComponenteServiceImpl implements IComponenteService {
 		return componentedao.findById(id).orElse(null);
 	}
 
+
+
+	@Override
+	public void delete(Componente componente) {
+		
+		componentedao.delete(componente);
+		
+	}
+
 }

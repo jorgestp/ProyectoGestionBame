@@ -51,7 +51,12 @@
 						<td th:text="${comp.instrumento.nombre}"></td>
 						<td th:text="${comp.direccion}"></td>
 						<td th:text="${comp.createAt}"></td>
-						<td><a class="btn btn-success text-white" th:href="@{/componentes/form/} + ${comp.id}" th:text="Editar"></a></td>
+						<td><a class="btn btn-success text-white"
+							th:href="@{/componentes/form/} + ${comp.id}" th:text="Editar"></a></td>
+						<td><a class="btn btn-xs btn-danger text-white"
+							th:href="@{/componentes/delete/} + ${comp.id}" th:text="Eliminar"
+							onclick="return confirm('Estas seguro de eliminar?')"></a></td>
+
 
 					</tr>
 				</tbody>

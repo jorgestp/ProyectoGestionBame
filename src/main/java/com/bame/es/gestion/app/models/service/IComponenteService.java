@@ -17,5 +17,7 @@ public interface IComponenteService  {
 	public Componente save(Componente componente);
 	
 	public Componente findById(Long id);
+	
+	public void delete(Componente componente);
 
 }

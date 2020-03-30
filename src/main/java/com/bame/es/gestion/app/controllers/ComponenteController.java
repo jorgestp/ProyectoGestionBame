@@ -132,5 +132,26 @@ public class ComponenteController {
 
 		return "formComponente";
 	}
+	
+	
+	@RequestMapping(value = "/delete/{id}")
+	public String eliminar(@PathVariable(value = "id") Long id, 
+			RedirectAttributes flash) {
+		
+				if(id>0) {
+					
+					Componente c = componenteService.findById(id);
+					componenteService.delete(c);
+					flash.addFlashAttribute("success", "Cliente eliminado con éxito");
+					
+				}else {
+					
+					
+				}
+		
+				return "redirect:/componentes/lista";
+	}
+		
+
 
 }
