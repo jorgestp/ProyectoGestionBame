@@ -22,7 +22,7 @@
 				<form th:action="@{/componentes/form}" th:object="${marcha}"
 					method="post" enctype="multipart/form-data">
 
-	
+
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Nombre</label>
 
@@ -31,7 +31,7 @@
 								th:errorclass="'form-control alert-danger'" />
 						</div>
 					</div>
-					
+
 
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Compositor</label>
@@ -47,9 +47,9 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Año composición</label>
 						<div class="col-sm-6">
-							<input type="number" th:field="*{fecha_creacion}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
+							<input type="number" th:field="*{fecha_creacion}"
+								class="form-control" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger"
 								th:if="${#fields.hasErrors('fecha_creacion')}"
 								th:errors="*{fecha_creacion}"></small>
 						</div>
@@ -63,7 +63,6 @@
 								<option value="">--Seleccione--</option>
 								<option value="1">funebre</option>
 								<option value="2">clásica</option>
-
 							</select> <small class="form-text text-danger"
 								th:if="${#fields.hasErrors('tipo.id')}" th:errors="*{tipo.id}"></small>
 						</div>
