@@ -31,7 +31,7 @@ import com.bame.es.gestion.app.pageRender.PageRender;
 
 
 @Controller
-@RequestMapping(value = "/componentes")
+
 @SessionAttributes("componente")
 public class ComponenteController {
 	
@@ -58,7 +58,7 @@ public class ComponenteController {
 	}
 	
 	
-	@RequestMapping(value = "/form")
+	@RequestMapping(value = "/componentes/form")
 	public String crear(Map<String, Object> model) {
 
 		Componente componente = new Componente();
@@ -69,7 +69,7 @@ public class ComponenteController {
 		return "formComponente";
 	}
 	
-	@RequestMapping(value = "/form", method = RequestMethod.POST)
+	@RequestMapping(value = "/componentes/form", method = RequestMethod.POST)
 	public String guardar(Componente componente, 
 			BindingResult result, 
 			Model model,
@@ -103,7 +103,7 @@ public class ComponenteController {
 	}
 	
 	
-	@RequestMapping(value = "/form/{id}")
+	@RequestMapping(value = "/componentes/form/{id}")
 	public String editar(@PathVariable(value="id") Long id, Map<String, Object> model, RedirectAttributes flash)
 	{
 		
@@ -134,7 +134,7 @@ public class ComponenteController {
 	}
 	
 	
-	@RequestMapping(value = "/delete/{id}")
+	@RequestMapping(value = "componentes/delete/{id}")
 	public String eliminar(@PathVariable(value = "id") Long id, 
 			RedirectAttributes flash) {
 		
