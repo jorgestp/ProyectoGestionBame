@@ -14,23 +14,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.bame.es.gestion.app.models.entity.Componente;
+
 import com.bame.es.gestion.app.models.entity.Marcha;
+import com.bame.es.gestion.app.models.entity.TipoMarcha;
 import com.bame.es.gestion.app.models.service.IMarchaService;
+import com.bame.es.gestion.app.models.service.ITipoMarchaService;
 import com.bame.es.gestion.app.pageRender.PageRender;
 
 
 
 @Controller
 @RequestMapping(value = "/repertorio")
+@SessionAttributes("marcha")
 public class MarchaController {
 	
 	
 	@Autowired
 	private IMarchaService marchaService;
+	
+	@Autowired
+	private ITipoMarchaService tipomarchaService;
 	
 	@GetMapping(value = "/lista")
 	public String ListarRepositorio(@RequestParam(name = "page", defaultValue = "0") int page,
@@ -60,13 +67,24 @@ public class MarchaController {
 	
 	
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public String guardar(Componente componente, 
+	public String guardar(Marcha marcha, 
 			BindingResult result, 
 			Model model,
 			RedirectAttributes flash,
 			SessionStatus status) {
 		
+		TipoMarcha tipo = tipomarchaService.findById(marcha.getTipo().getId());
+		//Asignar el tipo de marcha a la clase Marcha
+		marcha.setTipo(tipo);
+		
+		Marcha m = marchaService.save(marcha);
+		
+		status.setComplete();
+		
 		return "formMarcha";
 	}
+	
+	
+	
 
 }

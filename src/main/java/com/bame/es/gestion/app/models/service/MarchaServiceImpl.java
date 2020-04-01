@@ -28,4 +28,12 @@ public class MarchaServiceImpl implements IMarchaService {
 		return marchadao.findAll(pageable);
 	}
 
+	@Override
+	public Marcha save(Marcha marcha) {
+		
+		return marchadao.save(marcha);
+	}
+	
+	
+
 }
