@@ -13,6 +13,18 @@
 
 	<header th:replace="layout/plantilla :: header"></header>
 
+	<div class="row mb-3">
+		<div class="col-sm-4">
+			<h2 class="container">Repertorio BAME</h2>
+		</div>
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4 container">
+			<label class="container"> <a
+				class="btn btn-primary btn-xs float-right"
+				th:href="@{/repertorio/form}">Nueva Marcha</a></label>
+		</div>
+	</div>
+
 	<div class="container">
 		<div class="container">
 
@@ -23,7 +35,7 @@
 						<th>NOMBRE</th>
 						<th>COMPOSITOR</th>
 						<th>FECHA CREACION</th>
-						
+
 					</tr>
 				</thead>
 				<tbody>
@@ -33,7 +45,7 @@
 						<td th:text="${marcha.nombre}"></td>
 						<td th:text="${marcha.compositor}"></td>
 						<td th:text="${marcha.fecha_creacion}"></td>
-						
+
 
 
 					</tr>
@@ -42,9 +54,9 @@
 			</table>
 			<div class="container">
 				<div class="text-center">
-				<nav th:replace="paginator-nav :: paginator"></nav>
+					<nav th:replace="paginator-nav :: paginator"></nav>
 				</div>
-				
+
 			</div>
 
 
@@ -55,6 +67,6 @@
 
 
 	<!-- <header th:replace="layout/plantilla :: footer"></header> -->
-	
+
 </body>
 </html>

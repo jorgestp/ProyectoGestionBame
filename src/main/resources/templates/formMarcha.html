@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<title>Gestion BAME</title>
+
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
+<link rel="stylesheet" th:href="@{/css/stilosBAME.css}"></link>
+</head>
+<body>
+	<header th:replace="layout/plantilla :: header"></header>
+	<div class="container py-4">
+
+		<div class="card">
+			<div class="card-header " th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<!-- ENCTYPE es una codificacion que permite mandar archivos como datos en un request, 
+				es decir, en una peticion http -->
+				<form th:action="@{/componentes/form}" th:object="${marcha}"
+					method="post" enctype="multipart/form-data">
+
+	
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nombre</label>
+
+						<div class="col-sm-6">
+							<input type="text" th:field="*{nombre}" class="form-control"
+								th:errorclass="'form-control alert-danger'" />
+						</div>
+					</div>
+					
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Compositor</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{compositor}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('compositor')}"
+								th:errors="*{compositor}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Año composición</label>
+						<div class="col-sm-6">
+							<input type="number" th:field="*{fecha_creacion}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('fecha_creacion')}"
+								th:errors="*{fecha_creacion}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label"> Tipo</label>
+						<div class="col-sm-3">
+							<select class="form-control" th:field="*{tipo.id}"
+								th:errorclass="'form-control alert-danger'">
+								<option value="">--Seleccione--</option>
+								<option value="1">funebre</option>
+								<option value="2">clásica</option>
+
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('tipo.id')}" th:errors="*{tipo.id}"></small>
+						</div>
+					</div>
+
+
+
+					<div class="form-group row">
+						<label for="file" class="col-sm-2 col-form-label">Guión</label>
+						<div class="col-sm-6">
+							<input type="file" name="file" class="form-control"
+								placeholder="Seleccione archivo.pdf" />
+						</div>
+					</div>
+
+					<div class="form-group">
+
+						<div class="col-sm-2">
+							<input type="submit" value="Enviar" class="btn  btn-secondary" />
+						</div>
+					</div>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
