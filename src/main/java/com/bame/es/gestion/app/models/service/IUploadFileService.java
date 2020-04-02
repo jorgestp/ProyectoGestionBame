@@ -90,16 +90,27 @@ public class IUploadFileService implements com.bame.es.gestion.app.models.servic
 
 	}
 
-	@Override
-	public byte[] mostrar(String filename) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+
 	public Path getPath (String filename) {
 		
 		//Devolvemos la ruta absoluta donde se encuentra FOLDER, concatenadondo el nombre del archivo
 		return Paths.get(FOLDER).resolve(filename).toAbsolutePath();
+	}
+	
+	public byte[] mostrar(String filename) {
+		
+		byte[] b = null;
+		
+		Path pathFoto = getPath(filename);
+		System.out.println(pathFoto);
+		try {
+			b = Files.readAllBytes(pathFoto);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return b;
 	}
 
 }

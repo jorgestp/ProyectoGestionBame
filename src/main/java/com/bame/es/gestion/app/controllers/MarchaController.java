@@ -4,6 +4,9 @@ import java.io.IOException;
 //import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -191,6 +194,27 @@ public class MarchaController {
 		
 				return "redirect:/repertorio/lista";
 	}
+	
+	 @RequestMapping(value = "/pdf/{filename:.+}", method = RequestMethod.GET)
+	 protected String preivewSection(@PathVariable String filename,   
+	     HttpServletRequest request,
+	     HttpServletResponse response) {
+		 
+		 
+		 System.out.println(filename);
+		 
+	     try {
+	         byte[] documentInBytes = uploadService.mostrar(filename);       
+	         //response.setHeader("Content-Disposition", "inline; filename=\"report.pdf\"");
+	         response.setDateHeader("Expires", -1);
+	         response.setContentType("application/pdf");
+	         response.setContentLength(documentInBytes.length);
+	         response.getOutputStream().write(documentInBytes);
+	     } catch (Exception ioe) {
+	     } finally {
+	     }
+	     return null;
+	 }
 	
 	
 

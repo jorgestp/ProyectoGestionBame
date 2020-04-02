@@ -37,6 +37,7 @@
 						<th>FECHA CREACION</th>
 						<th></th>
 						<th></th>
+						<th></th>
 
 					</tr>
 				</thead>
@@ -50,8 +51,12 @@
 						<td><a class="btn btn-success btn-sm  text-white"
 							th:href="@{/repertorio/form/} + ${marcha.id}" th:text="Editar"></a></td>
 						<td><a class="btn btn-sm btn-danger text-white"
-							th:href="@{/repertorio/delete/} + ${marcha.id}" th:text="Eliminar"
+							th:href="@{/repertorio/delete/} + ${marcha.id}"
+							th:text="Eliminar"
 							onclick="return confirm('Estas seguro de eliminar?')"></a></td>
+						<td th:if="${#strings.length(marcha.guia) > 0}"><a
+							class="btn btn-info btn-sm" th:href="@{'/repertorio/pdf/' + ${marcha.guia}}"
+							th:text="'Guion'"></a></td>
 					</tr>
 				</tbody>
 
