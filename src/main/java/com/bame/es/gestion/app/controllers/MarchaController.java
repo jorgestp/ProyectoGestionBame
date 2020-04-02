@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.bame.es.gestion.app.models.entity.Marcha;
 import com.bame.es.gestion.app.models.entity.TipoMarcha;
 import com.bame.es.gestion.app.models.service.IMarchaService;
@@ -124,6 +125,24 @@ public class MarchaController {
 		model.put("boton", "Editar");
 
 		return "formMarcha";
+	}
+	
+	@RequestMapping(value = "/delete/{id}")
+	public String eliminar(@PathVariable(value = "id") Long id, 
+			RedirectAttributes flash) {
+		
+				if(id>0 && id != null) {
+					
+					Marcha marcha = marchaService.findById(id);
+					marchaService.deleteById(id);
+					flash.addFlashAttribute("success", "Marcha '" + marcha.getNombre() + "' eliminada con éxito");
+					
+				}else {
+					
+					flash.addFlashAttribute("error", "La marcha no se puede eliminar");
+				}
+		
+				return "redirect:/repertorio/lista";
 	}
 	
 	

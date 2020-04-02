@@ -17,4 +17,6 @@ public interface IMarchaService {
 	public Marcha save(Marcha marcha);
 	
 	public Marcha findById(Long id);
+	
+	public void deleteById(Long id);
 }

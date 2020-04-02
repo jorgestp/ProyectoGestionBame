@@ -39,6 +39,12 @@ public class MarchaServiceImpl implements IMarchaService {
 		
 		return marchadao.findById(id).orElse(null);
 	}
+
+	@Override
+	public void deleteById(Long id) {
+		marchadao.deleteById(id);
+		
+	}
 	
 	
 
