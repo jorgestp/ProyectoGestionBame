@@ -49,7 +49,7 @@ public class ComponenteController {
 		Pageable pageRequest = PageRequest.of(page, 5);
 		Page<Componente> componentes = componenteService.findAll(pageRequest);
 		
-		PageRender<Componente> pageRender = new PageRender<Componente>("/componentes/lista", componentes);
+		PageRender<Componente> pageRender = new PageRender<Componente>("/lista", componentes);
 				
 		model.put("componentes", componentes);
 		model.put("page", pageRender);

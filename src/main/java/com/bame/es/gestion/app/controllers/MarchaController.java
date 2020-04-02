@@ -46,7 +46,7 @@ public class MarchaController {
 		Pageable pageRequest = PageRequest.of(page, 5);
 		Page<Marcha> marchas = marchaService.findAll(pageRequest);
 		
-		PageRender<Marcha> pageRender = new PageRender<Marcha>("/repositorio/lista", marchas);
+		PageRender<Marcha> pageRender = new PageRender<Marcha>("/repertorio/lista", marchas);
 		
 		
 		model.put("marchas", marchas);
@@ -77,11 +77,24 @@ public class MarchaController {
 		//Asignar el tipo de marcha a la clase Marcha
 		marcha.setTipo(tipo);
 		
-		 marchaService.save(marcha);
+		Marcha m =  marchaService.save(marcha);
 		
 		status.setComplete();
 		
-		return "formMarcha";
+		String mensaje="";
+		if(marcha.getId() != null) {
+			
+			mensaje = "Se ha actualizado la marcha " + m.getNombre() 
+			+ " " +" correctamente";
+			
+		}else {
+			
+			mensaje = "Se ha creado la marcha " + m.getNombre() 
+			+ " " +" correctamente";
+		}
+		flash.addFlashAttribute("success",mensaje);
+		
+		return "redirect:/repertorio/lista";
 	}
 	
 	
