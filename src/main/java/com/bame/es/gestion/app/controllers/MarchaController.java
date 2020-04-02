@@ -77,7 +77,7 @@ public class MarchaController {
 		//Asignar el tipo de marcha a la clase Marcha
 		marcha.setTipo(tipo);
 		
-		Marcha m = marchaService.save(marcha);
+		 marchaService.save(marcha);
 		
 		status.setComplete();
 		

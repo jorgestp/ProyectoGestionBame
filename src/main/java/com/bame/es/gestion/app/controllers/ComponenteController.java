@@ -99,7 +99,7 @@ public class ComponenteController {
 		}
 		flash.addFlashAttribute("success",mensaje);
 		
-		return "redirect:lista";
+		return "redirect:/lista";
 	}
 	
 	
