@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.UUID;
 
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -35,8 +36,19 @@ public class IUploadFileService implements com.bame.es.gestion.app.models.servic
 
 	@Override
 	public String copy(MultipartFile file) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		/*
+		 * COn esto estamos dandole un identificador unico a cada imagen de modo que si
+		 * hay dos imagenes que se llamen igual, no se sobreescriban
+		 */
+		String uniqueFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+		
+		Path rootPath = getPath(uniqueFileName);
+		System.out.println(rootPath.toString());
+		
+		Files.copy(file.getInputStream(), rootPath);
+
+		return uniqueFileName;
 	}
 
 	@Override
