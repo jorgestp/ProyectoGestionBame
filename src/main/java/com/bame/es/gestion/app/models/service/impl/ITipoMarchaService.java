@@ -1,4 +1,4 @@
-package com.bame.es.gestion.app.models.service;
+package com.bame.es.gestion.app.models.service.impl;
 
 import com.bame.es.gestion.app.models.entity.TipoMarcha;
 

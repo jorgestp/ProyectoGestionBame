@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.bame.es.gestion.app.models.dao.ITipoMarchaDao;
 import com.bame.es.gestion.app.models.entity.TipoMarcha;
+import com.bame.es.gestion.app.models.service.impl.ITipoMarchaService;
 
 @Service
 public class ITipoMarchaServiceImpl implements ITipoMarchaService {

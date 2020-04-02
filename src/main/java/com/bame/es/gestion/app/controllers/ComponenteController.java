@@ -21,9 +21,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bame.es.gestion.app.models.entity.Componente;
-
-import com.bame.es.gestion.app.models.service.IComponenteService;
-import com.bame.es.gestion.app.models.service.IInstrumentoService;
+import com.bame.es.gestion.app.models.service.impl.IComponenteService;
+import com.bame.es.gestion.app.models.service.impl.IInstrumentoService;
 import com.bame.es.gestion.app.pageRender.PageRender;
 
 

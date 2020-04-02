@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.bame.es.gestion.app.models.dao.IInstrumentoDao;
 import com.bame.es.gestion.app.models.entity.Instrumento;
+import com.bame.es.gestion.app.models.service.impl.IInstrumentoService;
 
 @Service
 public class IInstrumentoServiceImpl implements IInstrumentoService {

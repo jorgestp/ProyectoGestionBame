@@ -6,18 +6,45 @@ import java.net.MalformedURLException;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
-public interface IUploadFileService {
+public class IUploadFileService implements com.bame.es.gestion.app.models.service.impl.IUploadFileService {
+
 	
-	public Resource load(String filename) throws MalformedURLException;
 	
-	public String copy(MultipartFile file) throws IOException;
-	
-	public boolean delete(String filename);
-	
-	public void deleteAll();
-	
-	public void init() throws IOException;
-	
-	public byte[] mostrar(String filename);
+	@Override
+	public Resource load(String filename) throws MalformedURLException {
+		
+		
+		return null;
+	}
+
+	@Override
+	public String copy(MultipartFile file) throws IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean delete(String filename) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void init() throws IOException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public byte[] mostrar(String filename) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

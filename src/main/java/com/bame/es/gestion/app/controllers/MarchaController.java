@@ -22,8 +22,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bame.es.gestion.app.models.entity.Marcha;
 import com.bame.es.gestion.app.models.entity.TipoMarcha;
-import com.bame.es.gestion.app.models.service.IMarchaService;
-import com.bame.es.gestion.app.models.service.ITipoMarchaService;
+import com.bame.es.gestion.app.models.service.impl.IMarchaService;
+import com.bame.es.gestion.app.models.service.impl.ITipoMarchaService;
 import com.bame.es.gestion.app.pageRender.PageRender;
 
 

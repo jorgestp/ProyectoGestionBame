@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.bame.es.gestion.app.models.dao.IComponenteDao;
 import com.bame.es.gestion.app.models.entity.Componente;
+import com.bame.es.gestion.app.models.service.impl.IComponenteService;
 
 @Service
 public class IComponenteServiceImpl implements IComponenteService {
