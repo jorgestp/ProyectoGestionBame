@@ -1,5 +1,6 @@
 package com.bame.es.gestion.app.controllers;
 
+import java.io.IOException;
 //import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,7 @@ import com.bame.es.gestion.app.models.entity.Marcha;
 import com.bame.es.gestion.app.models.entity.TipoMarcha;
 import com.bame.es.gestion.app.models.service.impl.IMarchaService;
 import com.bame.es.gestion.app.models.service.impl.ITipoMarchaService;
+import com.bame.es.gestion.app.models.service.impl.IUploadFileService;
 import com.bame.es.gestion.app.pageRender.PageRender;
 
 
@@ -39,6 +41,11 @@ public class MarchaController {
 	
 	@Autowired
 	private ITipoMarchaService tipomarchaService;
+	
+	@Autowired
+	private IUploadFileService uploadService;
+	
+	
 	
 	@GetMapping(value = "/lista")
 	public String ListarRepositorio(@RequestParam(name = "page", defaultValue = "0") int page,
@@ -71,22 +78,46 @@ public class MarchaController {
 	public String guardar(Marcha marcha, 
 			BindingResult result, 
 			Model model,
-			@RequestParam("file") MultipartFile foto,
+			@RequestParam("file") MultipartFile guia,
 			RedirectAttributes flash,
 			SessionStatus status) {
 		
 		///////////////////////////////////////////////////////////
 		
 		//Si la foto no esta vacia, entra
-		if(!foto.isEmpty()) {
+		if(!guia.isEmpty()) {
 			
+			/*
+			 * Preguntamos si el id de la marcha es distinto de nulo, señal entonces de
+			 * que estamos modificando. Ademas preguntamos que sea el id mayor a 0.
+			 * Tambien, que el atributo de la marcha, foto, no este vacio y no sea null.
+			 * 
+			 * Si ocurre todo eso, borramos la imagen del directorio
+			 */
+			if(marcha.getId() != null &&
+					marcha.getId()>0 &&
+					marcha.getGuia().length() > 0 &&
+					marcha.getGuia() != null) {
+				
+					uploadService.delete(marcha.getGuia());
+				
+			}
 			
+			String uniqueFileName = null;
+			try {
+				uniqueFileName = uploadService.copy(guia);
+			} catch (IOException e) {
+				// TODO Auto-generated catch blocks
+				e.printStackTrace();
+			}
+			
+			// Pasamos un mensaje flash a la vista
+			flash.addFlashAttribute("info", "Ha subido correctamente el guion");
+
+			// Pasamos el nombre original de la foto a la marcga
+			marcha.setGuia(uniqueFileName);
 			
 		}
-		
-		
-		
-		
 		//////////////////////////////////////////////////////////////////
 		
 		TipoMarcha tipo = tipomarchaService.findById(marcha.getTipo().getId());
