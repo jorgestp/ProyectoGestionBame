@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bame.es.gestion.app.models.entity.Marcha;
@@ -70,8 +71,23 @@ public class MarchaController {
 	public String guardar(Marcha marcha, 
 			BindingResult result, 
 			Model model,
+			@RequestParam("file") MultipartFile foto,
 			RedirectAttributes flash,
 			SessionStatus status) {
+		
+		///////////////////////////////////////////////////////////
+		
+		//Si la foto no esta vacia, entra
+		if(!foto.isEmpty()) {
+			
+			
+			
+		}
+		
+		
+		
+		
+		//////////////////////////////////////////////////////////////////
 		
 		TipoMarcha tipo = tipomarchaService.findById(marcha.getTipo().getId());
 		//Asignar el tipo de marcha a la clase Marcha
