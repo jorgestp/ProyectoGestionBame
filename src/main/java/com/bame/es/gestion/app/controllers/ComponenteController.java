@@ -122,13 +122,13 @@ public class ComponenteController {
 			}
 
 		} else {
-			flash.addFlashAttribute("error", "El ID del componente no puede eliminarse");
+			flash.addFlashAttribute("error", "El componente no puede editarse");
 			return "redirect:/listar";
 		}
 
 		model.put("componente", c);
 		model.put("titulo", "Editar componente");
-		model.put("boton", "Editar");
+		//model.put("boton", "Editar");
 
 		return "formComponente";
 	}

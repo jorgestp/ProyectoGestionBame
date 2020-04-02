@@ -33,6 +33,12 @@ public class MarchaServiceImpl implements IMarchaService {
 		
 		return marchadao.save(marcha);
 	}
+
+	@Override
+	public Marcha findById(Long id) {
+		
+		return marchadao.findById(id).orElse(null);
+	}
 	
 	
 

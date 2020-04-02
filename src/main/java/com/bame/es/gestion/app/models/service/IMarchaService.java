@@ -15,4 +15,6 @@ public interface IMarchaService {
 	public Page<Marcha> findAll(Pageable pageable);
 	
 	public Marcha save(Marcha marcha);
+	
+	public Marcha findById(Long id);
 }

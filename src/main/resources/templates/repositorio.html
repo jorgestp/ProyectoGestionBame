@@ -35,6 +35,7 @@
 						<th>NOMBRE</th>
 						<th>COMPOSITOR</th>
 						<th>FECHA CREACION</th>
+						<th></th>
 
 					</tr>
 				</thead>
@@ -45,9 +46,8 @@
 						<td th:text="${marcha.nombre}"></td>
 						<td th:text="${marcha.compositor}"></td>
 						<td th:text="${marcha.fecha_creacion}"></td>
-
-
-
+						<td><a class="btn btn-success text-white"
+							th:href="@{/repertorio/form/} + ${marcha.id}" th:text="Editar"></a></td>
 					</tr>
 				</tbody>
 
