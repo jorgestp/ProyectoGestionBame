@@ -2,13 +2,16 @@ package com.bame.es.gestion.app.models.service;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import org.springframework.core.io.Resource;
+import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 public class IUploadFileService implements com.bame.es.gestion.app.models.service.impl.IUploadFileService {
 
-	
+	private static final String FOLDER="uploads";
 	
 	@Override
 	public Resource load(String filename) throws MalformedURLException {
@@ -31,13 +34,15 @@ public class IUploadFileService implements com.bame.es.gestion.app.models.servic
 
 	@Override
 	public void deleteAll() {
-		// TODO Auto-generated method stub
+		
+		FileSystemUtils.deleteRecursively(Paths.get(FOLDER).toFile());
 
 	}
 
 	@Override
 	public void init() throws IOException {
-		// TODO Auto-generated method stub
+		
+		Files.createDirectory(Paths.get(FOLDER));
 
 	}
 
