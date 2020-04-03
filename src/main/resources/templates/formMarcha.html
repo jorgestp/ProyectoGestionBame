@@ -74,7 +74,9 @@
 						<label for="file" class="col-sm-2 col-form-label">Guión</label>
 						<div class="col-sm-6">
 							<input type="file" name="file" class="form-control"
-								placeholder="Seleccione archivo.pdf" />
+								placeholder="Seleccione archivo.pdf" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('guia')}" th:errors="*{guia}"></small>
 						</div>
 					</div>
 
