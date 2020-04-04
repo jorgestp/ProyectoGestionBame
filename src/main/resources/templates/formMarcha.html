@@ -35,7 +35,7 @@
 
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Compositor</label>
-						<div class="col-sm-6">
+						<div class="col-sm-4">
 							<input type="text" th:field="*{compositor}" class="form-control"
 								th:errorclass="'form-control alert-danger'" /> <small
 								class="form-text text-danger"
@@ -46,9 +46,9 @@
 
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Año composición</label>
-						<div class="col-sm-6">
+						<div class="col-sm-2">
 							<input type="number" th:field="*{fecha_creacion}"
-								class="form-control" th:errorclass="'form-control alert-danger'" />
+								class="form-control form-control-sm" th:errorclass="'form-control alert-danger'" />
 							<small class="form-text text-danger"
 								th:if="${#fields.hasErrors('fecha_creacion')}"
 								th:errors="*{fecha_creacion}"></small>
@@ -72,7 +72,7 @@
 
 					<div class="form-group row">
 						<label for="file" class="col-sm-2 col-form-label">Guión</label>
-						<div class="col-sm-6">
+						<div class="col-sm-4">
 							<input type="file" name="file" class="form-control"
 								placeholder="Seleccione archivo.pdf" /> <small
 								class="form-text text-danger"

@@ -87,7 +87,7 @@ public class MarchaController {
 		
 		//////////////VALICACION////////////////////////
 		
-		if(result.hasErrors() || guia.isEmpty()) {
+		if(result.hasErrors() || guia.isEmpty() || !guia.getContentType().equals("application/pdf")) {
 			
 			if(guia.isEmpty()) {
 				
@@ -99,7 +99,24 @@ public class MarchaController {
 				
 				result.addError(flderr);
 				
+				model.put("titulo", "Nueva Marcha al repertorio");
 				
+				return "formMarcha";
+				
+				//System.out.println("GETFIELD=> " + flderr.getField());
+				//System.out.println("GETOBJECTNAME=> " + flderr.getObjectName());
+				
+			}
+			
+			if(!guia.getContentType().equals("application/pdf")) {
+				
+				String[] codes =null;
+				Object[] arg = null;
+				FieldError flderr = new FieldError("marcha", "guia", 
+						marcha.getGuia(), false, codes, arg, 
+						"El archivo debe ser PDF");
+				
+				result.addError(flderr);
 				
 			}
 			
@@ -108,6 +125,10 @@ public class MarchaController {
 			return "formMarcha";
 			
 		}
+		
+		//System.out.println("CONTENTYPE=> " + guia.getContentType());
+		//System.out.println("GETNAME=> " + guia.getName());
+		//System.out.println("GETORIGINALFILENAME => " + guia.getOriginalFilename());
 		
 		////////////////////////////////////////////////
 		
