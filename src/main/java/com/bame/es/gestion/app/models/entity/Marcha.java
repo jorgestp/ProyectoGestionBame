@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+
 
 
 
@@ -25,7 +28,10 @@ public class Marcha implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotEmpty(message = "El nombre de la marcha es requerido")
 	private String nombre;
+	@NotEmpty(message = "El nombre del compositor es requerido")
 	private String compositor;
 	
 	
@@ -33,6 +39,7 @@ public class Marcha implements Serializable {
 	//@Temporal(TemporalType.DATE)
 	//@DateTimeFormat( pattern = "dd-MM-yyyy")
 	//@NotNull
+	@NotEmpty(message = "El año de composicion")
 	private String fecha_creacion;
 	
 	//@Column(name = "fecha_alta")

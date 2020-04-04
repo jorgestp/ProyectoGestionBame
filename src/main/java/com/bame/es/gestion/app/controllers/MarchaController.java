@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -78,7 +79,7 @@ public class MarchaController {
 	
 	
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public String guardar(Marcha marcha, 
+	public String guardar(@Valid Marcha marcha, 
 			BindingResult result, 
 			Map<String, Object> model,
 			@RequestParam("file") MultipartFile guia,
@@ -118,6 +119,17 @@ public class MarchaController {
 				
 				result.addError(flderr);
 				
+			}
+			
+			if(marcha.getTipo().getId() == null) {
+				
+				String[] codes =null;
+				Object[] arg = null;
+				FieldError flderr = new FieldError("marcha", "tipo.id", 
+						marcha.getGuia(), false, codes, arg, 
+						"Debe seleccionar un tipo de marcha");
+				
+				result.addError(flderr);
 			}
 			
 			model.put("titulo", "Nueva Marcha al repertorio");
