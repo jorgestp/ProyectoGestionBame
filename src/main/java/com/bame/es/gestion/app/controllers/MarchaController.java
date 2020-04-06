@@ -88,7 +88,9 @@ public class MarchaController {
 		
 		//////////////VALICACION////////////////////////
 		
-		if(result.hasErrors() || guia.isEmpty() || !guia.getContentType().equals("application/pdf")) {
+		if(result.hasErrors() || 
+				guia.isEmpty() || !guia.getContentType().equals("application/pdf")
+				|| marcha.getTipo().getId()==null) {
 			
 			if(guia.isEmpty()) {
 				
@@ -100,9 +102,6 @@ public class MarchaController {
 				
 				result.addError(flderr);
 				
-				model.put("titulo", "Nueva Marcha al repertorio");
-				
-				return "formMarcha";
 				
 				//System.out.println("GETFIELD=> " + flderr.getField());
 				//System.out.println("GETOBJECTNAME=> " + flderr.getObjectName());
