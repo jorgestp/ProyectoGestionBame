@@ -1,4 +1,5 @@
 INSERT INTO instrumentos (id, nombre, tipo) VALUES (1, 'clarinete', 'viento-madera');
+INSERT INTO instrumentos (id, nombre, tipo) VALUES (2, 'flauta', 'viento-madera');
 INSERT INTO componentes (nombre, apellido, direccion, dni, instrumento_id, create_at, foto) VALUES ('Jorge', 'Doe','mi calle','47536486V', 1, '2017-08-28','');
 INSERT INTO componentes (nombre, apellido, direccion, dni, instrumento_id, create_at, foto) VALUES ('Cris', 'Doe','mi calle','47536486V', 1, '2017-08-28','');
 INSERT INTO componentes (nombre, apellido, direccion, dni, instrumento_id, create_at, foto) VALUES ('Mama', 'Doe','mi calle','47536486V', 1, '2017-08-28','');

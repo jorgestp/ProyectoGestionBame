@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
@@ -44,8 +45,8 @@ public class Componente implements Serializable {
 	
 	private String dni;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	//@JoinColumn(name = "id_instr")
+	@ManyToOne(fetch = FetchType.EAGER)
+	//@JoinColumn(name = "instrumento_id")
 	/*
 	 * Agregamos la siguiente anotacion para ignorar
 	 * las propiedades del objeto producto.

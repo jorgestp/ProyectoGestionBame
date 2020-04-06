@@ -2,7 +2,6 @@ package com.bame.es.gestion.app.models.entity;
 
 
 import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -48,7 +47,7 @@ public class Marcha implements Serializable {
 	//@NotNull
 	//private String fecha_alta;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	TipoMarcha tipo;
 	
 	private String guia;
