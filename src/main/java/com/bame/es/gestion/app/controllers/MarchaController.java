@@ -1,6 +1,7 @@
 package com.bame.es.gestion.app.controllers;
 
 import java.io.IOException;
+import java.util.List;
 //import java.util.List;
 import java.util.Map;
 
@@ -27,6 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bame.es.gestion.app.models.entity.Marcha;
 import com.bame.es.gestion.app.models.entity.TipoMarcha;
+import com.bame.es.gestion.app.models.entity.Voz;
 import com.bame.es.gestion.app.models.service.impl.IMarchaService;
 import com.bame.es.gestion.app.models.service.impl.ITipoMarchaService;
 import com.bame.es.gestion.app.models.service.impl.IUploadFileService;
@@ -280,12 +282,18 @@ public class MarchaController {
 		 
 		 Marcha marcha = marchaService.findById(id);
 		 
+		 
 		 if(marcha == null) {
+			 
 			 
 			 flash.addFlashAttribute("error", "La marcha no se puede eliminar");
 			 return "redirect:/repertorio/lista";
 		 }
 		 
+		 List<Voz> lista = marcha.getVoces();
+		 int num = lista.size();
+		 System.out.println(num);
+		 model.put("num", num);
 		 model.put("titulo", "Detalle de Marcha : " + marcha.getNombre());
 		 model.put("marcha", marcha);
 		 
