@@ -46,7 +46,7 @@
 					<tr th:each="marcha: ${marchas}">
 
 						<td><a
-							th:href="@{/ver/} + ${marcha.id}">
+							th:href="@{/repertorio/ver/} + ${marcha.id}">
 							<img th:src="@{/img/logoBame.png}" alt="" width="30px" height="30px">
 							</a></td>
 						<td th:text="${marcha.nombre}"></td>

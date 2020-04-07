@@ -275,6 +275,22 @@ public class MarchaController {
 	     return null;
 	 }
 	
+	 @RequestMapping(value = "/ver/{id}", method = RequestMethod.GET)
+	 public String verMarcha(@PathVariable(name = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
+		 
+		 Marcha marcha = marchaService.findById(id);
+		 
+		 if(marcha == null) {
+			 
+			 flash.addFlashAttribute("error", "La marcha no se puede eliminar");
+			 return "redirect:/repertorio/lista";
+		 }
+		 
+		 model.put("titulo", "Detalle de Marcha : " + marcha.getNombre());
+		 model.put("marcha", marcha);
+		 
+		 return "verMarcha";
+	 }
 	
 
 }
