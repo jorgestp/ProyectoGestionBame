@@ -1,11 +1,59 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<title>Gestion BAME</title>
+
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
+<link rel="stylesheet" th:href="@{/css/stilosBAME.css}"></link>
 </head>
 <body>
+	<header th:replace="layout/plantilla :: header"></header>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
 
-ESTAMOS EN EL FORMULARIO DE LA VOZ
+				<!-- ENCTYPE es una codificacion que permite mandar archivos como datos en un request, 
+				es decir, en una peticion http -->
+				<form th:action="@{/voz/guardar}" th:object="${voz}" method="post"
+					enctype="multipart/form-data">
+
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nombre de la voz</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{nombre}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /><small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="file" class="col-sm-2 col-form-label">Partitura</label>
+						<div class="col-sm-4">
+							<input type="file" name="file" class="form-control" />
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('partitura')}"
+								th:errors="*{partitura}"></small>
+						</div>
+					</div>
+
+					<div class="form-group">
+
+						<div class="col-sm-2">
+							<input type="submit" value="Registrar Voz" class="btn  btn-secondary" />
+						</div>
+					</div>
+
+
+				</form>
+
+
+			</div>
+		</div>
+	</div>
 </body>
 </html>
