@@ -11,7 +11,7 @@ public class VozController {
 	@RequestMapping(value = "/form/{id}")
 	public String crear(@PathVariable(name = "id") Long id) {
 		
-		return null;
+		return "voz/formVoz";
 	}
 
 
