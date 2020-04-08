@@ -69,6 +69,12 @@ public class Voz {
 	public void setMarcha(Marcha marcha) {
 		this.marcha = marcha;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Voz [id=" + id + ", nombre=" + nombre + ", partitura=" + partitura + ", marcha=" + marcha + "]";
+	}
 	
 	
 	

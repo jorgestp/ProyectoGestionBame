@@ -24,11 +24,8 @@ import javax.validation.constraints.NotEmpty;
 @Table(name = "marchas")
 public class Marcha implements Serializable {
 	
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -38,19 +35,10 @@ public class Marcha implements Serializable {
 	@NotEmpty(message = "El nombre del compositor es requerido")
 	private String compositor;
 	
-	
-	//@Column(name = "fecha_creacion")
-	//@Temporal(TemporalType.DATE)
-	//@DateTimeFormat( pattern = "dd-MM-yyyy")
-	//@NotNull
+
 	@NotEmpty(message = "El año de composicion")
 	private String fecha_creacion;
 	
-	//@Column(name = "fecha_alta")
-	//@Temporal(TemporalType.DATE)
-	//@DateTimeFormat( pattern = "dd-MM-yyyy")
-	//@NotNull
-	//private String fecha_alta;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	TipoMarcha tipo;

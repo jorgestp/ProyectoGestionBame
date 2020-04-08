@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.bame.es.gestion.app.models.entity.Marcha;
+import com.bame.es.gestion.app.models.entity.Voz;
 
 
 public interface IMarchaService {
@@ -19,4 +20,6 @@ public interface IMarchaService {
 	public Marcha findById(Long id);
 	
 	public void deleteById(Long id);
+	
+	public void saveVoz(Voz voz);
 }
