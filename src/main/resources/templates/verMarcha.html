@@ -27,8 +27,9 @@
 					<li class="list-group-item" th:text="${marcha.tipo.nombre}"></li>
 				</ul>
 				
-				<div th:if="${#lists.isEmpty(marcha.voces)}"
-					class="alert alert-info my-4">No hay voces registradas para esta marcha</div>
+				<div th:text="'No hay voces registradas para la marcha ' + ${marcha.nombre}"
+				 th:if="${#lists.isEmpty(marcha.voces)}"
+					class="alert alert-info my-4"></div>
 				
 
 			</div>
