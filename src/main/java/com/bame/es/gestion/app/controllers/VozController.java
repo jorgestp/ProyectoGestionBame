@@ -1,10 +1,14 @@
 package com.bame.es.gestion.app.controllers;
 
+import java.io.IOException;
 import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.bame.es.gestion.app.models.entity.Marcha;
 import com.bame.es.gestion.app.models.entity.Voz;
 import com.bame.es.gestion.app.models.service.impl.IMarchaService;
+import com.bame.es.gestion.app.models.service.impl.IUploadFileService;
 
 @Controller
 @RequestMapping(value = "/voz")
@@ -24,7 +29,10 @@ import com.bame.es.gestion.app.models.service.impl.IMarchaService;
 public class VozController {
 	
 	@Autowired
-	IMarchaService marchaService;
+	private IMarchaService marchaService;
+	
+	@Autowired
+	private IUploadFileService uploadService;
 
 	@RequestMapping(value = "/form/{id}")
 	public String crear(@PathVariable(name = "id") Long id, Map<String, Object> model,RedirectAttributes flash) {
@@ -46,19 +54,54 @@ public class VozController {
 	}
 	
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
-	public String guardar(Voz voz,
+	public String guardar(@Valid Voz voz,
 			BindingResult result,
 			RedirectAttributes flash, 
-			@RequestParam("file") MultipartFile partituta, 
+			@RequestParam("file") MultipartFile partitura, 
 			SessionStatus session) {
 		
-			System.out.println(voz.getMarcha().getNombre());
+			if(result.hasErrors() || 
+					partitura.isEmpty() || 
+					!partitura.getContentType().equals("application/pdf")) {
+				
+				if(partitura.isEmpty()) {
+					
+					String[] codes =null;
+					Object[] arg = null;
+					FieldError flderr = new FieldError("voz", "partitura", 
+							voz.getPartitura(), false, codes, arg, 
+							"Seleccione partitura por favor");
+					
+					result.addError(flderr);
+				}
+				
+				return "voz/formVoz";
+			}
+			
+			if(!partitura.isEmpty()) {
+				
+				String uniqueFileName = null;
+				try {
+					uniqueFileName = uploadService.copy(partitura);
+				} catch (IOException e) {
+					// TODO Auto-generated catch blocks
+					e.printStackTrace();
+				}
+				
+				// Pasamos un mensaje flash a la vista
+				flash.addFlashAttribute("info", "Ha subido correctamente la partitura para " + voz.getNombre());
+
+				// Pasamos el nombre original del pdf de la partitura
+				voz.setPartitura(uniqueFileName);
+				
+			}
+			
 			
 			
 			marchaService.saveVoz(voz);
 			session.setComplete();
 		
-			flash.addFlashAttribute("success", "Exito al guardar la voz");
+			flash.addFlashAttribute("success", "la voz de " + voz.getNombre() + "se ha guardado correctamente");
 			return "redirect:/repertorio/ver/" + voz.getMarcha().getId();
 	}
 
