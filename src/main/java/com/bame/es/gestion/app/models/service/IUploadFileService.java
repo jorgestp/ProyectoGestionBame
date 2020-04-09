@@ -106,8 +106,8 @@ public class IUploadFileService implements com.bame.es.gestion.app.models.servic
 		try {
 			b = Files.readAllBytes(pathFoto);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			return null;
 		}
 		
 		return b;

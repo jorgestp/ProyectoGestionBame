@@ -3,6 +3,8 @@ package com.bame.es.gestion.app.controllers;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,6 +106,37 @@ public class VozController {
 			flash.addFlashAttribute("success", "la voz de " + voz.getNombre() + "se ha guardado correctamente");
 			return "redirect:/repertorio/ver/" + voz.getMarcha().getId();
 	}
+	
+	
+	 @RequestMapping(value = "/pdf/{filename:.+}", method = RequestMethod.GET)
+	 protected String preivewSection(@PathVariable String filename,   
+	     HttpServletRequest request,
+	     HttpServletResponse response,
+	     RedirectAttributes flash) {
+		 
+		 
+		 //System.out.println(filename);
+		 byte[] documentInBytes = uploadService.mostrar(filename);
+		 
+		 if(documentInBytes == null) {
+			 
+				flash.addFlashAttribute("error", "No se puede mostrar la imagen en este momento");
+				return "redirect:/voz/formVoz";
+		 }else {
+		 
+	     try {
+	          documentInBytes = uploadService.mostrar(filename);       
+	         //response.setHeader("Content-Disposition", "inline; filename=\"report.pdf\"");
+	         response.setDateHeader("Expires", -1);
+	         response.setContentType("application/pdf");
+	         response.setContentLength(documentInBytes.length);
+	         response.getOutputStream().write(documentInBytes);
+	     } catch (Exception ioe) {
+	     } finally {
+	     }
+		 }
+	     return null;
+	 }
 
 
 }
