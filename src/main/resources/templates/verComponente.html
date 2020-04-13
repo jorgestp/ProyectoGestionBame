@@ -45,7 +45,7 @@
 					</thead>
 					<tbody>
 						<tr th:each="prestamo: ${componente.prestamos}">
-							<td th:text="${prestamo.createAt}"></td>
+							<td th:text="${#calendars.format(prestamo.createAt, 'dd-MM-yyyy')}"></td>
 							<td th:text="${prestamo.descripcion}"></td>
 							<td th:text="${prestamo.observacion}"></td>
 						</tr>
