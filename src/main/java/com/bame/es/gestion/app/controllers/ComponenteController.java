@@ -152,7 +152,7 @@ public class ComponenteController {
 	}
 	
 	@RequestMapping(value = "componentes/ver/{id}", method = RequestMethod.GET)
-	public String verComponente(@PathVariable(value = "id") Long id,RedirectAttributes flash) {
+	public String verComponente(@PathVariable(value = "id") Long id,Map<String, Object> model, RedirectAttributes flash) {
 		
 		Componente componente = componenteService.findById(id);
 		 if( componente == null) {
@@ -162,7 +162,8 @@ public class ComponenteController {
 			 return "redirect:/lista";
 		 }
 		
-		
+		 model.put("titulo", "Detalle del Componente : " + componente.getNombre());
+		 model.put("componente", componente);
 		
 		return "verComponente";
 	}
