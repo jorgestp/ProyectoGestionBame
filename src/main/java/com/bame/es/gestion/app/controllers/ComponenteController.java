@@ -150,6 +150,15 @@ public class ComponenteController {
 		
 				return "redirect:/componentes/lista";
 	}
+	
+	@RequestMapping(value = "componentes/ver/{id}", method = RequestMethod.GET)
+	public String verComponente(@PathVariable(value = "id") Long id,RedirectAttributes flash) {
+		
+		
+		
+		
+		return "verComponente";
+	}
 		
 
 

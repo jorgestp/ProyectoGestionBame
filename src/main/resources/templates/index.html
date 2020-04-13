@@ -52,7 +52,10 @@
 				<tbody>
 					<tr th:each="comp: ${componentes}">
 
-						<td th:text="${comp.id}"></td>
+												<td><a
+							th:href="@{/componentes/ver/} + ${comp.id}">
+							<img th:src="@{/img/logoBame.png}" alt="" width="30px" height="30px">
+							</a></td>
 						<td th:text="${comp.nombre}"></td>
 						<td th:text="${comp.apellido}"></td>
 						<td th:text="${comp.instrumento.nombre}"></td>
