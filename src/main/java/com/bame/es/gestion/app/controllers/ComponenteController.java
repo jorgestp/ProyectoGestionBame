@@ -154,6 +154,13 @@ public class ComponenteController {
 	@RequestMapping(value = "componentes/ver/{id}", method = RequestMethod.GET)
 	public String verComponente(@PathVariable(value = "id") Long id,RedirectAttributes flash) {
 		
+		Componente componente = componenteService.findById(id);
+		 if( componente == null) {
+			 
+			 
+			 flash.addFlashAttribute("error", "No se puede ver el detalle del componente");
+			 return "redirect:/lista";
+		 }
 		
 		
 		
