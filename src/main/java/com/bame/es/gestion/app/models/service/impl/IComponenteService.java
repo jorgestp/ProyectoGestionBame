@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.bame.es.gestion.app.models.entity.Componente;
+import com.bame.es.gestion.app.models.entity.Prestamo;
 
 public interface IComponenteService  {
 	
@@ -19,5 +20,9 @@ public interface IComponenteService  {
 	public Componente findById(Long id);
 	
 	public void delete(Componente componente);
+	
+	public Prestamo savePrestamo(Prestamo prestamo);
+	
+	public Prestamo findPrestamoById(Long id);
 
 }
