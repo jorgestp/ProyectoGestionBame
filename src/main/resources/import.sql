@@ -14,3 +14,8 @@ INSERT INTO marchas (nombre, compositor, fecha_creacion, tipo_id, guia) VALUES (
 INSERT INTO marchas (nombre, compositor, fecha_creacion, tipo_id, guia) VALUES ('Al cielo la Paz', 'J.J. Espinosa de los Monteros','2015-01-01',1,'');
 INSERT INTO marchas (nombre, compositor, fecha_creacion, tipo_id, guia) VALUES ('Alma de la Trinidad', 'Eloy García','2015-01-01',2,'');
 INSERT INTO marchas (nombre, compositor, fecha_creacion, tipo_id, guia) VALUES ('Amarguras', 'Manuel Font de Anta','2015-01-01',1,'');
+
+
+INSERT INTO materiales (id, nombre) VALUES (1, 'Traje Completo');
+INSERT INTO materiales (id, nombre) VALUES (2, 'Camisa Verano');
+INSERT INTO materiales (id, nombre) VALUES (3, 'Instrumento');
