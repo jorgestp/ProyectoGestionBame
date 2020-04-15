@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "items_prestamos")
 public class ItemPrestamo implements Serializable {
@@ -27,6 +29,7 @@ public class ItemPrestamo implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "material_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Material material;
 	
 	public ItemPrestamo() {

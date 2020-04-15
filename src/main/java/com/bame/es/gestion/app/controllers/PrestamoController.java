@@ -6,14 +6,17 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bame.es.gestion.app.models.entity.Componente;
+import com.bame.es.gestion.app.models.entity.Material;
 import com.bame.es.gestion.app.models.entity.Prestamo;
 import com.bame.es.gestion.app.models.service.impl.IComponenteService;
 
@@ -46,6 +49,11 @@ public class PrestamoController {
 		return "prestamo/formPrestamo";
 	}
 	
+	@GetMapping(value = "/cargar-productos/{id}", produces = {"application/json"})
+	public @ResponseBody Material cargarProductos (@PathVariable Long id){
+		
+		return componenteService.findMaterialById(id);
+	}
 	
 	
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
