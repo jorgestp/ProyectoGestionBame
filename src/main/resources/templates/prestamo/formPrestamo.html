@@ -41,12 +41,11 @@
 						</div>
 					</div>
 
-					<div class="form-group row">
+					<div class="form-group row" id="id_seleccion">
 						<label class="col-sm-2 col-form-label"> Tipo</label>
 						<div class="col-sm-3">
-							<input type="text" id="selec"/>
 							<select class="form-control" id="seleccion">
-								<option value="">--seleccione--</option>
+								<option value="" selected="selected">--seleccione--</option>
 									<option th:each="material: ${materiales}"
 									th:value="${material.id}" th:text="${material.nombre}"></option>
 							</select>
@@ -71,6 +70,6 @@
 		<script th:src="@{/js/popper.min.js}"></script>
 		<script th:src="@{/js/bootstrap.min.js}"></script>
 		<script th:src="@{/js/jquery-ui.min.js}"></script>
-		<script type="text/javascript" th:href="@{/js/busquedaProducto.js}"></script>
+		<script th:src="@{/js/bame.js}"></script>
 </body>
 </html>
