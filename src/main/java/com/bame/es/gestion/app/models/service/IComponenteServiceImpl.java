@@ -12,8 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bame.es.gestion.app.models.dao.IComponenteDao;
 import com.bame.es.gestion.app.models.dao.IPrestamoDao;
 import com.bame.es.gestion.app.models.entity.Componente;
+import com.bame.es.gestion.app.models.entity.Material;
 import com.bame.es.gestion.app.models.entity.Prestamo;
 import com.bame.es.gestion.app.models.service.impl.IComponenteService;
+import com.bame.es.gestion.app.models.service.impl.IMaterialDao;
 
 @Service
 public class IComponenteServiceImpl implements IComponenteService {
@@ -23,6 +25,8 @@ public class IComponenteServiceImpl implements IComponenteService {
 	
 	@Autowired
 	private IPrestamoDao prestamodao;
+	@Autowired
+	private IMaterialDao materialdao;
 	
 	@Override
 	public List<Componente> findAll() {
@@ -80,6 +84,15 @@ public class IComponenteServiceImpl implements IComponenteService {
 	public Prestamo findPrestamoById(Long id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+	@Override
+	@Transactional(readOnly = true)
+	public Material findMaterialById(Long id) {
+		// TODO Auto-generated method stub
+		return materialdao.findById(id).orElse(null);
 	}
 
 }
