@@ -8,6 +8,7 @@
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
 <link rel="stylesheet" th:href="@{/css/stilosBAME.css}"></link>
+
 </head>
 <body>
 	<header th:replace="layout/plantilla :: header"></header>
@@ -43,7 +44,8 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label"> Tipo</label>
 						<div class="col-sm-3">
-							<select class="form-control">
+							<input type="text" id="selec"/>
+							<select class="form-control" id="seleccion">
 								<option value="">--seleccione--</option>
 									<option th:each="material: ${materiales}"
 									th:value="${material.id}" th:text="${material.nombre}"></option>
@@ -64,5 +66,11 @@
 			</div>
 		</div>
 	</div>
+	
+			<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+		<script th:src="@{/js/popper.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/jquery-ui.min.js}"></script>
+		<script type="text/javascript" th:href="@{/js/busquedaProducto.js}"></script>
 </body>
 </html>
