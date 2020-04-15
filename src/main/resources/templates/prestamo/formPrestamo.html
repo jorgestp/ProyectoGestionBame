@@ -46,11 +46,30 @@
 						<div class="col-sm-3">
 							<select class="form-control" id="seleccion">
 								<option value="" selected="selected">--seleccione--</option>
-									<option th:each="material: ${materiales}"
+								<option th:each="material: ${materiales}"
 									th:value="${material.id}" th:text="${material.nombre}"></option>
 							</select>
 						</div>
 					</div>
+					
+					<table th:replace="prestamo/plantilla-items :: itemsFactura"></table>
+
+					<table id="cargarItemProductos"
+						class="table table-sm table-striped table-hover mt-4">
+
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>NOMBRE</th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+
+						</tbody>
+
+					</table>
 
 					<div class="form-group">
 
@@ -65,11 +84,11 @@
 			</div>
 		</div>
 	</div>
-	
-			<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
-		<script th:src="@{/js/popper.min.js}"></script>
-		<script th:src="@{/js/bootstrap.min.js}"></script>
-		<script th:src="@{/js/jquery-ui.min.js}"></script>
-		<script th:src="@{/js/bame.js}"></script>
+
+	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/jquery-ui.min.js}"></script>
+	<script th:src="@{/js/bame.js}"></script>
 </body>
 </html>
