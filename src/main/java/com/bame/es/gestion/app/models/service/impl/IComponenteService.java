@@ -27,5 +27,7 @@ public interface IComponenteService  {
 	public Prestamo findPrestamoById(Long id);
 	
 	public Material findMaterialById(Long id);
+	
+	public List<Material> findMateriales();
 
 }

@@ -1,5 +1,6 @@
 package com.bame.es.gestion.app.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -42,9 +43,13 @@ public class PrestamoController {
 			
 			Prestamo prestamo = new Prestamo();
 			prestamo.setComponente(componente);
+			List<Material> materiales = componenteService.findMateriales();
+			
 			model.put("titulo", "Prestamo para " + componente.getNombre());
 			model.put("prestamo", prestamo);
+			model.put("materiales", materiales);
 			
+			System.out.println(materiales.size());
 		
 		return "prestamo/formPrestamo";
 	}

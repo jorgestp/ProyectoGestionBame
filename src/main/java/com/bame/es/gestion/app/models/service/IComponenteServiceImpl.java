@@ -95,4 +95,13 @@ public class IComponenteServiceImpl implements IComponenteService {
 		return materialdao.findById(id).orElse(null);
 	}
 
+
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Material> findMateriales() {
+		// TODO Auto-generated method stub
+		return (List<Material>) materialdao.findAll();
+	}
+
 }

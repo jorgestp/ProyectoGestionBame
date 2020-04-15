@@ -40,6 +40,17 @@
 						</div>
 					</div>
 
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label"> Tipo</label>
+						<div class="col-sm-3">
+							<select class="form-control">
+								<option value="">--seleccione--</option>
+									<option th:each="material: ${materiales}"
+									th:value="${material.id}" th:text="${material.nombre}"></option>
+							</select>
+						</div>
+					</div>
+
 					<div class="form-group">
 
 						<div class="col-sm-2">
