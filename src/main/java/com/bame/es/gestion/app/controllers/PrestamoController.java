@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -64,8 +65,20 @@ public class PrestamoController {
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
 	public String guardar(Prestamo prestamo,
 			BindingResult result,
+			Map<String, Object> model,
+			@RequestParam(name = "item_id[]", required = false) Long[] itemId,
 			RedirectAttributes flash, 
 			SessionStatus session) {
+		
+			
+			//Debe ir primero el null. Sino, en el caso de que el array sea nulo, darar error teniendo el lenght el primero
+			if(itemId == null || itemId.length == 0 ) {
+				
+				model.put("titulo", "Prestamo para " + prestamo.getComponente().getId());
+				model.put("error","Debe incluir alguna linea en el prestamo");
+				return "prestamo/formPrestamo";
+			}
+			
 			
 			componenteService.savePrestamo(prestamo);
 			session.setComplete();

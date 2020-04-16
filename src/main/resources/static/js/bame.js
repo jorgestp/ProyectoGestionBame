@@ -55,4 +55,9 @@ $(document).ready(function() {
 	});//fin on
 	
 
+	$("form").submit(function(){
+		
+		$("#plantillaItemsMaterial").remove();
+		return;
+	});
 });
