@@ -22,26 +22,37 @@ $(document).ready(function() {
 				  //alert(id);
 				  //alert(nombre);
 				  
-				  if(confirm("Añadir linea?")== 1){
-					  
-						var linea = $("#plantillaItemsMaterial").html();
-						
-						//alert("VALOR DE LA LINEA " + linea)
-						
-						linea = linea.replace(/{ID}/g, id);
-						linea = linea.replace(/{NOMBRE}/g, nombre);
-						
-						//alert("VALOR DE LA LINEA " + linea);
+				  $.confirm({
+					    title: 'Alerta',
+					    content: 'Desea incluir la nueva linea con ' + nombre + ' ?',
+					    buttons: {
+					        confirm: function () {
+					        	
+								var linea = $("#plantillaItemsMaterial").html();
+								
+								//alert("VALOR DE LA LINEA " + linea)
+								
+								linea = linea.replace(/{ID}/g, id);
+								linea = linea.replace(/{NOMBRE}/g, nombre);
+								
+								//alert("VALOR DE LA LINEA " + linea);
 
-						$("#cargarItemProductos tbody").append(linea);
-					  
-				  }
+								$("#cargarItemProductos tbody").append(linea);
+					        	
+					        	
+					            $.alert('Confirmed!');
+					        },
+					        cancel: function () {
+					            $.alert('Canceled!');
+					        }
+					    }
+					});
+				  
+				  
 
-
-				});
+				});//fin get
 			
-
-	});
+	});//fin on
 	
 
 });
