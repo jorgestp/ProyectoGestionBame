@@ -7,7 +7,7 @@ $(document).ready(function() {
 	var id ="";
 	var nombre="";
 	$("#id_seleccion").on('change', '#seleccion', function(event) {
-	     alert("EL VALOR SELECCIONADO ES "+ $("#seleccion").val());
+	     //alert("EL VALOR SELECCIONADO ES "+ $("#seleccion").val());
 	     
 			$.get( "/prestamo/cargar-productos/" + $("#seleccion").val(), function( data ) {
 				$("#seleccion").val("");
@@ -19,19 +19,24 @@ $(document).ready(function() {
 
 				  id=data["id"];
 				  nombre=data["nombre"];
-				  alert(id);
-				  alert(nombre);
+				  //alert(id);
+				  //alert(nombre);
 				  
-					var linea = $("#plantillaItemsMaterial").html();
-					
-					alert("VALOR DE LA LINEA " + linea)
-					
-					linea = linea.replace(/{ID}/g, id);
-					linea = linea.replace(/{NOMBRE}/g, nombre);
-					
-					alert("VALOR DE LA LINEA " + linea);
+				  if(confirm("Añadir linea?")== 1){
+					  
+						var linea = $("#plantillaItemsMaterial").html();
+						
+						//alert("VALOR DE LA LINEA " + linea)
+						
+						linea = linea.replace(/{ID}/g, id);
+						linea = linea.replace(/{NOMBRE}/g, nombre);
+						
+						//alert("VALOR DE LA LINEA " + linea);
 
-					$("#cargarItemProductos tbody").append(linea);
+						$("#cargarItemProductos tbody").append(linea);
+					  
+				  }
+
 
 				});
 			
