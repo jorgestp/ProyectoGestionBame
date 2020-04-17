@@ -30,7 +30,8 @@ public interface IComponenteService  {
 	
 	public List<Material> findMateriales();
 	
-	
 	public void deletePrestamoById(Long id);
+	
+	public Prestamo findPrestamoCompleto(Long id);
 
 }

@@ -116,4 +116,13 @@ public class IComponenteServiceImpl implements IComponenteService {
 		
 	}
 
+
+
+	@Override
+	@Transactional(readOnly = true)
+	public Prestamo findPrestamoCompleto(Long id) {
+		
+		return prestamodao.fetchByIdWithClienteWithItemFacturaWithProducto(id);
+	}
+
 }

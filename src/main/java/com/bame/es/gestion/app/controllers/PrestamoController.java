@@ -121,7 +121,7 @@ public class PrestamoController {
 			
 			componenteService.deletePrestamoById(id);
 			
-			flash.addAttribute("success", "El prestamo ha sido eliminado del componente "
+			flash.addFlashAttribute("success", "El prestamo ha sido eliminado del componente "
 			+ prestamo.getComponente().getNombre());
 			
 			return "redirect:/componentes/ver/" + prestamo.getComponente().getId();
@@ -131,10 +131,27 @@ public class PrestamoController {
 		flash.addFlashAttribute("error", "No se puede eliminar el prestamo de la base de datos");
 		return "redirect:/";
 		
+	}
+	
+	@RequestMapping(value = "/ver/{id}", method = RequestMethod.GET)
+	public String verPrestamo(@PathVariable(value = "id") Long id,
+			Map<String, Object> model,
+			RedirectAttributes flash) {
 		
+		Prestamo prestamo = componenteService.findPrestamoCompleto(id);
 		
+		if(prestamo != null) {
+			
+			model.put("prestamo", prestamo);
+			model.put("titulo", "Detalle de prestamo " + prestamo.getDescripcion());
+			
+			return "prestamo/detallePrestamo";
+			
+		}
 		
-
+		flash.addFlashAttribute("error", "El prestamo no se puede mostrar o no existe en la BBDD");
+		
+		return "redirect:/lista";
 	}
 
 }

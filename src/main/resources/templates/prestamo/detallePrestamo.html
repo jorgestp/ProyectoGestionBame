@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<title>Gestion BAME</title>
+
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
+<link rel="stylesheet" th:href="@{/css/stilosBAME.css}"></link>
+</head>
+<body>
+	<header th:replace="layout/plantilla :: header"></header>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<div class="container">
+					<div class="row my-3">
+						<div class="col-lg 6">
+							<ul class="list-group">
+								<li class="list-group-item bg-success"
+									th:text="${prestamo.componente.nombre}"></li>
+								<li class="list-group-item bg-success"
+									th:text="${prestamo.componente.apellido}"></li>
+								<li class="list-group-item bg-success"
+									th:text="${prestamo.componente.direccion}"></li>
+								<li class="list-group-item" th:text="${prestamo.componente.dni}"></li>
+								<li class="list-group-item" th:text="${prestamo.descripcion}"></li>
+								<li class="list-group-item" th:text="${prestamo.observacion}"></li>
+								<li class="list-group-item"
+									th:text="${#dates.format(prestamo.createAt, 'dd-MMMM-yyyy')}"></li>
+
+							</ul>
+						</div>
+						<div class="col-lg-6">
+							<table class="table table-bordered table-striped">
+								<thead class="thead-dark">
+									<tr>
+
+										<th>ID</th>
+										<th>NOMBRE</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="item: ${prestamo.itemsPrestamo}">
+										<td th:text="${item.material.id}"></td>
+										<td th:text="${item.material.nombre}"></td>
+									</tr>
+								</tbody>
+
+							</table>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
