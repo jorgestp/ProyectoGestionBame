@@ -19,6 +19,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bame.es.gestion.app.models.entity.Componente;
+import com.bame.es.gestion.app.models.entity.ItemPrestamo;
 import com.bame.es.gestion.app.models.entity.Material;
 import com.bame.es.gestion.app.models.entity.Prestamo;
 import com.bame.es.gestion.app.models.service.impl.IComponenteService;
@@ -95,7 +96,10 @@ public class PrestamoController {
 			
 			for(int i = 0; i < itemId.length; i++) {
 				
-				
+				Material material = componenteService.findMaterialById(itemId[i]);
+				ItemPrestamo item = new ItemPrestamo();
+				item.setMaterial(material);
+				prestamo.addItemsPrestamo(item);
 			}
 			
 			

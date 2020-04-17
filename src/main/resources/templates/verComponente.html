@@ -18,18 +18,19 @@
 
 				<h4 class="card-title">
 					<a class="btn btn-info btn-xs text-white"
-						th:href="@{/prestamo/form/} + ${componente.id}">Nueva Voz</a>
-				</h4> 
+						th:href="@{/prestamo/form/} + ${componente.id}">Nuevo Prestamo</a>
+				</h4>
 
 				<ul class="list-group">
 					<li class="list-group-item active" th:text="${componente.nombre}"></li>
 					<li class="list-group-item" th:text="${componente.apellido}"></li>
 					<li class="list-group-item" th:text="${componente.direccion}"></li>
-					<li class="list-group-item" th:text="${componente.instrumento.nombre}"></li>
+					<li class="list-group-item"
+						th:text="${componente.instrumento.nombre}"></li>
 				</ul>
 
 				<div
-					th:text="'El componente ' + ${componente.nombre} + ' no tiene asignado ningun prestamo'" 
+					th:text="'El componente ' + ${componente.nombre} + ' no tiene asignado ningun prestamo'"
 					th:if="${#lists.isEmpty(componente.prestamos)}"
 					class="alert alert-info my-4"></div>
 
@@ -41,13 +42,21 @@
 							<th>Fecha</th>
 							<th>Descripcion</th>
 							<th>Observacion</th>
+							<th>Ver</th>
+							<th>Eliminar</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="prestamo: ${componente.prestamos}">
-							<td th:text="${#calendars.format(prestamo.createAt, 'dd-MM-yyyy')}"></td>
+							<td
+								th:text="${#calendars.format(prestamo.createAt, 'dd-MM-yyyy')}"></td>
 							<td th:text="${prestamo.descripcion}"></td>
 							<td th:text="${prestamo.observacion}"></td>
+							<td><a class="btn btn-success rounded-circle"
+								th:href="@{/prestamo/ver/} + ${prestamo.id}">Ver</a></td>
+							<td><a class="btn btn-danger"
+								th:href="@{/prestamo/eliminar/} + ${prestamo.id}"
+								onclick="return confirm('Estas seguro de eliminar?')">Eliminar</a></td>
 						</tr>
 					</tbody>
 
