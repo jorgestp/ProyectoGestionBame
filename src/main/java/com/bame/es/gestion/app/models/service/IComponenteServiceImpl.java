@@ -83,7 +83,7 @@ public class IComponenteServiceImpl implements IComponenteService {
 	@Transactional(readOnly = true)
 	public Prestamo findPrestamoById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return prestamodao.findById(id).orElse(null);
 	}
 
 
@@ -102,6 +102,18 @@ public class IComponenteServiceImpl implements IComponenteService {
 	public List<Material> findMateriales() {
 		// TODO Auto-generated method stub
 		return (List<Material>) materialdao.findAll();
+	}
+
+
+
+
+
+
+	@Override
+	@Transactional
+	public void deletePrestamoById(Long id) {
+		prestamodao.deleteById(id);
+		
 	}
 
 }

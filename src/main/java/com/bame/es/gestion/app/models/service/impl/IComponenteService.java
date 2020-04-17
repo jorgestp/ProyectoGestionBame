@@ -29,5 +29,8 @@ public interface IComponenteService  {
 	public Material findMaterialById(Long id);
 	
 	public List<Material> findMateriales();
+	
+	
+	public void deletePrestamoById(Long id);
 
 }

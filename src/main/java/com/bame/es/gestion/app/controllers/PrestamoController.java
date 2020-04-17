@@ -109,5 +109,32 @@ public class PrestamoController {
 			flash.addFlashAttribute("success", "Se ha guardado el prestamo correctamente");
 			return "redirect:/componentes/ver/" + prestamo.getComponente().getId();
 	}
+	
+	
+	@RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)
+	public String eliminar(@PathVariable(value = "id") Long id,
+			RedirectAttributes flash) {
+		
+		Prestamo prestamo = componenteService.findPrestamoById(id);
+		
+		if(prestamo != null) {
+			
+			componenteService.deletePrestamoById(id);
+			
+			flash.addAttribute("success", "El prestamo ha sido eliminado del componente "
+			+ prestamo.getComponente().getNombre());
+			
+			return "redirect:/componentes/ver/" + prestamo.getComponente().getId();
+			
+		}
+		
+		flash.addFlashAttribute("error", "No se puede eliminar el prestamo de la base de datos");
+		return "redirect:/";
+		
+		
+		
+		
+
+	}
 
 }
