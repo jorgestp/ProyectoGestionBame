@@ -3,6 +3,7 @@ package com.bame.es.gestion.app.controllers;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,12 +64,22 @@ public class PrestamoController {
 	
 	
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
-	public String guardar(Prestamo prestamo,
+	public String guardar(@Valid Prestamo prestamo,
 			BindingResult result,
 			Map<String, Object> model,
 			@RequestParam(name = "item_id[]", required = false) Long[] itemId,
 			RedirectAttributes flash, 
 			SessionStatus session) {
+		
+			if(result.hasErrors()) {
+				
+				model.put("titulo", "Prestamo para " + prestamo.getComponente().getId());
+				
+				List<Material> materiales = componenteService.findMateriales();
+				model.put("materiales", materiales);
+				
+				return "prestamo/formPrestamo";
+			}
 		
 			
 			//Debe ir primero el null. Sino, en el caso de que el array sea nulo, darar error teniendo el lenght el primero
@@ -76,7 +87,15 @@ public class PrestamoController {
 				
 				model.put("titulo", "Prestamo para " + prestamo.getComponente().getId());
 				model.put("error","Debe incluir alguna linea en el prestamo");
+				List<Material> materiales = componenteService.findMateriales();
+				model.put("materiales", materiales);
+				
 				return "prestamo/formPrestamo";
+			}
+			
+			for(int i = 0; i < itemId.length; i++) {
+				
+				
 			}
 			
 			

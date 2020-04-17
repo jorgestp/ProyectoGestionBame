@@ -19,7 +19,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -42,9 +42,10 @@ public class Prestamo implements Serializable {
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat( pattern = "dd-MM-yyyy")
-	@NotNull
 	private Date createAt;
+	@NotEmpty(message = "La descripcion no puede estar vacia")
 	private String descripcion;
+	@NotEmpty(message = "La observacion es requerida")
 	private String observacion;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -122,6 +123,11 @@ public class Prestamo implements Serializable {
 
 	public void setItemsPrestamo(List<ItemPrestamo> itemsPrestamo) {
 		this.itemsPrestamo = itemsPrestamo;
+	}
+	
+	public void addItemsPrestamo(ItemPrestamo item) {
+		
+		itemsPrestamo.add(item);
 	}
 	
 	
