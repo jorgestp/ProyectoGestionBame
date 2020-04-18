@@ -1,7 +1,11 @@
 package com.bame.es.gestion.app.controllers;
 
+
+
+
 import java.util.List;
 import java.util.Map;
+
 
 import javax.validation.Valid;
 
@@ -18,11 +22,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import com.bame.es.gestion.app.models.entity.Componente;
 import com.bame.es.gestion.app.models.entity.ItemPrestamo;
 import com.bame.es.gestion.app.models.entity.Material;
 import com.bame.es.gestion.app.models.entity.Prestamo;
 import com.bame.es.gestion.app.models.service.impl.IComponenteService;
+import com.bame.es.gestion.app.pdf.ReportesService;
+
+
 
 @Controller
 @RequestMapping(value = "/prestamo")
@@ -31,6 +39,9 @@ public class PrestamoController {
 	
 	@Autowired
 	private IComponenteService componenteService;
+
+	@Autowired
+	private ReportesService reporteService;
 	
 	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
 	public String crearPrestamo(@PathVariable(name = "id") Long id, 
@@ -152,6 +163,15 @@ public class PrestamoController {
 		flash.addFlashAttribute("error", "El prestamo no se puede mostrar o no existe en la BBDD");
 		
 		return "redirect:/lista";
+	}
+	
+	@RequestMapping(value = "/detalle/pdf/{id}")
+	public String detallePdf(@PathVariable(value = "id") Long id)  {
+		
+		reporteService.generateReport();
+
+		
+		return null;
 	}
 
 }

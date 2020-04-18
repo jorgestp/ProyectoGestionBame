@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8dd23eda-72b0-4bd9-a23d-347dee418cbd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="0bd5df63-c559-46df-96c2-a493276d0341"/>
+	<parameter name="direccion" class="java.lang.String"/>
+	<parameter name="dni" class="java.lang.String"/>
+	<parameter name="instrumento" class="java.lang.String"/>
+	<parameter name="nombreComponente" class="java.lang.String"/>
+	<parameter name="descripcion" class="java.lang.String"/>
+	<parameter name="observacion" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="145" splitType="Stretch">
+			<image>
+				<reportElement x="415" y="0" width="140" height="134" uuid="836e36ef-db03-49fe-9766-f10c234a64d6"/>
+				<imageExpression><![CDATA["C:\\Users\\Jorge\\Desktop\\logoBame.png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="11" y="70" width="269" height="68" uuid="d94251f5-9ef2-465b-81ca-8179fd48afb2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="28" y="97" width="120" height="16" backcolor="#CCCCCC" uuid="7673db5d-3795-4c45-a0a8-7f04dcbd9324"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[CP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="113" width="120" height="17" backcolor="#CCCCCC" uuid="bac79993-1988-40d2-be70-705d898c43a4"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Población]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="28" y="80" width="120" height="17" backcolor="#CCCCCC" uuid="361ee7cf-c96f-4b27-8ef3-c1b389fa83e7"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="80" width="120" height="17" backcolor="#FFFFFF" uuid="eb3c1e15-1333-4ae8-9126-30d4e69812e9"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[ Pza Coracha s/n]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="97" width="120" height="16" backcolor="#FFFFFF" uuid="e8dc0cfc-9f08-441d-b761-63e943868244"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[ 41560]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="113" width="120" height="17" backcolor="#FFFFFF" uuid="8f0dc895-bc91-44d1-b94c-a411ad3de4c8"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[ Estepa (Sevilla)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="171" y="0" width="244" height="42" uuid="66f6bdc5-b643-42e5-b5cb-b5c464686c8f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="16"/>
+				</textElement>
+				<text><![CDATA[NUEVO PRESTAMO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="269" height="27" backcolor="#CCCCCC" uuid="0ba74155-c52d-460a-8e3c-50850b464570"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Componente]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="269" y="0" width="286" height="27" uuid="487a0cb5-db2f-4b75-8845-b2ece26c008c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombreComponente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="82" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="11" y="0" width="100" height="20" uuid="173ce890-af1b-4a01-85ed-614e7afb3286"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="0" width="80" height="20" uuid="eaa796fd-b819-4bc9-bfa7-3ca99ebee6a3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pág "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="310" y="0" width="40" height="20" uuid="d026e113-34d1-495e-9d99-c3657e9762ab"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
