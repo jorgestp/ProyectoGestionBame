@@ -6,7 +6,8 @@ package com.bame.es.gestion.app.controllers;
 import java.util.List;
 import java.util.Map;
 
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -166,7 +167,9 @@ public class PrestamoController {
 	}
 	
 	@RequestMapping(value = "/detalle/pdf/{id}")
-	public String detallePdf(@PathVariable(value = "id") Long id)  {
+	public String detallePdf(@PathVariable(value = "id") Long id,
+			HttpServletRequest request,
+		     HttpServletResponse response)  {
 		
 		if(id>0) {
 			
@@ -175,9 +178,26 @@ public class PrestamoController {
 			if( prestamo != null) {
 				
 				reporteService.generateReport(prestamo);
+				
+				try {
+			         byte[] documentInBytes = reporteService.mostrar("reporte_propio1.pdf");       
+			         //response.setHeader("Content-Disposition", "inline; filename=reporte de prestamo");
+			         response.setDateHeader("Expires", -1);
+			         response.setContentType("application/pdf");
+			         response.setContentLength(documentInBytes.length);
+			         response.getOutputStream().write(documentInBytes);
+			     } catch (Exception ioe) {
+			     } finally {
+			     }
 			}
 			
+		}else {
+			
+
 		}
+		
+
+	    
 		
 
 		

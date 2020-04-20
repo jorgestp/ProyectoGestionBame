@@ -1,6 +1,8 @@
 package com.bame.es.gestion.app.pdf;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -77,14 +79,35 @@ public class ReportesService {
 			JasperExportManager.exportReportToPdfFile(jasperPrint, guardar.toString()+ "\\reporte_propio1.pdf");
 			//JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
 			
-			System.out.println(ruta.toString()+ "\\reporte.pdf");
+			System.out.println(guardar.toString()+ "\\reporte_propio1.pdf");
 			
 			 
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			
 		}
+	}
+	
+	public byte[] mostrar(String filename) {
+		
+		byte[] b = null;
+		
+		Path pathFoto = getPath(filename);
+		
+		try {
+			b = Files.readAllBytes(pathFoto);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return b;
+	}
+	
+	public Path getPath(String filename) {
+
+		return Paths.get("src/main/resources/jasper").resolve(filename).toAbsolutePath();
+		
 	}
 
 }
