@@ -168,7 +168,17 @@ public class PrestamoController {
 	@RequestMapping(value = "/detalle/pdf/{id}")
 	public String detallePdf(@PathVariable(value = "id") Long id)  {
 		
-		reporteService.generateReport();
+		if(id>0) {
+			
+			Prestamo prestamo = componenteService.findPrestamoCompleto(id);
+			
+			if( prestamo != null) {
+				
+				reporteService.generateReport(prestamo);
+			}
+			
+		}
+		
 
 		
 		return null;

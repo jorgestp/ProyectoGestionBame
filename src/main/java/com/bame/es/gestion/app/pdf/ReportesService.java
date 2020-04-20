@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
-import com.bame.es.gestion.app.models.entity.Employee;
+import com.bame.es.gestion.app.models.entity.ItemPrestamo;
+import com.bame.es.gestion.app.models.entity.Material;
+import com.bame.es.gestion.app.models.entity.Prestamo;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -20,65 +22,22 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 @Service
 public class ReportesService {
 	
-	public void generateReport() {
+	public void generateReport(Prestamo prestamo) {
 		
 			
 		
 		try {
 
-			List<Employee> employees = new ArrayList<Employee>();
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
-			employees.add(new Employee(1L, "Jorge"));
-			employees.add(new Employee(2L, "Cristina"));
-			employees.add(new Employee(3L, "Samuel"));
-			employees.add(new Employee(4L, "Ana"));
+			List<Material> materiales = new ArrayList<Material>();
+			
+			for ( ItemPrestamo item : prestamo.getItemsPrestamo()) {
+				
+				materiales.add(item.getMaterial());
+			}
 			
 
 			//String reportPath = "F:\\Content\\Report";
-			String jas = "report1.jrxml";
+			String jas = "reporte_detalle_prestamo.jrxml";
 			
 			Path ruta = Paths.get("src/main/resources/jasper").resolve(jas).toAbsolutePath();
 			
@@ -92,12 +51,19 @@ public class ReportesService {
 					.compileReport(file.getAbsolutePath());
 
 			// Get your data source
-			JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(employees);
+			JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(materiales);
 
 			// Add parameters
 			Map<String, Object> parameters = new HashMap<>();
 
-			parameters.put("nombreComponente", "Websparrow.org");
+			parameters.put("nombreComponente", prestamo.getComponente().getNombre() + " " + 
+			prestamo.getComponente().getApellido());
+			parameters.put("direccion", prestamo.getComponente().getDireccion());
+			parameters.put("dni", prestamo.getComponente().getDni());
+			parameters.put("instrumento", prestamo.getComponente().getInstrumento().getNombre());
+			parameters.put("descripcion", prestamo.getDescripcion());
+			parameters.put("observacion", prestamo.getObservacion());
+			parameters.put("fecha", prestamo.getCreateAt());
 
 			// Fill the report
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,
@@ -108,7 +74,7 @@ public class ReportesService {
 			//JasperExportManager.exportReportToPdfFile(jasperPrint, guardar.toString());
 			System.out.println(guardar.toString());
 
-			JasperExportManager.exportReportToPdfFile(jasperPrint, guardar.toString()+ "\\reporte_propio.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, guardar.toString()+ "\\reporte_propio1.pdf");
 			//JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
 			
 			System.out.println(ruta.toString()+ "\\reporte.pdf");

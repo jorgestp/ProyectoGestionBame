@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8dd23eda-72b0-4bd9-a23d-347dee418cbd">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="223"/>
+	<property name="ireport.y" value="249"/>
 	<subDataset name="dataset1" uuid="0bd5df63-c559-46df-96c2-a493276d0341"/>
 	<parameter name="direccion" class="java.lang.String"/>
 	<parameter name="dni" class="java.lang.String"/>
@@ -11,6 +11,7 @@
 	<parameter name="descripcion" class="java.lang.String"/>
 	<parameter name="observacion" class="java.lang.String"/>
 	<parameter name="fecha" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -120,7 +121,7 @@
 			<staticText>
 				<reportElement x="171" y="0" width="244" height="42" uuid="66f6bdc5-b643-42e5-b5cb-b5c464686c8f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial Black" size="16"/>
+					<font fontName="Arial Black" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NUEVO PRESTAMO]]></text>
 			</staticText>
@@ -285,7 +286,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="28" splitType="Stretch">
+		<band height="47" splitType="Stretch">
 			<staticText>
 				<reportElement mode="Transparent" x="11" y="0" width="240" height="27" backcolor="#CCCCCC" uuid="4bc3d2e8-59fd-414d-9725-9ac20447227e"/>
 				<box leftPadding="2">
@@ -301,6 +302,11 @@
 				</textElement>
 				<text><![CDATA[Material]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="11" y="27" width="240" height="20" uuid="30d04f66-bdea-4f44-9da0-bed9844dffcb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
