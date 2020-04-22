@@ -28,8 +28,14 @@
 		</div>
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4 container">
-			<label class="container"> <a class="btn btn-primary btn-xs float-right"
-				th:href="@{/componentes/form}">Nuevo Componente</a></label>
+			<div class="container">
+				<a class="btn btn-primary btn-xs float-right"
+					th:href="@{/componentes/form}">Nuevo Componente</a>
+			</div>
+			<div class="container">
+				<a class="btn btn-danger btn-sm float-left"
+					th:href="@{/listado/pdf}" target="_blank">PDF</a>
+			</div>
 		</div>
 	</div>
 
@@ -52,10 +58,9 @@
 				<tbody>
 					<tr th:each="comp: ${componentes}">
 
-												<td><a
-							th:href="@{/componentes/ver/} + ${comp.id}">
-							<img th:src="@{/img/logoBame.png}" alt="" width="30px" height="30px">
-							</a></td>
+						<td><a th:href="@{/componentes/ver/} + ${comp.id}"> <img
+								th:src="@{/img/logoBame.png}" alt="" width="30px" height="30px">
+						</a></td>
 						<td th:text="${comp.nombre}"></td>
 						<td th:text="${comp.apellido}"></td>
 						<td th:text="${comp.instrumento.nombre}"></td>

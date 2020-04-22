@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
+
+import com.bame.es.gestion.app.models.entity.Componente;
 import com.bame.es.gestion.app.models.entity.ItemPrestamo;
 import com.bame.es.gestion.app.models.entity.Material;
 import com.bame.es.gestion.app.models.entity.Prestamo;
@@ -43,10 +45,19 @@ public class ReportesService {
 			
 			Path ruta = Paths.get("src/main/resources/jasper").resolve(jas).toAbsolutePath();
 			
-			System.out.println(ruta.toString());
+			String img = "logoBame.png";
+			
+			//###########################################
+			Path imagen = Paths.get("src/main/resources/static/img").resolve(img).toAbsolutePath();
+			
+			System.out.println(imagen.toString());
+			
+			//###########################################
+			
+			//System.out.println(ruta.toString());
 			File file = ResourceUtils.getFile(ruta.toString());
 			
-			System.out.println(file.getAbsolutePath().toString());
+			//System.out.println(file.getAbsolutePath().toString());
 
 			// Compile the Jasper report from .jrxml to .japser
 			JasperReport jasperReport = JasperCompileManager
@@ -66,6 +77,9 @@ public class ReportesService {
 			parameters.put("descripcion", prestamo.getDescripcion());
 			parameters.put("observacion", prestamo.getObservacion());
 			parameters.put("fecha", prestamo.getCreateAt());
+			//###########################################
+			parameters.put("imagen", imagen.toString());
+			//###########################################
 
 			// Fill the report
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,
@@ -74,12 +88,12 @@ public class ReportesService {
 			Path guardar = Paths.get("src/main/resources/jasper").toAbsolutePath();
 			// Export the report to a PDF file
 			//JasperExportManager.exportReportToPdfFile(jasperPrint, guardar.toString());
-			System.out.println(guardar.toString());
+			//System.out.println(guardar.toString());
 
-			JasperExportManager.exportReportToPdfFile(jasperPrint, guardar.toString()+ "\\reporte_propio1.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, guardar.toString()+ "\\reporte_detalle_prestamo.pdf");
 			//JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
 			
-			System.out.println(guardar.toString()+ "\\reporte_propio1.pdf");
+			//System.out.println(guardar.toString()+ "\\reporte_propio1.pdf");
 			
 			 
 		} catch (Exception e) {
@@ -97,7 +111,7 @@ public class ReportesService {
 		try {
 			b = Files.readAllBytes(pathFoto);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -108,6 +122,72 @@ public class ReportesService {
 
 		return Paths.get("src/main/resources/jasper").resolve(filename).toAbsolutePath();
 		
+	}
+	
+	
+	
+	
+	public void generateReportComponente(List<Componente> componentes) {
+		
+			
+		
+		try {
+
+			
+			//String reportPath = "F:\\Content\\Report";
+			String jas = "report2.jrxml";
+			
+			String img = "logoBame.png";
+			
+			Path ruta = Paths.get("src/main/resources/jasper").resolve(jas).toAbsolutePath();
+			
+			System.out.println(ruta.toString());
+			File file = ResourceUtils.getFile(ruta.toString());
+			
+			System.out.println(file.getAbsolutePath().toString());
+			
+			
+			//###########################################
+			Path imagen = Paths.get("src/main/resources/static/img").resolve(img).toAbsolutePath();
+			
+			System.out.println(imagen.toString());
+			
+			//###########################################
+			
+
+			// Compile the Jasper report from .jrxml to .japser
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(file.getAbsolutePath());
+
+			// Get your data source
+			JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(componentes);
+
+			// Add parameters
+			Map<String, Object> parameters = new HashMap<>();
+			
+			parameters.put("imagen", imagen.toString());
+			parameters.put("totalComponentes", componentes.size());
+
+
+			// Fill the report
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,
+					jrBeanCollectionDataSource);
+			
+			Path guardar = Paths.get("src/main/resources/jasper").toAbsolutePath();
+			// Export the report to a PDF file
+			//JasperExportManager.exportReportToPdfFile(jasperPrint, guardar.toString());
+			System.out.println(guardar.toString());
+
+			JasperExportManager.exportReportToPdfFile(jasperPrint, guardar.toString()+ "\\reporte_lista_componentes.pdf");
+			//JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+			
+			System.out.println(guardar.toString() + "\\reporte_lista_componentes.pdf");
+			
+			 
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
 	}
 
 }

@@ -1,8 +1,11 @@
 package com.bame.es.gestion.app.controllers;
 
 
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,6 +27,7 @@ import com.bame.es.gestion.app.models.entity.Componente;
 import com.bame.es.gestion.app.models.service.impl.IComponenteService;
 import com.bame.es.gestion.app.models.service.impl.IInstrumentoService;
 import com.bame.es.gestion.app.pageRender.PageRender;
+import com.bame.es.gestion.app.pdf.ReportesService;
 
 
 
@@ -38,6 +42,9 @@ public class ComponenteController {
 	private IComponenteService componenteService;
 	@Autowired
 	private IInstrumentoService instrumentoService;
+	
+	@Autowired
+	private ReportesService reporteService;
 	
 
 	
@@ -166,6 +173,34 @@ public class ComponenteController {
 		 model.put("componente", componente);
 		
 		return "verComponente";
+	}
+	
+	
+	@RequestMapping(value = "/listado/pdf")
+	public String detallePdf(HttpServletRequest request, HttpServletResponse response)  {
+		
+		
+			
+			List<Componente> componentes = componenteService.findAll();
+			
+			if( componentes != null && !componentes.isEmpty()) {
+				
+				reporteService.generateReportComponente(componentes);
+				
+				try {
+			         byte[] documentInBytes = reporteService.mostrar("reporte_lista_componentes.pdf");       
+			         //response.setHeader("Content-Disposition", "inline; filename=reporte de prestamo");
+			         response.setDateHeader("Expires", -1);
+			         response.setContentType("application/pdf");
+			         response.setContentLength(documentInBytes.length);
+			         response.getOutputStream().write(documentInBytes);
+			     } catch (Exception ioe) {
+			     } finally {
+			     }
+			}
+			
+
+		return null;
 	}
 		
 

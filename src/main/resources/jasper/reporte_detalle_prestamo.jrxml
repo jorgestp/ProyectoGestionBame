@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8dd23eda-72b0-4bd9-a23d-347dee418cbd">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="249"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="dataset1" uuid="0bd5df63-c559-46df-96c2-a493276d0341"/>
 	<parameter name="direccion" class="java.lang.String"/>
 	<parameter name="dni" class="java.lang.String"/>
@@ -11,16 +11,13 @@
 	<parameter name="descripcion" class="java.lang.String"/>
 	<parameter name="observacion" class="java.lang.String"/>
 	<parameter name="fecha" class="java.lang.String"/>
+	<parameter name="imagen" class="java.lang.String"/>
 	<field name="nombre" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="145" splitType="Stretch">
-			<image>
-				<reportElement x="415" y="0" width="140" height="134" uuid="836e36ef-db03-49fe-9766-f10c234a64d6"/>
-				<imageExpression><![CDATA["C:\\Users\\Jorge\\Desktop\\logoBame.png"]]></imageExpression>
-			</image>
 			<rectangle>
 				<reportElement x="11" y="70" width="269" height="68" uuid="d94251f5-9ef2-465b-81ca-8179fd48afb2"/>
 			</rectangle>
@@ -114,6 +111,10 @@
 				</textElement>
 				<text><![CDATA[ Estepa (Sevilla)]]></text>
 			</staticText>
+			<image>
+				<reportElement x="415" y="0" width="140" height="130" uuid="87656e04-96a0-473b-8df2-f9339a407485"/>
+				<imageExpression><![CDATA[$P{imagen}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

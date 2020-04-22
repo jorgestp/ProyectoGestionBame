@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5bcc74ed-d69c-43ca-bc5b-45a87cb31bd9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="142"/>
+	<parameter name="imagen" class="java.lang.String"/>
+	<parameter name="totalComponentes" class="java.lang.Number"/>
+	<field name="id" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="apellido" class="java.lang.String"/>
+	<field name="instrumento.nombre" class="java.lang.String"/>
+	<group name="INSTRUMENTO">
+		<groupExpression><![CDATA[$F{instrumento.nombre}]]></groupExpression>
+		<groupHeader>
+			<band height="36">
+				<rectangle>
+					<reportElement mode="Opaque" x="1" y="0" width="217" height="27" forecolor="#000000" backcolor="#999999" uuid="798b2780-3373-4ac7-ac4d-75bc6b5a28be"/>
+				</rectangle>
+				<textField>
+					<reportElement x="0" y="2" width="218" height="27" forecolor="#000000" uuid="80b5a9b2-5dd2-4485-9659-160f69582d6c"/>
+					<box leftPadding="5"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{instrumento.nombre}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField>
+					<reportElement x="118" y="0" width="100" height="20" uuid="4003e7ee-cc25-46a2-a26a-2bb94bf4163a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{INSTRUMENTO_COUNT}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="18" y="0" width="100" height="20" backcolor="#CCCCCC" uuid="ef7130b8-221d-45e4-834e-0649a43a32ff"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="134" splitType="Stretch">
+			<image>
+				<reportElement x="413" y="0" width="140" height="134" uuid="dfa6f9b9-62ec-406b-b7ca-a22f2e5f216b"/>
+				<imageExpression><![CDATA[$P{imagen}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="18" y="93" width="120" height="16" backcolor="#CCCCCC" uuid="d1745250-c168-4e45-80eb-d71167df3b26"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[CP]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="66" width="269" height="68" uuid="c2811bea-2c87-40f3-a049-91557fe8d98b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="138" y="109" width="120" height="17" backcolor="#FFFFFF" uuid="63f79398-fe28-44cc-85ab-01598b101d66"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[ Estepa (Sevilla)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="18" y="76" width="120" height="17" backcolor="#CCCCCC" uuid="2b73b37f-acc3-4e79-9bbd-472a03b986f9"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="93" width="120" height="16" backcolor="#FFFFFF" uuid="f22488c9-2697-4a44-b387-25596edea140"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[ 41560]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="76" width="120" height="17" backcolor="#FFFFFF" uuid="85840520-dd6b-4805-bea5-99467b969275"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[ Pza Coracha s/n]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="109" width="120" height="17" backcolor="#CCCCCC" uuid="abe61904-eda5-41f4-9db4-8f692752d596"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+					<paragraph spacingBefore="2"/>
+				</textElement>
+				<text><![CDATA[Población]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="93" width="120" height="16" uuid="59910693-69b4-436d-a09c-f8c7d99ade3e"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CP]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="138" y="0" width="284" height="35" uuid="667c6727-aed7-4622-b8a1-c37771426d53"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE COMPONENSTES]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="453" y="15" width="100" height="20" uuid="2a55b1de-1cd9-4ebf-847a-8d2bace92e83"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="218" y="11" width="155" height="20" uuid="49864291-c756-4c41-b195-14806117e3a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="11" width="180" height="20" uuid="a99911eb-cdd1-46f4-9281-7606d34e61a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[apellidos]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="218" y="0" width="155" height="23" uuid="f7f64400-eba8-4924-8d27-433e6bfd8b47"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="0" width="180" height="23" uuid="c7e56d5c-a586-47c3-89e9-0dd4a76291b2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="118" y="0" width="100" height="20" uuid="108d8813-3470-4600-a2e4-6ada14ec60bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalComponentes}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

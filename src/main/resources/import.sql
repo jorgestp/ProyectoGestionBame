@@ -4,6 +4,7 @@ INSERT INTO componentes (nombre, apellido, direccion, dni, instrumento_id, creat
 INSERT INTO componentes (nombre, apellido, direccion, dni, instrumento_id, create_at, foto) VALUES ('Cris', 'Doe','mi calle','47536486V', 1, '2017-08-28','');
 INSERT INTO componentes (nombre, apellido, direccion, dni, instrumento_id, create_at, foto) VALUES ('Mama', 'Doe','mi calle','47536486V', 1, '2017-08-28','');
 INSERT INTO componentes (nombre, apellido, direccion, dni, instrumento_id, create_at, foto) VALUES ('Papa', 'Doe','mi calle','47536486V', 1, '2017-08-28','');
+INSERT INTO componentes (nombre, apellido, direccion, dni, instrumento_id, create_at, foto) VALUES ('Pepe', 'Villalba','mi calle','47536486V', 2, '2017-08-28','');
 
 
 INSERT INTO tipo_marchas (id, nombre, descripcion) VALUES (1, 'funebre', '');

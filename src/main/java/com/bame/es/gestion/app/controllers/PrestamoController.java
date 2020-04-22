@@ -180,7 +180,7 @@ public class PrestamoController {
 				reporteService.generateReport(prestamo);
 				
 				try {
-			         byte[] documentInBytes = reporteService.mostrar("reporte_propio1.pdf");       
+			         byte[] documentInBytes = reporteService.mostrar("reporte_detalle_prestamo.pdf");       
 			         //response.setHeader("Content-Disposition", "inline; filename=reporte de prestamo");
 			         response.setDateHeader("Expires", -1);
 			         response.setContentType("application/pdf");
@@ -195,12 +195,6 @@ public class PrestamoController {
 			
 
 		}
-		
-
-	    
-		
-
-		
 		return null;
 	}
 
