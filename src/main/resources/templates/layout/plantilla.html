@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head th:fragment="head">
 <meta charset="UTF-8" />
 <title th:text="'Gestion BAME'"></title>
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<title th:text="'gestion BAME'"></title>
 
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"></link>
 <link rel="stylesheet" th:href="@{/css/stilosBAME.css}"></link>
-
-
 </head>
+
 <body>
 
 
 	<header th:fragment="header">
-		<nav class="ejemplo navbar navbar-expand-lg navbar-light  mb-5 rounded-bottom">
-			<img th:src="@{/img/logoBame.png}" alt="" width="80px" height="80px">
+		<nav
+			class="ejemplo navbar navbar-expand-lg navbar-light  mb-5 rounded-bottom">
+			<a th:href="@{/lista}"><img th:src="@{/img/logoBame.png}" alt=""
+				width="80px" height="80px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -27,27 +32,44 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/repertorio/lista}">Repertorio </a></li>
-					<li class="nav-item"><a class="nav-link"
-						th:href="@{/lista}">Componentes</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/lista}">Componentes</a></li>
 
 				</ul>
-
+				<a th:href="@{/lista}"><img th:src="@{/img/logoBame.png}" alt=""
+					width="80px" height="80px"></a>
 			</div>
 		</nav>
 
+		<div class="container">
 
-		<div class="alert alert-success alert-dismissible" th:if="${success != null}">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Registro Completado</strong>
-			<p th:text="${success}"></p>
+			<div class="alert alert-success alert-dismissible fade show"
+				th:if="${success != null}">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Registro Completado</strong>
+				<p th:text="${success}"></p>
+			</div>
+
+			<div class="alert alert-danger alert-dismissible fade show"
+				th:if="${error != null}">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Error</strong>
+				<p th:text="${error}"></p>
+			</div>
+			<div class="alert alert-warning alert-dismissible fade show"
+				th:if="${warning != null}">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Atención</strong>
+				<p th:text="${warning}"></p>
+			</div>
+			<div class="alert alert-success alert-dismissible fade show"
+				th:if="${info != null}">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Información</strong>
+				<p th:text="${info}"></p>
+			</div>
+
 		</div>
 
-		<div class="alert alert-danger" th:if="${error != null}"
-			th:text="${error}"></div>
-		<div class="alert alert-warning" th:if="${warning != null}"
-			th:text="${warning}"></div>
-		<div class="alert alert-info" th:if="${info != null}"
-			th:text="${info}"></div>
 
 
 	</header>
@@ -57,14 +79,14 @@
 
 
 
-	<footer th:fragment="footer" class="container">
+	<header th:fragment="footer" class="container">
 
 		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
 		<script th:src="@{/js/popper.min.js}"></script>
 		<script th:src="@{/js/bootstrap.min.js}"></script>
-		
 
-	</footer>
+
+	</header>
 
 
 </body>

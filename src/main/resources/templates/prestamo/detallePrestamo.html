@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:fragment="head">
-<meta charset="UTF-8" />
-<title>Gestion BAME</title>
-
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
-<link rel="stylesheet" th:href="@{/css/stilosBAME.css}"></link>
-</head>
+<head th:replace="layout/plantilla :: head"></head>
 <body>
 	<header th:replace="layout/plantilla :: header"></header>
 	<div class="container py-4">
@@ -61,13 +54,15 @@
 			<div class="card-footer">
 				<div class="container">
 					<div class="row">
-					<div class="col-12 text-right">
-						<a th:href="@{/prestamo/detalle/pdf/} + ${prestamo.id}" target="_blank" class="btn btn-danger">PDF</a>
-					</div>
+						<div class="col-12 text-right">
+							<a th:href="@{/prestamo/detalle/pdf/} + ${prestamo.id}"
+								target="_blank" class="btn btn-danger">PDF</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<header th:replace="layout/plantilla :: footer"></header>
 </body>
 </html>

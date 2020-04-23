@@ -1,23 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:fragment="head">
-<meta charset="UTF-8" />
-<title>Gestion BAME</title>
-
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
-<link rel="stylesheet" th:href="@{/css/stilosBAME.css}"></link>
-
-
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-
-</head>
+<head th:replace="layout/plantilla :: head"></head>
 <body>
 
 	<header th:replace="layout/plantilla :: header"></header>
@@ -91,6 +75,6 @@
 
 
 
-	<!-- <header th:replace="layout/plantilla :: footer"></header> -->
+	<header th:replace="layout/plantilla :: footer"></header>
 </body>
 </html>
