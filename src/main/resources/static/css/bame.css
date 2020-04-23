@@ -1,0 +1,73 @@
+@charset "ISO-8859-1";
+
+/***
+**********************************************
+**************** HEADER **********************
+**********************************************
+***/
+header{
+
+    width: 100%;
+    height: 100px;
+}
+.ejemplo{
+
+    background: linear-gradient(#ffffff , #f0bd24) !important;
+    
+}
+.navbar{
+
+    box-shadow: 5px 5px 5px #000;
+  	width: 100%;
+ }
+
+ .nav-link{
+
+    color: black !important;
+ }
+ 
+ .nav-link:hover{
+
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-bottom: 4px solid black;
+
+ }
+
+
+/***
+**********************************************
+**************** SECTION **********************
+**********************************************
+***/
+section{
+
+    margin: 100px auto;
+    width: 1200px;
+    height: 600px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    
+    
+}
+
+.cabecera-tabla{
+
+    
+    border-bottom: 2px solid black;
+}
+
+
+/***
+**********************************************
+**************** FOOTER **********************
+**********************************************
+***/
+footer{
+    bottom: 0px;
+    width: 100%;
+    height: 100px;
+    margin-top: 50px;
+    background-color: violet;
+    
+}

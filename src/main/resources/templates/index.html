@@ -6,73 +6,87 @@
 
 	<header th:replace="layout/plantilla :: header"></header>
 
-	<div class="row mb-3">
-		<div class="col-sm-4">
-			<h2 class="container">Componentes BAME</h2>
-		</div>
-		<div class="col-sm-4"></div>
-		<div class="col-sm-4 container">
-			<div class="container">
-				<a class="btn btn-primary btn-xs float-right"
-					th:href="@{/componentes/form}">Nuevo Componente</a>
-			</div>
-			<div class="container">
-				<a class="btn btn-danger btn-sm float-left"
-					th:href="@{/listado/pdf}" target="_blank">PDF</a>
-			</div>
-		</div>
-	</div>
+	<section>
 
-	<div class="container">
 		<div class="container">
-
-			<table class="table table-striped table-bordered">
-				<thead class="thead-dark">
-					<tr>
-						<th>ID</th>
-						<th>NOMBRE</th>
-						<th>APELLIDO</th>
-						<th>INSTRUMENTO</th>
-						<th>DIRECCION</th>
-						<th>ALTA</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="comp: ${componentes}">
-
-						<td><a th:href="@{/componentes/ver/} + ${comp.id}"> <img
-								th:src="@{/img/logoBame.png}" alt="" width="30px" height="30px">
-						</a></td>
-						<td th:text="${comp.nombre}"></td>
-						<td th:text="${comp.apellido}"></td>
-						<td th:text="${comp.instrumento.nombre}"></td>
-						<td th:text="${comp.direccion}"></td>
-						<td th:text="${comp.createAt}"></td>
-						<td><a class="btn btn-success btn-sm  text-white"
-							th:href="@{/componentes/form/} + ${comp.id}" th:text="Editar"></a></td>
-						<td><a class="btn btn-danger btn-sm  text-white"
-							th:href="@{/componentes/delete/} + ${comp.id}" th:text="Eliminar"
-							onclick="return confirm('Estas seguro de eliminar?')"></a></td>
-
-
-					</tr>
-				</tbody>
-
-			</table>
-			<div class="container">
-
-				<nav th:replace="paginator-nav :: paginator"></nav>
-
-
+			<div class="row">
+				<div class="col-12 text-center">
+					<p class="display-3">Componentes BAME</p>
+				</div>
 			</div>
+		</div>
+		<div class="container">
+			<div class="card bg-light">
+				<div class="card-body">
+					<div class="row mb-3">
+						<div class="col-sm-6">
+							<div class="text-left">
+								<a href="" class="btn btn-sm btn-primary">Nuevo Componente</a>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="text-right">
+								<a href="" class="btn btn-sm btn-danger">PDF</a>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<table class="table px-3 py-3 table-hover table-borderless">
+							<thead class="cabecera-tabla">
+								<tr>
+									<th>ID</th>
+									<th>NOMBRE</th>
+									<th>APELLIDO</th>
+									<th>INSTRUMENTO</th>
+									<th>DIRECCION</th>
+									<th>ALTA</th>
+									<th></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="comp: ${componentes}">
 
+									<td><a th:href="@{/componentes/ver/} + ${comp.id}"> <img
+											th:src="@{/img/logoBame.png}" alt="" width="30px"
+											height="30px">
+									</a></td>
+									<td th:text="${comp.nombre}"></td>
+									<td th:text="${comp.apellido}"></td>
+									<td th:text="${comp.instrumento.nombre}"></td>
+									<td th:text="${comp.direccion}"></td>
+									<td th:text="${comp.createAt}"></td>
+									<td><a class="btn btn-success btn-sm  text-white"
+										th:href="@{/componentes/form/} + ${comp.id}" th:text="Editar"></a></td>
+									<td><a class="btn btn-danger btn-sm  text-white"
+										th:href="@{/componentes/delete/} + ${comp.id}"
+										th:text="Eliminar"
+										onclick="return confirm('Estas seguro de eliminar?')"></a></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+		<div class="container mt-2">
+			<div class="row">
+				<div class="col-md-4">
+					
+				</div>
+				<div class="col-md-4">
+					<nav th:replace="paginator-nav :: paginator"></nav>
+				</div>
+				<div class="col-md-4">
+					
+				</div>
+			</div>
 		</div>
 
-	</div>
-
-
+	</section>
 
 
 	<header th:replace="layout/plantilla :: footer"></header>
