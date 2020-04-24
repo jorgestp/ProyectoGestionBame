@@ -87,9 +87,10 @@
 
 							<div class="row">
 								<div class="col-12">
-									<div class="container" id="divTablaPrestamos">
-										<table th:if="${not #lists.isEmpty(componente.prestamos)}"
-											class="table my-4 table-hover table-borderless"
+									<div class="container"
+										th:if="${not #lists.isEmpty(componente.prestamos)}"
+										id="divTablaPrestamos">
+										<table class="table my-4 table-hover table-borderless"
 											id="tabla_prestamo">
 											<thead class="cabecera-tabla">
 												<tr>

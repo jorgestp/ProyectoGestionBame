@@ -5,62 +5,83 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container py-4">
+	<div class="container py-4">
 		<div class="card bg-light">
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
 
-				<h4 class="card-title">
-					<a class="btn btn-info btn-xs text-white"
-						th:href="@{'/prestamo/form/' + ${componente.id}}">Nuevo
-						Prestamo</a>
-				</h4>
+				<form th:action="@{/prestamo/guardar}" th:object="${prestamo}"
+					method="post">
 
-				<ul class="list-group">
-					<li class="list-group-item active" th:text="${componente.nombre}"></li>
-					<li class="list-group-item" th:text="${componente.apellido}"></li>
-					<li class="list-group-item" th:text="${componente.direccion}"></li>
-					<li class="list-group-item"
-						th:text="${componente.instrumento.nombre}"></li>
-				</ul>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Descripcion</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{descripcion}" class="form-control"/><small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('descripcion')}"
+								th:errors="*{descripcion}"></small>
+						</div>
+					</div>
 
-				<div
-					th:text="'El componente ' + ${componente.nombre} + ' no tiene asignado ningun prestamo'"
-					th:if="${#lists.isEmpty(componente.prestamos)}"
-					class="alert alert-info my-4"></div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Observacion</label>
+						<div class="col-sm-6">
+							<textarea th:field="*{observacion}" class="form-control"></textarea>
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('observacion')}"
+								th:errors="*{observacion}"></small>
+						</div>
+					</div>
 
-				<table th:if="${not #lists.isEmpty(componente.prestamos)}"
-					class="table table-bordered table-striped my-4">
-					<thead class="thead-dark">
-						<tr>
+					<div class="form-group row" id="id_seleccion">
+						<label class="col-sm-2 col-form-label"> Tipo</label>
+						<div class="col-sm-3">
+							<select class="form-control" id="seleccion">
+								<option value="" selected="selected">--seleccione--</option>
+								<option th:each="material: ${materiales}"
+									th:value="${material.id}" th:text="${material.nombre}"></option>
+							</select>
+						</div>
+					</div>
+					
+					<table th:replace="prestamo/plantilla-items :: itemsFactura"></table>
 
-							<th>Fecha</th>
-							<th>Descripcion</th>
-							<th>Observacion</th>
-							<th>Ver</th>
-							<th>Eliminar</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="prestamo: ${componente.prestamos}">
-							<td
-								th:text="${#calendars.format(prestamo.createAt, 'dd-MM-yyyy')}"></td>
-							<td th:text="${prestamo.descripcion}"></td>
-							<td th:text="${prestamo.observacion}"></td>
-							<td><a class="btn btn-success rounded-circle"
-								th:href="@{/prestamo/ver/} + ${prestamo.id}">Ver</a></td>
-							<td><a class="btn btn-danger"
-								th:href="@{/prestamo/eliminar/} + ${prestamo.id}"
-								onclick="return confirm('Estas seguro de eliminar?')">Eliminar</a></td>
-						</tr>
-					</tbody>
+					<table id="cargarItemProductos"
+						class="table table-sm table-striped table-hover mt-4">
 
-				</table>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>NOMBRE</th>
+							</tr>
+						</thead>
 
+						<tbody>
+
+
+						</tbody>
+
+					</table>
+
+					<div class="form-group">
+
+						<div class="col-sm-2">
+							<input type="submit" value="Enviar" class="btn btn-secondary" />
+						</div>
+					</div>
+
+
+				</form>
 
 			</div>
 		</div>
 	</div>
 
+	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/jquery-ui.min.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+	<script th:src="@{/js/bame.js}"></script>
 </body>
 </html>
