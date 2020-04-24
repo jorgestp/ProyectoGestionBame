@@ -55,15 +55,6 @@
 								</div>
 								<div class="row mt-2">
 									<div class="col-md-4">
-										<label class="col-form-label">DNI</label>
-									</div>
-									<div class="col-md-4">
-										<input class="form-control" th:value="${componente.dni}"
-											type="text" readonly>
-									</div>
-								</div>
-								<div class="row mt-2">
-									<div class="col-md-4">
 										<label class="col-form-label">Fecha Alta</label>
 									</div>
 									<div class="col-md-4">
@@ -85,44 +76,45 @@
 
 
 							</div>
-							<div class="col-md-4 bg-primary" style="max-height: 300px;">col4</div>
+							<div class="col-md-4" style="max-height: 300px;"></div>
 						</div>
-						<hr class="my-4">
+						<hr class="mt-4">
 						<div class="container">
 							<div
 								th:text="'El componente ' + ${componente.nombre} + ' no tiene asignado ningun prestamo'"
 								th:if="${#lists.isEmpty(componente.prestamos)}"
-								class="alert alert-info my-4"></div>
+								class="alert alert-info mt-4"></div>
 
 							<div class="row">
 								<div class="col-12">
-									<table th:if="${not #lists.isEmpty(componente.prestamos)}"
-										class="table table-bordered table-striped my-4">
-										<thead class="thead-dark">
-											<tr>
+									<div class="container" id="divTablaPrestamos">
+										<table th:if="${not #lists.isEmpty(componente.prestamos)}"
+											class="table my-4 table-hover table-borderless"
+											id="tabla_prestamo">
+											<thead class="cabecera-tabla">
+												<tr>
 
-												<th>Fecha</th>
-												<th>Descripcion</th>
-												<th>Observacion</th>
-												<th>Ver</th>
-												<th>Eliminar</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="prestamo: ${componente.prestamos}">
-												<td
-													th:text="${#calendars.format(prestamo.createAt, 'dd-MM-yyyy')}"></td>
-												<td th:text="${prestamo.descripcion}"></td>
-												<td th:text="${prestamo.observacion}"></td>
-												<td><a class="btn btn-success rounded-circle"
-													th:href="@{/prestamo/ver/} + ${prestamo.id}">Ver</a></td>
-												<td><a class="btn btn-danger"
-													th:href="@{/prestamo/eliminar/} + ${prestamo.id}"
-													onclick="return confirm('Estas seguro de eliminar?')">Eliminar</a></td>
-											</tr>
-										</tbody>
+													<th>Fecha</th>
+													<th>Descripcion</th>
+													<th>Ver</th>
+													<th>Eliminar</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="prestamo: ${componente.prestamos}">
+													<td
+														th:text="${#calendars.format(prestamo.createAt, 'dd-MM-yyyy')}"></td>
+													<td th:text="${prestamo.descripcion}"></td>
+													<td><a class="btn btn-success rounded-circle"
+														th:href="@{/prestamo/ver/} + ${prestamo.id}">Ver</a></td>
+													<td><a class="btn btn-danger"
+														th:href="@{/prestamo/eliminar/} + ${prestamo.id}"
+														onclick="return confirm('Estas seguro de eliminar?')">Eliminar</a></td>
+												</tr>
+											</tbody>
 
-									</table>
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>

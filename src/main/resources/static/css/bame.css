@@ -61,6 +61,12 @@ section {
 	
 }
 
+#divTablaPrestamos{
+     overflow-y:scroll;
+     height:150px;
+     width:100%;
+}
+
 
 /***
 **********************************************
