@@ -8,7 +8,7 @@
 
 	<section>
 
-		<div class="container">
+		<div class="container cabecera-titulo mb-2">
 			<div class="row">
 				<div class="col-12 text-center">
 					<p class="display-3">Componentes BAME</p>
@@ -21,12 +21,12 @@
 					<div class="row mb-3">
 						<div class="col-sm-6">
 							<div class="text-left">
-								<a href="" class="btn btn-sm btn-primary">Nuevo Componente</a>
+								<a th:href="@{/componentes/form}" class="btn btn-sm boton-registro">Nuevo Componente</a>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="text-right">
-								<a href="" class="btn btn-sm btn-danger">PDF</a>
+								<a th:href="@{/listado/pdf}" target="_blanck"  class="btn btn-sm btn-danger">PDF</a>
 							</div>
 						</div>
 					</div>

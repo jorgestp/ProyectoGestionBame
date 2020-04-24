@@ -5,56 +5,60 @@
 **************** HEADER **********************
 **********************************************
 ***/
-header{
-
-    width: 100%;
-    height: 100px;
+header {
+	width: 100%;
+	height: 100px;
 }
-.ejemplo{
 
-    background: linear-gradient(#ffffff , #f0bd24) !important;
-    
+.ejemplo {
+	background: linear-gradient(#ffffff, #f0bd24) !important;
 }
-.navbar{
 
-    box-shadow: 5px 5px 5px #000;
-  	width: 100%;
- }
+.navbar {
+	box-shadow: 5px 5px 5px #000;
+	width: 100%;
+}
 
- .nav-link{
+.nav-link {
+	color: black !important;
+}
 
-    color: black !important;
- }
- 
- .nav-link:hover{
-
-    font-weight: bold;
-    font-size: 1.2rem;
-    border-bottom: 4px solid black;
-
- }
-
+.nav-link:hover {
+	font-weight: bold;
+	font-size: 1.2rem;
+	border-bottom: 4px solid black;
+}
 
 /***
 **********************************************
 **************** SECTION **********************
 **********************************************
 ***/
-section{
-
-    margin: 100px auto;
-    width: 1200px;
-    height: 600px;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    
-    
+section {
+	margin: 100px auto;
+	width: 1200px;
+	height: 600px;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
 }
 
-.cabecera-tabla{
+.cabecera-titulo {
+	
+	-webkit-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.13);
+	-moz-box-shadow:  0 4px 2px -2px rgba(0, 0, 0, 0.13);
+	box-shadow: 0 6px 2px -2px rgba(0, 0, 0, 0.13);
+}
 
-    
-    border-bottom: 2px solid black;
+.cabecera-tabla {
+	border-bottom: 2px solid black;
+}
+
+.boton-registro{
+	
+	background: linear-gradient(#ffffff, #f0bd24) !important;
+	color:black;
+	font-weight: bold;
+	
 }
 
 
@@ -63,11 +67,10 @@ section{
 **************** FOOTER **********************
 **********************************************
 ***/
-footer{
-    bottom: 0px;
-    width: 100%;
-    height: 100px;
-    margin-top: 50px;
-    background-color: violet;
-    
+footer {
+	bottom: 0px;
+	width: 100%;
+	height: 100px;
+	margin-top: 50px;
+	background-color: violet;
 }

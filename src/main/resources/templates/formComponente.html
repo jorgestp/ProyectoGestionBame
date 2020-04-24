@@ -4,107 +4,128 @@
 <head th:replace="layout/plantilla :: head"></head>
 <body>
 	<header th:replace="layout/plantilla :: header"></header>
-	<div class="container py-4">
-
-		<div class="card">
-			<div class="card-header " th:text="${titulo}"></div>
-			<div class="card-body">
-
-				<!-- ENCTYPE es una codificacion que permite mandar archivos como datos en un request, 
-				es decir, en una peticion http -->
-				<form th:action="@{/componentes/form}" th:object="${componente}"
-					method="post" enctype="multipart/form-data">
-
-					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Nombre</label>
-
-						<div class="col-sm-6">
-							<input type="text" th:field="*{nombre}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
-						</div>
-					</div>
-
-					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Apellido</label>
-						<div class="col-sm-6">
-							<input type="text" th:field="*{apellido}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
-						</div>
-					</div>
-
-					<div class="form-group row">
-						<label class="col-sm-2 col-form-label"> Direccion</label>
-						<div class="col-sm-6">
-							<input type="text" class="form-control" th:field="*{direccion}"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('direccion')}"
-								th:errors="*{direccion}"></small>
-						</div>
-					</div>
-					<!--  <div class="form-group row">
-						<label class="col-sm-2 col-form-label"> Sexo</label>
-						<div class="col-sm-3">
-							<select class="form-control" th:field="*{sexo}"
-								th:errorclass="'form-control alert-danger'">
-								<option value="">--Seleccione--</option>
-								<option value="masculino">Hombre</option>
-								<option value="femenino">Mujer</option>
-							</select> <small class="form-text text-danger"
-								th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}"></small>
-						</div>
-					</div>-->
-
-					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">DNI</label>
-						<div class="col-sm-2">
-							<input type="text" class="form-control" th:field="*{dni}"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></small>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-2 col-form-label"> Instrumento</label>
-						<div class="col-sm-3">
-							<select class="form-control" th:field="*{instrumento.id}"
-								th:errorclass="'form-control alert-danger'">
-								<option value="">--Seleccione--</option>
-								<option value="1">Clarinete</option>
-								<option value="2">Flauta</option>
-
-							</select> <small class="form-text text-danger"
-								th:if="${#fields.hasErrors('instrumento.id')}"
-								th:errors="*{instrumento.id}"></small>
-						</div>
-					</div>
 
 
+	<section>
 
-					<div class="form-group row">
-						<label for="file" class="col-sm-2 col-form-label">Foto</label>
-						<div class="col-sm-6">
-							<input type="file" name="file" class="form-control" />
-						</div>
-					</div>
-
-					<div class="form-group">
-
-						<div class="col-sm-2">
-							<input type="submit" value="Enviar" class="btn  btn-secondary" />
-						</div>
-					</div>
-
-
-
-				</form>
+		<div class="container cabecera-titulo mb-2">
+			<div class="row">
+				<div class="col-12 text-center">
+					<p class="display-3">Componentes BAME</p>
+				</div>
 			</div>
 		</div>
-	</div>
+		<div class="container mt-3">
+			<div class="card bg-light">
+				<div class="card-body">
+					<div class="row mb-3">
+						<div class="col-sm-6">
+							<div class="text-left">
+								<a th:href="@{/}" class="btn btn-light">&laquo; volver</a>
+							</div>
+						</div>
+					</div>
+					<form th:action="@{/componentes/form}" th:object="${componente}"
+						method="post" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-form-label">Nombre *</label> <input
+										type="text" th:field="*{nombre}" class="form-control"
+										th:errorclass="'form-control alert-danger'" /> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class=" col-form-label">Apellidos *</label> <input
+										type="text" th:field="*{apellido}" class="form-control"
+										th:errorclass="'form-control alert-danger'" /> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('apellido')}"
+										th:errors="*{apellido}"></small>
+
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class=" col-form-label"> Direccion *</label> <input
+										type="text" class="form-control" th:field="*{direccion}"
+										th:errorclass="'form-control alert-danger'" /> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('direccion')}"
+										th:errors="*{direccion}"></small>
+
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-sm-2 col-form-label">DNI *</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control" th:field="*{dni}"
+											th:errorclass="'form-control alert-danger'" /> <small
+											class="form-text text-danger"
+											th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></small>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group ">
+									<label class="col-form-label"> Instrumento *</label> <select
+										class="form-control" th:field="*{instrumento.id}"
+										th:errorclass="'form-control alert-danger'">
+										<option value="">--Seleccione--</option>
+										<option value="1">Clarinete</option>
+										<option value="2">Flauta</option>
+									</select> <small class="form-text text-danger"
+										th:if="${#fields.hasErrors('instrumento.id')}"
+										th:errors="*{instrumento.id}"></small>
+
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group ">
+									<label for="file" class="col-sm-2 col-form-label">Foto</label>
+
+									<input type="file" name="file" class="form-control" />
+
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 mt-2">
+								<label class="text-muted">* Campo obligatorio</label>
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="col-12 text-center mt-5">
+								<input type="submit" value="Enviar"
+									class="btn btn-sm  btn-secondary" />
+							</div>
+
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+	</section>
+
+
+
 	<header th:replace="layout/plantilla :: footer"></header>
 </body>
 </html>
+
+
