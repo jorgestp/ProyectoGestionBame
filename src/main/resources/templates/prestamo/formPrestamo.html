@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:fragment="head">
-<meta charset="UTF-8" />
-<title>Gestion BAME</title>
-
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-
-<link rel="stylesheet" th:href="@{/css/stilosBAME.css}"></link>
-
+<head th:replace="layout/plantilla :: head">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
 	<header th:replace="layout/plantilla :: header"></header>
@@ -38,10 +30,72 @@
 						method="post">
 						<div class="row mb-3">
 
-							<div class="col-sm-6">aqui va la descripcion</div>
-							<div class="col-sm-6">aqui la tabla</div>
+							<div class="col-sm-6">
+
+								<div class="form-group">
+									<label class="col-form-label">Descripcion</label> <input
+										type="text" th:field="*{descripcion}" class="form-control" /><small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('descripcion')}"
+										th:errors="*{descripcion}"></small>
+
+								</div>
+
+								<div class="form-group">
+									<label class=" col-form-label">Observacion</label>
+									<textarea th:field="*{observacion}" rows="5"
+										class="form-control"></textarea>
+									<small class="form-text text-danger"
+										th:if="${#fields.hasErrors('observacion')}"
+										th:errors="*{observacion}"></small>
+								</div>
+
+								<div class="form-group" id="id_seleccion">
+									<label class="col-form-label"> Tipo</label>
+									<div class="col-sm-8">
+										<select class="form-control" id="seleccion">
+											<option value="" selected="selected">--seleccione--</option>
+											<option th:each="material: ${materiales}"
+												th:value="${material.id}" th:text="${material.nombre}"></option>
+										</select>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-sm-6">
+
+								<table th:replace="prestamo/plantilla-items :: itemsFactura"></table>
+								
+								<table id="cargarItemProductos"
+									class="table table-sm table-hover table-borderless">
+
+									<thead class="cabecera-tabla">
+										<tr>
+											<th scope="col">ID</th>
+											<th scope="col">NOMBRE</th>
+											<th scope="col">Eliminar</th>
+										</tr>
+									</thead>
+									
+									<tbody>
 
 
+									</tbody>
+
+								</table>
+
+							</div>
+
+
+						</div>
+						<hr>
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-12 text-center">
+									<input type="submit" value="Enviar" class="btn btn-secondary" />
+								</div>
+							</div>
 						</div>
 					</form>
 
@@ -52,9 +106,7 @@
 
 	</section>
 
-
-
-
+	<header th:replace="layout/plantilla :: footer"></header>
 	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
 	<script th:src="@{/js/popper.min.js}"></script>
 	<script th:src="@{/js/bootstrap.min.js}"></script>
@@ -62,5 +114,6 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 	<script th:src="@{/js/bame.js}"></script>
+
 </body>
 </html>

@@ -61,3 +61,13 @@ $(document).ready(function() {
 		return;
 	});
 });
+
+var itemsHelper = {
+		
+		eliminarLineaFactura : function(id){
+			
+			$("#row_" + id).remove();
+		}
+		
+
+}

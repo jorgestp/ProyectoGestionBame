@@ -7,9 +7,12 @@
 
 		<tbody id="plantillaItemsMaterial">
 			<tr id="row_{ID}">
-				<td class="d-none"><input type="hidden" value="{ID}" name="item_id[]" /></td>
+				<td class="d-none"><input type="hidden" value="{ID}"
+					name="item_id[]" /></td>
 				<td>{ID}</td>
 				<td>{NOMBRE}</td>
+				<td><a  class="btn btn-danger btn-sm text-white"
+					onclick="itemsHelper.eliminarLineaFactura({ID});">X</a></td>
 			</tr>
 
 		</tbody>
