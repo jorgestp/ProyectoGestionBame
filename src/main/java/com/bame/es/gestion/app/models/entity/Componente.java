@@ -19,7 +19,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -36,31 +36,25 @@ public class Componente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotEmpty(message = "El nombre de componente es requerido")
 	private String nombre;
 	
+	@NotEmpty(message = "Los apellidos de componente son requeridos")
 	private String apellido;
 	
+	
+	@NotEmpty(message = "La direccion de componente es requerida")
 	private String direccion;
 	
-	
+	@NotEmpty(message = "El dni de componente es requerido")
 	private String dni;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	//@JoinColumn(name = "instrumento_id")
-	/*
-	 * Agregamos la siguiente anotacion para ignorar
-	 * las propiedades del objeto producto.
-	 * Va acompañado de los atributos que queremos ignorar
-	 * 
-	 * Puede ir tanto aqui como en la clase Producto directamente.
-	 */
-	//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Instrumento instrumento;
 	
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat( pattern = "dd-MM-yyyy")
-	@NotNull
 	private Date createAt;
 	
 	@OneToMany(mappedBy = "componente",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
