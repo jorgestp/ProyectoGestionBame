@@ -51,6 +51,7 @@ public class VozController {
 		nuevaVoz.setMarcha(marcha);
 		model.put("titulo", "Nueva voz para marcha " + marcha.getNombre());
 		model.put("voz", nuevaVoz);
+		model.put("marcha", marcha);
 		
 		return "voz/formVoz";
 	}
@@ -60,7 +61,8 @@ public class VozController {
 			BindingResult result,
 			RedirectAttributes flash, 
 			@RequestParam("file") MultipartFile partitura, 
-			SessionStatus session) {
+			SessionStatus session,
+			Map<String, Object> model) {
 		
 			if(result.hasErrors() || 
 					partitura.isEmpty() || 
@@ -76,7 +78,7 @@ public class VozController {
 					
 					result.addError(flderr);
 				}
-				
+				model.put("marcha", voz.getMarcha());
 				return "voz/formVoz";
 			}
 			
@@ -86,7 +88,7 @@ public class VozController {
 				try {
 					uniqueFileName = uploadService.copy(partitura);
 				} catch (IOException e) {
-					// TODO Auto-generated catch blocks
+					
 					e.printStackTrace();
 				}
 				

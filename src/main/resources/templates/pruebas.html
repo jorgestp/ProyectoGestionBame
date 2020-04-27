@@ -10,42 +10,78 @@
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
 
-				<h4 class="card-title">
-					<a class="btn btn-info btn-xs text-white"
-						th:href="@{/voz/form/} + ${marcha.id}">Nueva Voz</a>
-				</h4>
+				<!-- ENCTYPE es una codificacion que permite mandar archivos como datos en un request, 
+				es decir, en una peticion http -->
+				<form th:action="@{/voz/guardar}" th:object="${voz}" method="post"
+					enctype="multipart/form-data">
 
-				<ul class="list-group">
-					<li class="list-group-item active" th:text="${marcha.nombre}"></li>
-					<li class="list-group-item" th:text="${marcha.compositor}"></li>
-					<li class="list-group-item" th:text="${marcha.fecha_creacion}"></li>
-					<li class="list-group-item" th:text="${marcha.tipo.nombre}"></li>
-				</ul>
 
-				<div
-					th:text="'No hay voces registradas para la marcha ' + ${marcha.nombre}"
-					th:if="${#lists.isEmpty(marcha.voces)}"
-					class="alert alert-info my-4"></div>
+					<!--  <div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nombre de la voz</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{nombre}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /><small
+								class="form-text text-danger" 
+								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+						</div>
+					</div>-->
 
-				<table th:if="${not #lists.isEmpty(marcha.voces)}"
-					class="table table-bordered table-striped my-4">
-					<thead class="thead-dark">
-						<tr>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nombre de la voz</label>
+						<div class="col-sm-4">
+							<select class="form-control" th:field="*{nombre}"
+								th:errorclass="'form-control alert-danger'">
+								<option value="">--Seleccione--</option>
+								<option value="Flautín">Flautín</option>
+								<option value="Flauta">Flauta</option>
+								<option value="Oboe">Oboe</option>
+								<option value="Requinto">Requinto</option>
+								<option value="Clarinete Ppal">Clarinete Ppal</option>
+								<option value="Clarinete 1º">Clarinete 1º</option>
+								<option value="Clarinete 2º">Clarinete 2º</option>
+								<option value="Clarinete 3º">Clarinete 3º</option>
+								<option value="Saxo Alto 1º">Saxo Alto 1º</option>
+								<option value="Saxo Alto 2º">Saxo Alto 2º</option>
+								<option value="Saxo Tenor">Saxo Tenor</option>
+								<option value="Saxo Barítono">Saxo Barítono</option>
+								<option value="Trompa 1ª">Trompa 1ª</option>
+								<option value="Trompa 2ª">Trompa 2ª</option>
+								<option value="Trompa 3ª">Trompa 3ª</option>
+								<option value="Corneta Si b">Corneta Si b</option>
+								<option value="Fliscorno">Fliscorno</option>
+								<option value="Trombón 1º">Trombón 1º</option>
+								<option value="Trombón 2º">Trombón 2º</option>
+								<option value="Trombón 3º">Trombón 3º</option>
+								<option value="Bombardino 1º">Bombardino 1º</option>
+								<option value="Bombardino 2º">Bombardino 2º</option>
+								<option value="Tuba">Tuba</option>
+								<option value="Bombo y Platos">Bombo y Platos</option>
+								<option value="Caja">Caja</option>
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+						</div>
+					</div>
 
-							<th>Nombre</th>
-							<th>Partitura</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="voz: ${marcha.voces}">
-							<td th:text="${voz.nombre}"></td>
-							<td><a class="btn btn-info btn-sm"
-								th:href="@{'/voz/pdf/' + ${voz.partitura}}"
-								th:text="'Ver Partitura'"></a></td>
-						</tr>
-					</tbody>
+					<div class="form-group row">
+						<label for="file" class="col-sm-2 col-form-label">Partitura</label>
+						<div class="col-sm-4">
+							<input type="file" name="file" class="form-control" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('partitura')}"
+								th:errors="*{partitura}"></small>
+						</div>
+					</div>
 
-				</table>
+					<div class="form-group">
+
+						<div class="col-sm-2">
+							<input type="submit" value="Registrar Voz"
+								class="btn  btn-secondary" />
+						</div>
+					</div>
+
+
+				</form>
 
 
 			</div>

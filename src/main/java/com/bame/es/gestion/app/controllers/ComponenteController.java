@@ -155,7 +155,7 @@ public class ComponenteController {
 					flash.addFlashAttribute("error", "El cliente no se puede eliminar");
 				}
 		
-				return "redirect:/componentes/lista";
+				return "redirect:/";
 	}
 	
 	@RequestMapping(value = "componentes/ver/{id}", method = RequestMethod.GET)
