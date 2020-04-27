@@ -73,8 +73,25 @@ section {
 }
 
 
+table.scroll tbody,
+table.scroll thead { display: block; }
 
+table.scroll {
+    width: 100%;
+    
+}
 
+table.scroll tbody {
+    height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+}
+
+.ancho{
+	
+	width: 20%;
+}
 /***
 **********************************************
 **************** FOOTER **********************

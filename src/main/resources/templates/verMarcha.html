@@ -4,52 +4,136 @@
 <head th:replace="layout/plantilla :: head"></head>
 <body>
 	<header th:replace="layout/plantilla :: header"></header>
-	<div class="container py-4">
-		<div class="card bg-light">
-			<div class="card-header" th:text="${titulo}"></div>
-			<div class="card-body">
 
-				<h4 class="card-title">
-					<a class="btn btn-info btn-xs text-white"
-						th:href="@{/voz/form/} + ${marcha.id}">Nueva Voz</a>
-				</h4>
+	<section>
 
-				<ul class="list-group">
-					<li class="list-group-item active" th:text="${marcha.nombre}"></li>
-					<li class="list-group-item" th:text="${marcha.compositor}"></li>
-					<li class="list-group-item" th:text="${marcha.fecha_creacion}"></li>
-					<li class="list-group-item" th:text="${marcha.tipo.nombre}"></li>
-				</ul>
-
-				<div
-					th:text="'No hay voces registradas para la marcha ' + ${marcha.nombre}"
-					th:if="${#lists.isEmpty(marcha.voces)}"
-					class="alert alert-info my-4"></div>
-
-				<table th:if="${not #lists.isEmpty(marcha.voces)}"
-					class="table table-bordered table-striped my-4">
-					<thead class="thead-dark">
-						<tr>
-
-							<th>Nombre</th>
-							<th>Partitura</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="voz: ${marcha.voces}">
-							<td th:text="${voz.nombre}"></td>
-							<td><a class="btn btn-info btn-sm"
-								th:href="@{'/voz/pdf/' + ${voz.partitura}}"
-								th:text="'Ver Partitura'"></a></td>
-						</tr>
-					</tbody>
-
-				</table>
-
-
+		<div class="container cabecera-titulo mb-2">
+			<div class="row">
+				<div class="col-12 text-center">
+					<p class="display-3">Repertorio BAME</p>
+				</div>
 			</div>
 		</div>
-	</div>
+
+		<div class="container">
+			<div class="card bg-light">
+				<div class="card-header">
+					<div class="row">
+						<div class="col-md-6 text-left">
+							<a th:href="@{/repertorio/lista}" class="btn btn-sm btn-light">&laquo;
+								volver</a>
+						</div>
+						<div class="col-md-6 text-right">
+							<a class="btn btn-info btn-sm text-white"
+								th:href="@{/voz/form/} + ${marcha.id}">Nueva Voz</a>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 mt-5 cabecera-titulo" style="height: 350px;">
+								<div class="row">
+									<div class="col-md-4">
+										<label class="col-form-label font-weight-bold">NOMBRE</label>
+									</div>
+									<div class="col-md-7">
+										<input class="form-control" th:value="${marcha.nombre}"
+											type="text" readonly>
+									</div>
+								</div>
+								<div class="row mt-2">
+									<div class="col-md-4">
+										<label class="col-form-label font-weight-bold">COMPOSITOR</label>
+									</div>
+									<div class="col-md-7">
+										<input class="form-control" th:value="${marcha.compositor}"
+											type="text" readonly>
+									</div>
+								</div>
+								<div class="row mt-2">
+									<div class="col-md-4">
+										<label class="col-form-label font-weight-bold">FECHA</label>
+									</div>
+									<div class="col-md-7">
+										<input class="form-control"
+											th:value="${marcha.fecha_creacion}" type="text" readonly>
+									</div>
+								</div>
+								<div class="row mt-2 mb-5">
+									<div class="col-md-4">
+										<label class="col-form-label font-weight-bold">TIPO</label>
+									</div>
+									<div class="col-md-7">
+										<input class="form-control" th:value="${marcha.tipo.nombre}"
+											type="text" readonly>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 cabecera-titulo" style="height: 350px;">
+								<div class="row">
+									<div
+										th:text="'No hay voces registradas para la marcha ' + ${marcha.nombre}"
+										th:if="${#lists.isEmpty(marcha.voces)}"
+										class="alert alert-info my-4"></div>
+									<table th:if="${not #lists.isEmpty(marcha.voces)}"
+										class="table mb-4 table-hover table-borderless scroll">
+										<thead class="cabecera-tabla">
+											<tr>
+
+												<th class="ancho">Nombre</th>
+												<th class="ancho">Partitura</th>
+												<th class="ancho">Editar</th>
+												<th class="ancho">Eliminar</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="voz: ${marcha.voces}">
+												<td class="ancho" th:text="${voz.nombre}"></td>
+												<td class="ancho"><a class="btn btn-danger btn-sm"
+													th:href="@{'/voz/pdf/' + ${voz.partitura}}" th:text="'PDF'"></a></td>
+												<td class="ancho"><a class="btn btn-info btn-sm"
+													th:href="@{'/voz/pdf/' + ${voz.partitura}}"
+													th:text="'Editar'"></a></td>
+												<td class="ancho"><a class="btn btn-info btn-sm"
+													th:href="@{'/voz/pdf/' + ${voz.partitura}}"
+													th:text="'Eliminar'"></a></td>
+											</tr>
+										</tbody>
+
+									</table>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
 	<header th:replace="layout/plantilla :: footer"></header>
+	<script type="text/javascript">
+		var $table = $('table.scroll'), $bodyCells = $table.find(
+				'tbody tr:first').children(), colWidth;
+
+		// Adjust the width of thead cells when window resizes
+		$(window).resize(function() {
+			// Get the tbody columns width array
+			colWidth = $bodyCells.map(function() {
+				return $(this).width();
+			}).get();
+
+			// Set the width of thead columns
+			$table.find('thead tr').children().each(function(i, v) {
+				$(v).width(colWidth[i]);
+			});
+		}).resize(); // Trigger resize handler
+	</script>
 </body>
 </html>
