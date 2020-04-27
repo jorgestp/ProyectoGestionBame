@@ -17,12 +17,14 @@
 
 		<div class="container">
 			<div class="card bg-light">
-			<div class="card-header"><p class="display-5 text-center">Nueva Marcha</p></div>
+				<div class="card-header">
+					<p class="display-5 text-center">Nueva Marcha</p>
+				</div>
 				<div class="card-body">
 					<div class="row mb-3">
 						<div class="col-sm-6">
 							<div class="text-left">
-								<a th:href="@{/}" class="btn btn-light">&laquo; volver</a>
+								<a th:href="@{/repertorio/lista}" class="btn btn-light">&laquo; volver</a>
 							</div>
 						</div>
 					</div>
@@ -43,6 +45,68 @@
 								</div>
 							</div>
 
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-form-label">Compositor</label> <input
+											type="text" th:field="*{compositor}" class="form-control"
+											th:errorclass="'form-control alert-danger'" /> <small
+											class="form-text text-danger"
+											th:if="${#fields.hasErrors('compositor')}"
+											th:errors="*{compositor}"></small>
+
+									</div>
+								</div>
+
+								<div class="col-md-3"></div>
+
+								<div class="col-md-3">
+									<div class="form-group">
+										<label class="col-form-label">Año composición</label> <input
+											type="number" th:field="*{fecha_creacion}"
+											class="form-control form-control-sm"
+											th:errorclass="'form-control alert-danger'" /> <small
+											class="form-text text-danger"
+											th:if="${#fields.hasErrors('fecha_creacion')}"
+											th:errors="*{fecha_creacion}"></small>
+
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="col-form-label"> Tipo</label> <select
+											class="form-control" th:field="*{tipo.id}"
+											th:errorclass="'form-control alert-danger'">
+											<option value="">--Seleccione--</option>
+											<option value="1">funebre</option>
+											<option value="2">clásica</option>
+										</select> <small class="form-text text-danger"
+											th:if="${#fields.hasErrors('tipo.id')}"
+											th:errors="*{tipo.id}"></small>
+
+									</div>
+								</div>
+
+								<div class="col-md-3"></div>
+
+								<div class="col-md-5">
+									<div class="form-group">
+										<label for="file" class=" col-form-label">Guión</label> <input
+											type="file" name="file" class="form-control"
+											placeholder="Seleccione archivo.pdf" /> <small
+											class="form-text text-danger"
+											th:if="${#fields.hasErrors('guia')}" th:errors="*{guia}"></small>
+
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 text-center">
+									<input type="submit" value="Enviar" class="btn  btn-secondary" />
+								</div>
+							</div>
 
 						</form>
 
