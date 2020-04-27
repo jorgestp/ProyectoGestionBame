@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="layout/plantilla :: head"></head>
+<head th:replace="layout/plantilla :: head">
+</head>
 <body>
 
 	<header th:replace="layout/plantilla :: header"></header>
@@ -21,12 +22,14 @@
 					<div class="row mb-3">
 						<div class="col-sm-6">
 							<div class="text-left">
-								<a th:href="@{/componentes/form}" class="btn btn-sm boton-registro">Nuevo Componente</a>
+								<a th:href="@{/componentes/form}"
+									class="btn btn-sm boton-registro">Nuevo Componente</a>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="text-right">
-								<a th:href="@{/listado/pdf}" target="_blanck"  class="btn btn-sm btn-danger">PDF</a>
+								<a th:href="@{/listado/pdf}" target="_blanck"
+									class="btn btn-danger text-white	"><i class="far fa-file-pdf"></i></a>
 							</div>
 						</div>
 					</div>
@@ -56,12 +59,13 @@
 									<td th:text="${comp.instrumento.nombre}"></td>
 									<td th:text="${comp.direccion}"></td>
 									<td th:text="${comp.createAt}"></td>
-									<td><a class="btn btn-success btn-sm  text-white"
-										th:href="@{/componentes/form/} + ${comp.id}" th:text="Editar"></a></td>
-									<td><a class="btn btn-danger btn-sm  text-white"
+									<td><a class="btn text-muted"
+										th:href="@{/componentes/form/} + ${comp.id}"><i
+											class="fa fa-cogs"></i></a></td>
+									<td><a class="btn btn-sm rounded-circle btn-outline-danger text-dark"
 										th:href="@{/componentes/delete/} + ${comp.id}"
-										th:text="Eliminar"
-										onclick="return confirm('Estas seguro de eliminar?')"></a></td>
+										onclick="return confirm('Estas seguro de eliminar?')"><i
+											class="far fa-trash-alt"></i></a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -74,15 +78,11 @@
 		</div>
 		<div class="container mt-2">
 			<div class="row">
-				<div class="col-md-4">
-					
-				</div>
+				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<nav th:replace="paginator-nav :: paginator"></nav>
 				</div>
-				<div class="col-md-4">
-					
-				</div>
+				<div class="col-md-4"></div>
 			</div>
 		</div>
 
