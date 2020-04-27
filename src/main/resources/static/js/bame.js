@@ -23,8 +23,8 @@ $(document).ready(function() {
 				  //alert(nombre);
 				  
 				  $.confirm({
-					    title: 'Alerta',
-					    content: 'Desea incluir la nueva linea con ' + nombre + ' ?',
+					    title: 'Alerta!!',
+					    content: '¿Desea incluir la nueva linea con ' + nombre + ' ?',
 					    buttons: {
 					        confirm: function () {
 					        	
@@ -40,10 +40,10 @@ $(document).ready(function() {
 								$("#cargarItemProductos tbody").append(linea);
 					        	
 					        	
-					            $.alert('Confirmed!');
+					            $.alert('Confirmar!');
 					        },
 					        cancel: function () {
-					            $.alert('Canceled!');
+					            $.alert('Cancelar');
 					        }
 					    }
 					});
@@ -71,3 +71,4 @@ var itemsHelper = {
 		
 
 }
+

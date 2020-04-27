@@ -29,7 +29,7 @@
 						<div class="col-sm-6">
 							<div class="text-right">
 								<a th:href="@{/listado/pdf}" target="_blanck"
-									class="btn btn-danger text-white	"><i class="far fa-file-pdf"></i></a>
+									class="btn btn-danger text-white"><i class="far fa-file-pdf"></i></a>
 							</div>
 						</div>
 					</div>
@@ -61,11 +61,11 @@
 									<td th:text="${comp.createAt}"></td>
 									<td><a class="btn text-muted"
 										th:href="@{/componentes/form/} + ${comp.id}"><i
-											class="fa fa-cogs"></i></a></td>
-									<td><a class="btn btn-sm rounded-circle btn-outline-danger text-dark"
+											class="fa fa-cogs"></i> Editar</a></td>
+									<td><a class="btn text-muted"
 										th:href="@{/componentes/delete/} + ${comp.id}"
 										onclick="return confirm('Estas seguro de eliminar?')"><i
-											class="far fa-trash-alt"></i></a></td>
+											class="far fa-trash-alt"></i> Eliminar</a></td>
 								</tr>
 							</tbody>
 						</table>

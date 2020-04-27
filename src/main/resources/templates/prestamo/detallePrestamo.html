@@ -4,65 +4,152 @@
 <head th:replace="layout/plantilla :: head"></head>
 <body>
 	<header th:replace="layout/plantilla :: header"></header>
-	<div class="container py-4">
-		<div class="card bg-light">
-			<div class="card-header" th:text="${titulo}"></div>
-			<div class="card-body">
 
-				<div class="container">
-					<div class="row my-3">
-						<div class="col-lg 6">
-							<ul class="list-group">
-								<li class="list-group-item bg-success"
-									th:text="${prestamo.componente.nombre}"></li>
-								<li class="list-group-item bg-success"
-									th:text="${prestamo.componente.apellido}"></li>
-								<li class="list-group-item bg-success"
-									th:text="${prestamo.componente.direccion}"></li>
-								<li class="list-group-item" th:text="${prestamo.componente.dni}"></li>
-								<li class="list-group-item" th:text="${prestamo.descripcion}"></li>
-								<li class="list-group-item" th:text="${prestamo.observacion}"></li>
-								<li class="list-group-item"
-									th:text="${#dates.format(prestamo.createAt, 'dd-MMMM-yyyy')}"></li>
+	<section>
 
-							</ul>
+		<div class="container cabecera-titulo mb-2">
+			<div class="row">
+				<div class="col-12 text-center">
+					<p class="display-3">Componentes BAME</p>
+				</div>
+			</div>
+		</div>
+		<div class="container mt-3">
+			<div class="card bg-light">
+				<div class="card-body">
+					<div class="card-header">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="text-left">
+									<a th:href="@{/componentes/ver/} + ${prestamo.componente.id}" class="btn btn-light">&laquo; volver</a>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="text-right">
+									<a th:href="@{/prestamo/detalle/pdf/} + ${prestamo.id}"
+										target="_blank" class="btn btn-danger btn-sm text-white">Generar PDF <i class="fas fa-file-pdf"></i></a>
+								</div>
+							</div>
 						</div>
-						<div class="col-lg-6">
-							<table class="table table-bordered table-striped">
-								<thead class="thead-dark">
+					</div>
+					<div class="row mt-1">
+						<div class="col-md-6 cabecera-titulo">
+							<div class="row">
+								<div class="col-md-4 ">
+									<label class="col-form-label">Nombre</label>
+								</div>
+								<div class="col-md-6 ">
+									<input class="form-control"
+										th:value="${prestamo.componente.nombre}" type="text" readonly>
+								</div>
+							</div>
+							<div class="row mt-1">
+								<div class="col-md-4 ">
+									<label class="col-form-label">Apellidos</label>
+								</div>
+								<div class="col-md-6 ">
+									<input class="form-control"
+										th:value="${prestamo.componente.apellido}" type="text"
+										readonly>
+								</div>
+							</div>
+							<div class="row mt-1">
+								<div class="col-md-4 ">
+									<label class="col-form-label">Direccion</label>
+								</div>
+								<div class="col-md-6 ">
+									<input class="form-control"
+										th:value="${prestamo.componente.direccion}" type="text"
+										readonly>
+								</div>
+							</div>
+							<div class="row mt-1 mb-2">
+								<div class="col-md-4 ">
+									<label class="col-form-label">DNI</label>
+								</div>
+								<div class="col-md-6 ">
+									<input class="form-control"
+										th:value="${prestamo.componente.dni}" type="text" readonly>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="row mt-2">
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-4 ">
+									<label class="col-form-label">Fecha Prestamo</label>
+								</div>
+								<div class="col-md-6 ">
+									<input class="form-control"
+										th:value="${#dates.format(prestamo.createAt, 'dd-MMMM-yyyy')}"
+										type="text" readonly>
+								</div>
+							</div>
+							<div class="row mt-1">
+								<div class="col-md-4 ">
+									<label class="col-form-label">Descripcion</label>
+								</div>
+								<div class="col-md-6 ">
+									<input class="form-control" th:value="${prestamo.descripcion}"
+										type="text" readonly>
+								</div>
+							</div>
+							<div class="row mt-2">
+								<div class="col-md-4 ">
+									<label class="col-form-label">Observacion</label>
+								</div>
+								<div class="col-md-8 ">
+									<textarea class="form-control" rows="5"
+										th:placeholder="${prestamo.observacion}" readonly></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 cabecera-titulo">
+							<table
+								class="table mb-4 table-hover table-borderless scrolldetalle">
+								<thead class="cabecera-tabla">
 									<tr>
 
-										<th>ID</th>
-										<th>NOMBRE</th>
+										<th class="ancho">ID</th>
+										<th class="ancho">NOMBRE</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr th:each="item: ${prestamo.itemsPrestamo}">
-										<td th:text="${item.material.id}"></td>
-										<td th:text="${item.material.nombre}"></td>
+										<td class="ancho" th:text="${item.material.id}"></td>
+										<td class="ancho" th:text="${item.material.nombre}"></td>
 									</tr>
 								</tbody>
 
 							</table>
 						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-			<div class="card-footer">
-				<div class="container">
-					<div class="row">
-						<div class="col-12 text-right">
-							<a th:href="@{/prestamo/detalle/pdf/} + ${prestamo.id}"
-								target="_blank" class="btn btn-danger">PDF</a>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
+
+	</section>
+
 	<header th:replace="layout/plantilla :: footer"></header>
+	<script type="text/javascript">
+		var $table = $('table.scroll'), $bodyCells = $table.find(
+				'tbody tr:first').children(), colWidth;
+
+		// Adjust the width of thead cells when window resizes
+		$(window).resize(function() {
+			// Get the tbody columns width array
+			colWidth = $bodyCells.map(function() {
+				return $(this).width();
+			}).get();
+
+			// Set the width of thead columns
+			$table.find('thead tr').children().each(function(i, v) {
+				$(v).width(colWidth[i]);
+			});
+		}).resize(); // Trigger resize handler
+	</script>
 </body>
 </html>

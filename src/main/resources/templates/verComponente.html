@@ -18,11 +18,16 @@
 				<div class="card-body">
 					<div class="container">
 						<div class="row">
-							<div class="col-12 text-left">
-								<a class="btn btn-info btn-xs text-white"
+							<div class="col-md-6 text-left">
+							<a th:href="@{/}"
+								class="btn btn-light">&laquo; volver</a>
+							</div>
+							<div class="col-md-6 text-right">
+								<a class="btn btn-sm boton-registro"
 									th:href="@{'/prestamo/form/' + ${componente.id}}">Nuevo
 									Prestamo</a>
 							</div>
+
 						</div>
 						<div class="row">
 							<div class="col-md-8 cabecera-titulo">

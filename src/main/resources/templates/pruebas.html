@@ -5,85 +5,62 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container py-4">
+div class="container py-4">
 		<div class="card bg-light">
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
 
-				<!-- ENCTYPE es una codificacion que permite mandar archivos como datos en un request, 
-				es decir, en una peticion http -->
-				<form th:action="@{/voz/guardar}" th:object="${voz}" method="post"
-					enctype="multipart/form-data">
+				<div class="container">
+					<div class="row my-3">
+						<div class="col-lg 6">
+							<ul class="list-group">
+								<li class="list-group-item bg-success"
+									th:text="${prestamo.componente.nombre}"></li>
+								<li class="list-group-item bg-success"
+									th:text="${prestamo.componente.apellido}"></li>
+								<li class="list-group-item bg-success"
+									th:text="${prestamo.componente.direccion}"></li>
+								<li class="list-group-item" th:text="${prestamo.componente.dni}"></li>
+								<li class="list-group-item" th:text="${prestamo.descripcion}"></li>
+								<li class="list-group-item" th:text="${prestamo.observacion}"></li>
+								<li class="list-group-item"
+									th:text="${#dates.format(prestamo.createAt, 'dd-MMMM-yyyy')}"></li>
 
-
-					<!--  <div class="form-group row">
-						<label class="col-sm-2 col-form-label">Nombre de la voz</label>
-						<div class="col-sm-6">
-							<input type="text" th:field="*{nombre}" class="form-control"
-							th:errorclass="'form-control alert-danger'" /><small
-								class="form-text text-danger" 
-								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+							</ul>
 						</div>
-					</div>-->
+						<div class="col-lg-6">
+							<table class="table table-bordered table-striped">
+								<thead class="thead-dark">
+									<tr>
 
-					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Nombre de la voz</label>
-						<div class="col-sm-4">
-							<select class="form-control" th:field="*{nombre}"
-								th:errorclass="'form-control alert-danger'">
-								<option value="">--Seleccione--</option>
-								<option value="Flautín">Flautín</option>
-								<option value="Flauta">Flauta</option>
-								<option value="Oboe">Oboe</option>
-								<option value="Requinto">Requinto</option>
-								<option value="Clarinete Ppal">Clarinete Ppal</option>
-								<option value="Clarinete 1º">Clarinete 1º</option>
-								<option value="Clarinete 2º">Clarinete 2º</option>
-								<option value="Clarinete 3º">Clarinete 3º</option>
-								<option value="Saxo Alto 1º">Saxo Alto 1º</option>
-								<option value="Saxo Alto 2º">Saxo Alto 2º</option>
-								<option value="Saxo Tenor">Saxo Tenor</option>
-								<option value="Saxo Barítono">Saxo Barítono</option>
-								<option value="Trompa 1ª">Trompa 1ª</option>
-								<option value="Trompa 2ª">Trompa 2ª</option>
-								<option value="Trompa 3ª">Trompa 3ª</option>
-								<option value="Corneta Si b">Corneta Si b</option>
-								<option value="Fliscorno">Fliscorno</option>
-								<option value="Trombón 1º">Trombón 1º</option>
-								<option value="Trombón 2º">Trombón 2º</option>
-								<option value="Trombón 3º">Trombón 3º</option>
-								<option value="Bombardino 1º">Bombardino 1º</option>
-								<option value="Bombardino 2º">Bombardino 2º</option>
-								<option value="Tuba">Tuba</option>
-								<option value="Bombo y Platos">Bombo y Platos</option>
-								<option value="Caja">Caja</option>
-							</select> <small class="form-text text-danger"
-								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+										<th>ID</th>
+										<th>NOMBRE</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="item: ${prestamo.itemsPrestamo}">
+										<td th:text="${item.material.id}"></td>
+										<td th:text="${item.material.nombre}"></td>
+									</tr>
+								</tbody>
+
+							</table>
 						</div>
+
 					</div>
 
-					<div class="form-group row">
-						<label for="file" class="col-sm-2 col-form-label">Partitura</label>
-						<div class="col-sm-4">
-							<input type="file" name="file" class="form-control" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('partitura')}"
-								th:errors="*{partitura}"></small>
+				</div>
+
+			</div>
+			<div class="card-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 text-right">
+							<a th:href="@{/prestamo/detalle/pdf/} + ${prestamo.id}"
+								target="_blank" class="btn btn-danger">PDF</a>
 						</div>
 					</div>
-
-					<div class="form-group">
-
-						<div class="col-sm-2">
-							<input type="submit" value="Registrar Voz"
-								class="btn  btn-secondary" />
-						</div>
-					</div>
-
-
-				</form>
-
-
+				</div>
 			</div>
 		</div>
 	</div>

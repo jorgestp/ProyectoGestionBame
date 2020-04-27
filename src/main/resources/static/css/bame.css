@@ -88,6 +88,21 @@ table.scroll tbody {
     
 }
 
+table.scrolldetalle tbody,
+table.scrolldetalle thead { display: block; }
+
+table.scrolldetalle {
+    width: 100%;
+    
+}
+
+table.scrolldetalle tbody {
+    height: 70px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+}
+
 .ancho{
 	
 	width: 20%;

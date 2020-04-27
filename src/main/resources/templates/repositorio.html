@@ -21,12 +21,14 @@
 					<div class="row mb-3">
 						<div class="col-sm-6">
 							<div class="text-left">
-								<a th:href="@{/repertorio/form}" class="btn btn-sm boton-registro">Nueva Marcha</a>
+								<a th:href="@{/repertorio/form}"
+									class="btn btn-sm boton-registro">Nueva Marcha</a>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="text-right">
-								<a href="@{/listado/pdf}" target="_blanck" class="btn btn-sm btn-danger">PDF</a>
+								<a href="@{/listado/pdf}" target="_blanck"
+									class="btn btn-sm btn-danger">PDF</a>
 							</div>
 						</div>
 					</div>
@@ -54,16 +56,18 @@
 									<td th:text="${marcha.compositor}"></td>
 									<td th:text="${marcha.fecha_creacion}"></td>
 									<td th:text="${marcha.tipo.nombre}"></td>
-									<td><a class="btn btn-success btn-sm  text-white"
-										th:href="@{/repertorio/form/} + ${marcha.id}" th:text="Editar"></a></td>
-									<td><a class="btn btn-sm btn-danger text-white"
-										th:href="@{/repertorio/delete/} + ${marcha.id}"
-										th:text="Eliminar"
-										onclick="return confirm('Estas seguro de eliminar?')"></a></td>
 									<td th:if="${#strings.length(marcha.guia) > 0}"><a
-										class="btn btn-info btn-sm"
+										class="btn btn-success btn-sm"
 										th:href="@{'/repertorio/pdf/' + ${marcha.guia}}"
-										th:text="'Guion'"></a></td>
+										><i class="fas fa-music"></i> Guion</a></td>
+									<td><a class="btn text-muted"
+										th:href="@{/repertorio/form/} + ${marcha.id}"><i
+											class="fa fa-cogs"></i> Editar</a></td>
+									<td><a class="btn text-muted"
+										th:href="@{/repertorio/delete/} + ${marcha.id}"
+										onclick="return confirm('Estas seguro de eliminar?')"><i
+											class="far fa-trash-alt"></i> Eliminar</a></td>
+
 								</tr>
 							</tbody>
 						</table>

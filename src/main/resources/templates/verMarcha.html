@@ -90,14 +90,16 @@
 										<tbody>
 											<tr th:each="voz: ${marcha.voces}">
 												<td class="ancho" th:text="${voz.nombre}"></td>
-												<td class="ancho"><a class="btn btn-danger btn-sm"
-													th:href="@{'/voz/pdf/' + ${voz.partitura}}" th:text="'PDF'"></a></td>
-												<td class="ancho"><a class="btn btn-info btn-sm"
-													th:href="@{'/voz/pdf/' + ${voz.partitura}}"
-													th:text="'Editar'"></a></td>
-												<td class="ancho"><a class="btn btn-info btn-sm"
-													th:href="@{'/voz/pdf/' + ${voz.partitura}}"
-													th:text="'Eliminar'"></a></td>
+												<td class="ancho"><a
+													class="btn btn-sm btn-danger text-white"
+													th:href="@{'/voz/pdf/' + ${voz.partitura}}"><i
+														class="fas fa-file-pdf"></i> Ver</a></td>
+												<td class="ancho"><a class="btn text-muted"
+													th:href="@{'/voz/pdf/' + ${voz.partitura}}"><i
+														class="fa fa-cogs"></i> Editar</a></td>
+												<td class="ancho"><a class="btn text-muted" id="eliminaVoz"
+													th:href="@{/}" onclick="return confirm('Desea eliminar')"><i
+														class="far fa-trash-alt"></i> Eliminar</a></td>
 											</tr>
 										</tbody>
 
@@ -119,6 +121,8 @@
 
 	<header th:replace="layout/plantilla :: footer"></header>
 	<script type="text/javascript">
+	
+	
 		var $table = $('table.scroll'), $bodyCells = $table.find(
 				'tbody tr:first').children(), colWidth;
 
@@ -134,6 +138,9 @@
 				$(v).width(colWidth[i]);
 			});
 		}).resize(); // Trigger resize handler
+		
+		
+		 
 	</script>
 </body>
 </html>
