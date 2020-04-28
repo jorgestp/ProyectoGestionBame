@@ -80,7 +80,11 @@
 
 
 							</div>
-							<div class="col-md-4" style="max-height: 300px;"></div>
+							<div class="col-md-4" style="max-height: 300px;">
+								<img th:if="${#strings.length(componente.foto) > 0}"
+									alt="${componente.foto}" th:src="@{'/uploads/' + ${componente.foto}}"
+									style="max-width: 50%" class="img-thumbnail rounded float-left">
+							</div>
 						</div>
 						<hr class="mt-4">
 						<div class="container">

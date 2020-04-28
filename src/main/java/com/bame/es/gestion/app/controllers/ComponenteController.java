@@ -1,6 +1,8 @@
 package com.bame.es.gestion.app.controllers;
 
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 
@@ -9,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -22,11 +27,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bame.es.gestion.app.models.entity.Componente;
 import com.bame.es.gestion.app.models.service.impl.IComponenteService;
 import com.bame.es.gestion.app.models.service.impl.IInstrumentoService;
+import com.bame.es.gestion.app.models.service.impl.IUploadFileService;
 import com.bame.es.gestion.app.pageRender.PageRender;
 import com.bame.es.gestion.app.pdf.ReportesService;
 
@@ -46,6 +53,9 @@ public class ComponenteController {
 	
 	@Autowired
 	private ReportesService reporteService;
+	
+	@Autowired
+	private IUploadFileService uploadService;
 	
 
 	
@@ -81,6 +91,7 @@ public class ComponenteController {
 			BindingResult result, 
 			Map<String, Object> model,
 			RedirectAttributes flash,
+			@RequestParam("file") MultipartFile foto,
 			SessionStatus status) {
 		
 		if(result.hasErrors() || componente.getInstrumento().getId() == null) {
@@ -101,6 +112,42 @@ public class ComponenteController {
 			model.put("boton", "Guardar");
 
 			return "formComponente";
+		}
+		
+		
+		//Si la foto no esta vacia, entra
+		if(!foto.isEmpty()) {
+			
+			/*
+			 * Preguntamos si el id de la marcha es distinto de nulo, señal entonces de
+			 * que estamos modificando. Ademas preguntamos que sea el id mayor a 0.
+			 * Tambien, que el atributo de la marcha, foto, no este vacio y no sea null.
+			 * 
+			 * Si ocurre todo eso, borramos la imagen del directorio
+			 */
+			if(componente.getId() != null &&
+					componente.getId()>0 &&
+					componente.getFoto().length() > 0 &&
+					componente.getFoto() != null) {
+				
+					uploadService.delete(componente.getFoto());
+				
+			}
+			
+			String uniqueFileName = null;
+			try {
+				uniqueFileName = uploadService.copy(foto);
+			} catch (IOException e) {
+				// TODO Auto-generated catch blocks
+				e.printStackTrace();
+			}
+			
+			// Pasamos un mensaje flash a la vista
+			flash.addFlashAttribute("info", "Ha subido correctamente la foto correctamente");
+
+			// Pasamos el nombre original de la foto a la marcga
+			componente.setFoto(uniqueFileName);
+			
 		}
 		
 		
@@ -193,6 +240,22 @@ public class ComponenteController {
 		 model.put("componente", componente);
 		
 		return "verComponente";
+	}
+	
+	@GetMapping(value = "/uploads/{filename:.+}")
+	public ResponseEntity<Resource> verFoto(@PathVariable String filename) {
+
+		Resource recurso = null;
+		try {
+			recurso = uploadService.load(filename);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return ResponseEntity.ok()
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename() + "\"")
+				.body(recurso);
 	}
 	
 	
