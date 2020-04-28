@@ -19,8 +19,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-6 text-left">
-							<a th:href="@{/}"
-								class="btn btn-light">&laquo; volver</a>
+								<a th:href="@{/}" class="btn btn-light">&laquo; volver</a>
 							</div>
 							<div class="col-md-6 text-right">
 								<a class="btn btn-sm boton-registro"
@@ -111,11 +110,13 @@
 													<td
 														th:text="${#calendars.format(prestamo.createAt, 'dd-MM-yyyy')}"></td>
 													<td th:text="${prestamo.descripcion}"></td>
-													<td><a class="btn btn-success rounded-circle"
-														th:href="@{/prestamo/ver/} + ${prestamo.id}">Ver</a></td>
-													<td><a class="btn btn-danger"
+													<td><a class="btn text-muted"
+														th:href="@{/prestamo/ver/} + ${prestamo.id}"><i
+															class="fa fa-cogs"></i> Editar</a></td>
+													<td><a class="btn text-muted"
 														th:href="@{/prestamo/eliminar/} + ${prestamo.id}"
-														onclick="return confirm('Estas seguro de eliminar?')">Eliminar</a></td>
+														onclick="return confirm('Estas seguro de eliminar?')"><i
+															class="far fa-trash-alt"></i> Eliminar</a></td>
 												</tr>
 											</tbody>
 

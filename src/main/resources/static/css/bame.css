@@ -91,7 +91,7 @@ table.scrolldetalle {
 }
 
 table.scrolldetalle tbody {
-	height: 70px;
+	height: 100px;
 	overflow-y: auto;
 	overflow-x: hidden;
 }

@@ -97,8 +97,9 @@
 												<td class="ancho"><a class="btn text-muted"
 													th:href="@{'/voz/pdf/' + ${voz.partitura}}"><i
 														class="fa fa-cogs"></i> Editar</a></td>
-												<td class="ancho"><a class="btn text-muted" id="eliminaVoz"
-													th:href="@{/}" onclick="return confirm('Desea eliminar')"><i
+												<td class="ancho"><a class="btn text-muted"
+													id="eliminaVoz" th:href="@{'/voz/pdf/' + ${voz.id}}"
+													onclick="return confirm('Desea eliminar')"><i
 														class="far fa-trash-alt"></i> Eliminar</a></td>
 											</tr>
 										</tbody>
@@ -121,8 +122,6 @@
 
 	<header th:replace="layout/plantilla :: footer"></header>
 	<script type="text/javascript">
-	
-	
 		var $table = $('table.scroll'), $bodyCells = $table.find(
 				'tbody tr:first').children(), colWidth;
 
@@ -138,9 +137,6 @@
 				$(v).width(colWidth[i]);
 			});
 		}).resize(); // Trigger resize handler
-		
-		
-		 
 	</script>
 </body>
 </html>

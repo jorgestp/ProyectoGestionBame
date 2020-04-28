@@ -26,7 +26,7 @@ $(document).ready(function() {
 					    title: 'Alerta!!',
 					    content: '¿Desea incluir la nueva linea con ' + nombre + ' ?',
 					    buttons: {
-					        confirm: function () {
+					        aceptar: function () {
 					        	
 								var linea = $("#plantillaItemsMaterial").html();
 								
@@ -42,7 +42,7 @@ $(document).ready(function() {
 					        	
 					            $.alert('Confirmar!');
 					        },
-					        cancel: function () {
+					        cancelar: function () {
 					            $.alert('Cancelar');
 					        }
 					    }
