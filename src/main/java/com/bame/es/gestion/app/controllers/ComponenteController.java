@@ -118,6 +118,24 @@ public class ComponenteController {
 		//Si la foto no esta vacia, entra
 		if(!foto.isEmpty()) {
 			
+			if(!foto.getContentType().equals("image/png") &&
+					!foto.getContentType().equals("image/jpeg")
+					&&
+					!foto.getContentType().equals("image/jpg")) {
+				
+				String[] codes =null;
+				Object[] arg = null;
+				FieldError flderr = new FieldError("componente", "foto", 
+						componente.getFoto(), false, codes, arg, 
+						"Asegurese que el archivo sea una imagen");
+				
+				result.addError(flderr);
+				model.put("titulo", "Nuevo Componente para BAME");
+				model.put("boton", "Guardar");
+
+				return "formComponente";
+			}
+			
 			/*
 			 * Preguntamos si el id de la marcha es distinto de nulo, señal entonces de
 			 * que estamos modificando. Ademas preguntamos que sea el id mayor a 0.
