@@ -85,7 +85,6 @@ public class ComponenteController {
 		
 		if(result.hasErrors() || componente.getInstrumento().getId() == null) {
 			
-			List<FieldError> erores = result.getFieldErrors();
 			
 			if(componente.getInstrumento().getId() == null) {
 				

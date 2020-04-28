@@ -34,7 +34,8 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<div class="collapse navbar-collapse px-4" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse px-4"
+				id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/repertorio/lista}">Repertorio </a></li>
@@ -86,17 +87,93 @@
 
 
 	<footer th:fragment="footer">
-		
+		<div class="container">
+			<div class="row separacion">
+				<div class="col-md-6 mt-4">
+					<div class="row">
+						<div class="col-md-6 text-center text-white font-weight-bold mb-5">
+							<p>Siguenos en...</p>
+							<div class="row">
+								<div class="col-12 text-center my-2">
+									<a href="#" class="btn btn-outline-info btn-sm rounded-circle"><i
+										class="fab fa-twitter"></i></a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 text-center my-2">
+									<a href="#" class="btn btn-outline-info btn-sm rounded-circle"><i
+										class="fab fa-instagram"></i></a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 text-center my-2">
+									<a href="#" class="btn btn-outline-info btn-sm rounded-circle"><i
+										class="fab fa-facebook"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 text-center mb-5 contacto">
+							<p class="text-white font-weight-bold">Contacto</p>
+							<div class="row">
+								<div class="col-12 text-left my-1">
+									<p class="text-white">
+										<i class="fas fa-map-marker-alt"></i> Plaza Coracha s/n
+									</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 text-left my-1">
+									<p class="text-white">
+										<i class="fas fa-phone"></i> 666666666
+									</p>
+
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 text-left my-1">
+									<p class="text-white">
+										<i class="fas fa-envelope-open"></i> bame@gmail.com
+									</p>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="col-md-6 ">
+					<div class="row">
+						<div class="col-12 mt-4 text-center">
+							<div class="container">
+								<iframe class="rounded"
+									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3174.2562186576656!2d-4.874642285343581!3d37.289060947729034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d5a220c037725%3A0x6b035311616f5a31!2sAsociaci%C3%B3n%20Cultural%20%22Amigos%20de%20la%20M%C3%BAsica%22%20de%20Estepa.!5e0!3m2!1ses!2ses!4v1588064562257!5m2!1ses!2ses"
+									width="200" height="200" frameborder="0" style="border: 0;"
+									allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class=" container section-copyright">
+		        <div class="text-muted text-center p-1 m-0">
+            Copyright &copy;  Jorge Villalba Ruiz y BAME
+        </div>
+		</div>
+
+
+
+
+
 		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
 		<script th:src="@{/js/popper.min.js}"></script>
 		<script th:src="@{/js/bootstrap.min.js}"></script>
 		<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 		<script th:src="@{/js/estructuraBame.js}"></script>
 
-
 	</footer>
-	
-	
+
+
 
 
 </body>

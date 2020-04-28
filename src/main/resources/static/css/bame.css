@@ -20,13 +20,13 @@ header {
 }
 
 .nav-link {
-	color: black !important;
+	color: #2f2c3d !important;
 }
 
 .nav-link:hover {
 	font-weight: bold;
 	font-size: 1.2rem;
-	border-bottom: 4px solid black;
+	border-bottom: 4px solid #2f2c3d;
 }
 
 /***
@@ -43,9 +43,8 @@ section {
 }
 
 .cabecera-titulo {
-	
 	-webkit-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.13);
-	-moz-box-shadow:  0 4px 2px -2px rgba(0, 0, 0, 0.13);
+	-moz-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.13);
 	box-shadow: 0 6px 2px -2px rgba(0, 0, 0, 0.13);
 }
 
@@ -53,58 +52,51 @@ section {
 	border-bottom: 2px solid black;
 }
 
-.boton-registro{
-	
+.boton-registro {
 	background: linear-gradient(#ffffff, #f0bd24) !important;
-	color:black;
+	color: black;
 	font-weight: bold;
-	
 }
 
-#divTablaPrestamos{
-     overflow-y:scroll;
-     height:150px;
-     width:100%;
+#divTablaPrestamos {
+	overflow-y: scroll;
+	height: 150px;
+	width: 100%;
 }
 
-#cargarItemProductos th{
-	
+#cargarItemProductos th {
 	width: 100px;
 }
 
-
-table.scroll tbody,
-table.scroll thead { display: block; }
+table.scroll tbody, table.scroll thead {
+	display: block;
+}
 
 table.scroll {
-    width: 100%;
-    
+	width: 100%;
 }
 
 table.scroll tbody {
-    height: 250px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    
+	height: 250px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
-table.scrolldetalle tbody,
-table.scrolldetalle thead { display: block; }
+table.scrolldetalle tbody, table.scrolldetalle thead {
+	display: block;
+}
 
 table.scrolldetalle {
-    width: 100%;
-    
+	width: 100%;
 }
 
 table.scrolldetalle tbody {
-    height: 70px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    
+	height: 70px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
-.ancho{
-	
+.ancho {
 	width: 20%;
 }
 /***
@@ -115,7 +107,21 @@ table.scrolldetalle tbody {
 footer {
 	bottom: 0px;
 	width: 100%;
-	height: 100px;
+	height: 300px;
 	margin-top: 50px;
-	background-color: violet;
+	background: #262431;
+	box-shadow: 0px -5px 5px #2f2c3d;
+}
+
+.contacto {
+	border-right: 1px solid white;
+}
+
+.separacion {
+	-webkit-box-shadow: 0 6px 2px -2px rgba(255, 255, 255, 0.13);
+	-moz-box-shadow: 0 6px 2px -2px rgba(255, 255, 255, 0.13);
+	box-shadow: 0 6px 2px -2px rgba(255, 255, 255, 0.13);
+}
+.section-copyright{
+    background: #2f2c3d;
 }
